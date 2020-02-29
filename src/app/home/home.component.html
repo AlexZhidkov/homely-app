@@ -1,0 +1,35 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Welcome
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            Are you a new user? Our app will guide you through everything you need to know inside.
+            Click on your button to be directed to information specific to your needs.
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="student()">
+            <mat-icon>school</mat-icon>
+            Student
+        </button>
+        <button mat-raised-button (click)="business()">
+            <mat-icon>business</mat-icon>
+            Business
+        </button>
+        <button mat-raised-button (click)="university()">
+            <mat-icon>location_city</mat-icon>
+            University
+        </button>
+        <button mat-raised-button (click)="referrer()">
+            <mat-icon>supervisor_account</mat-icon>
+            Referrer
+        </button>
+        <button mat-raised-button (click)="admin()">
+            <mat-icon>explicit</mat-icon>
+            Admin
+        </button>
+    </mat-card-actions>
+</mat-card>
