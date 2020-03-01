@@ -1,9 +1,15 @@
-<div class="form">
-    <div style="text-align:center">
-        <h1>
-            Registration Form
-        </h1>
-    </div>
-    <app-dynamic-form [fields]="regConfig" (submit)="submit($event)">
-    </app-dynamic-form>
-</div>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Select Face Bricks</mat-card-title>
+        <mat-card-subtitle>(External Bricks)</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Selected: {{selection}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>Next</button>
+    </mat-card-actions>
+</mat-card>
+
+<app-dynamic-form [fields]="regConfig" (submit)="submit($event)">
+</app-dynamic-form>
