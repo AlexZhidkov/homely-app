@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
 
+[Angular Dynamic forms](https://angular.io/guide/dynamic-form)
+
+[bahurudeen, Create a dynamic form with configurable fields and validations using Angular 6](https://medium.com/@mail.bahurudeen/create-a-dynamic-form-with-configurable-fields-and-validations-using-angular-6-994db56834da)
+
+[bahurudeen, DynamicForm repo](https://github.com/bahurudeen/dynamicform)
+
+[Todd Motto, Configurable Reactive Forms in Angular with dynamic components](https://ultimatecourses.com/blog/angular-dynamic-components-forms)
+
+[Todd Motto, Angular Dynamic Forms repo](https://github.com/toddmotto/angular-dynamic-forms)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
