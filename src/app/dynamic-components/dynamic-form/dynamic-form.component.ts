@@ -21,7 +21,9 @@ export class DynamicFormComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.form = this.createControl();
+    if (this.fields) {
+      this.form = this.createControl();
+    }
   }
 
   onSubmit(event: Event) {

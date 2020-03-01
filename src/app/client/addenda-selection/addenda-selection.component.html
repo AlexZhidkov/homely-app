@@ -17,5 +17,5 @@
     </mat-card-actions>
 </mat-card>
 
-<app-dynamic-form [fields]="filteredBricks" (submit)="submit($event)">
+<app-dynamic-form [fields]="bricks | async" (submit)="submit($event)">
 </app-dynamic-form>
