@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ighar-dev": {
+      "hosting": {
+        "homely-app": [
+          "ighar-dev"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ighar-dev"
+  }
+}
