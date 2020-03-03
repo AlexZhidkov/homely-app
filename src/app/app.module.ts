@@ -36,6 +36,8 @@ import { CardComponent } from './dynamic-components/card/card.component';
 import { DynamicFieldDirective } from './dynamic-components/dynamic-field.directive';
 import { DynamicFormComponent } from './dynamic-components/dynamic-form/dynamic-form.component';
 import { HomeComponent } from './home/home.component';
+import { BricksComponent } from './bricks/bricks.component';
+import { BrickComponent } from './brick/brick.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { HomeComponent } from './home/home.component';
     AddendaSelectionComponent,
     CardComponent,
     DynamicFieldDirective,
-    DynamicFormComponent
+    DynamicFormComponent,
+    BricksComponent,
+    BrickComponent
   ],
   imports: [
     BrowserModule,

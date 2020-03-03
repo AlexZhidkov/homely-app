@@ -1,0 +1,15 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Bricks
+        </mat-card-title>
+    </mat-card-header>
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+    <mat-nav-list>
+        <mat-list-item *ngFor="let brick of bricks | async" routerLink="/supplier/bricks/{{brick.id}}">
+            <h3 matLine> {{brick.value}} </h3>
+            <p matLine> {{brick.tags.join(", ")}} </p>
+        </mat-list-item>
+    </mat-nav-list>
+</mat-card>
