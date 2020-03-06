@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'client', component: AddendaSelectionComponent },
   { path: 'supplier', component: BricksComponent },
   { path: 'supplier/bricks/:id', component: BrickComponent },
+  { path: 'supplier/bricks', component: BrickComponent },
   { path: '**', component: HomeComponent }
 ];
 

@@ -5,7 +5,9 @@
         </mat-card-title>
     </mat-card-header>
     <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
-
+    <mat-card-actions>
+        <button mat-button routerLink="/supplier/bricks">Add</button>
+    </mat-card-actions>
     <mat-nav-list>
         <mat-list-item *ngFor="let brick of bricks | async" routerLink="/supplier/bricks/{{brick.id}}">
             <h3 matLine> {{brick.value}} </h3>

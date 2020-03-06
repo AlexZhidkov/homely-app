@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -31,14 +32,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrickComponent } from './brick/brick.component';
+import { BricksComponent } from './bricks/bricks.component';
 import { AddendaSelectionComponent } from './client/addenda-selection/addenda-selection.component';
 import { CardComponent } from './dynamic-components/card/card.component';
 import { DynamicFieldDirective } from './dynamic-components/dynamic-field.directive';
 import { DynamicFormComponent } from './dynamic-components/dynamic-form/dynamic-form.component';
 import { HomeComponent } from './home/home.component';
-import { BricksComponent } from './bricks/bricks.component';
-import { BrickComponent } from './brick/brick.component';
-
 
 @NgModule({
   declarations: [
@@ -83,7 +83,8 @@ import { BrickComponent } from './brick/brick.component';
     MatNativeDateModule,
     MatTabsModule,
     MatTableModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatChipsModule
   ],
   providers: [],
   entryComponents: [
