@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
@@ -35,6 +36,7 @@ import { AppComponent } from './app.component';
 import { BrickComponent } from './brick/brick.component';
 import { BricksComponent } from './bricks/bricks.component';
 import { AddendaSelectionComponent } from './client/addenda-selection/addenda-selection.component';
+import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/dynamic-selection-form.component';
 import { CardComponent } from './dynamic-components/card/card.component';
 import { DynamicFieldDirective } from './dynamic-components/dynamic-field.directive';
 import { DynamicFormComponent } from './dynamic-components/dynamic-form/dynamic-form.component';
@@ -49,7 +51,8 @@ import { HomeComponent } from './home/home.component';
     DynamicFieldDirective,
     DynamicFormComponent,
     BricksComponent,
-    BrickComponent
+    BrickComponent,
+    DynamicSelectionFormComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +87,8 @@ import { HomeComponent } from './home/home.component';
     MatTabsModule,
     MatTableModule,
     MatAutocompleteModule,
-    MatChipsModule
+    MatChipsModule,
+    MatRadioModule
   ],
   providers: [],
   entryComponents: [

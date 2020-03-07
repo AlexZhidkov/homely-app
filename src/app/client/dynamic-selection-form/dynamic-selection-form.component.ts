@@ -1,21 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import 'firebase/firestore';
 import { Observable } from 'rxjs';
-import { DynamicFormComponent } from '../../dynamic-components/dynamic-form/dynamic-form.component';
-import { FieldConfig } from '../../model/fieldConfig';
+import { DynamicFormComponent } from 'src/app/dynamic-components/dynamic-form/dynamic-form.component';
+import { FieldConfig } from 'src/app/model/fieldConfig';
 
 @Component({
-  selector: 'app-addenda-selection',
-  templateUrl: './addenda-selection.component.html',
-  styleUrls: ['./addenda-selection.component.css']
+  selector: 'app-dynamic-selection-form',
+  templateUrl: './dynamic-selection-form.component.html',
+  styleUrls: ['./dynamic-selection-form.component.css']
 })
-export class AddendaSelectionComponent implements OnInit {
+export class DynamicSelectionFormComponent implements OnInit {
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
   bricks: Observable<FieldConfig[]>;
-  concreteFormGroup: FormGroup;
-  brickworkFormGroup: FormGroup;
 
   options: string[] = [
     'Midland Brick',
@@ -25,14 +21,9 @@ export class AddendaSelectionComponent implements OnInit {
 
   private bricksCollection: AngularFirestoreCollection<FieldConfig>;
 
-  constructor(private afs: AngularFirestore, private formBuilder: FormBuilder) { }
+  constructor(private afs: AngularFirestore) { }
 
   ngOnInit(): void {
-    this.concreteFormGroup = this.formBuilder.group({
-    });
-    this.brickworkFormGroup = this.formBuilder.group({
-    });
-
     this.bricksCollection = this.afs.collection<FieldConfig>('bricks');
     this.bricks = this.bricksCollection.valueChanges();
   }

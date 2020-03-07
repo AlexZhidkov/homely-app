@@ -1,21 +1,43 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Select Face Bricks</mat-card-title>
-        <mat-card-subtitle>(External Bricks)</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-form-field>
-            <mat-label>Producer</mat-label>
-            <mat-select (selectionChange)="filterChanged($event.value)">
-                <mat-option *ngFor="let option of options" [value]="option">
-                    {{option}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions>
-    </mat-card-actions>
-</mat-card>
-
-<app-dynamic-form [fields]="bricks | async" (submit)="submit($event)">
-</app-dynamic-form>
+<mat-vertical-stepper #stepper>
+    <mat-step [stepControl]="concreteFormGroup">
+        <form [formGroup]="concreteFormGroup">
+            <ng-template matStepLabel>Concrete</ng-template>
+            <label id="termite-control-group-label">Termite Control</label>
+            <mat-radio-group aria-labelledby="termite-control-group-label">
+                <mat-radio-button value="Termi Mesh">Termi Mesh</mat-radio-button>
+                <mat-radio-button value="Termite Treatment">Termite Treatment</mat-radio-button>
+            </mat-radio-group>
+            <label id="ground-slab-group-label">Ground Slab</label>
+            <mat-radio-group aria-labelledby="ground-slab-group-label">
+                <mat-radio-button value="85 mm">85 mm</mat-radio-button>
+                <mat-radio-button value="100 mm">100 mm</mat-radio-button>
+            </mat-radio-group>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="brickworkFormGroup">
+        <form [formGroup]="brickworkFormGroup">
+            <ng-template matStepLabel>Brickwork</ng-template>
+            <label id="bricks-group-label">Face Bricks (External Bricks)</label>
+            <mat-radio-group aria-labelledby="bricks-group-label">
+                <mat-radio-button value="Single Course">Single Course</mat-radio-button>
+                <mat-radio-button value="Two Course">Two Course</mat-radio-button>
+            </mat-radio-group>
+            <button mat-button routerLink="/client/bricks">Select Face Bricks</button>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-vertical-stepper>

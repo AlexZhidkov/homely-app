@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'client', component: AddendaSelectionComponent },
+  { path: 'client/bricks', component: BricksComponent },
   { path: 'supplier', component: BricksComponent },
   { path: 'supplier/bricks/:id', component: BrickComponent },
   { path: 'supplier/bricks', component: BrickComponent },
