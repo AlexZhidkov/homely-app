@@ -36,6 +36,7 @@ import { AppComponent } from './app.component';
 import { BrickComponent } from './brick/brick.component';
 import { BricksComponent } from './bricks/bricks.component';
 import { AddendaSelectionComponent } from './client/addenda-selection/addenda-selection.component';
+import { BrickSelectionComponent } from './client/brick-selection/brick-selection.component';
 import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/dynamic-selection-form.component';
 import { CardComponent } from './dynamic-components/card/card.component';
 import { DynamicFieldDirective } from './dynamic-components/dynamic-field.directive';
@@ -52,7 +53,8 @@ import { HomeComponent } from './home/home.component';
     DynamicFormComponent,
     BricksComponent,
     BrickComponent,
-    DynamicSelectionFormComponent
+    DynamicSelectionFormComponent,
+    BrickSelectionComponent
   ],
   imports: [
     BrowserModule,

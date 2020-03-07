@@ -1,4 +1,15 @@
 import { BaseEntity } from './base-entity';
-import { FieldConfig } from './fieldConfig';
 
-export interface Brick extends BaseEntity, FieldConfig { }
+export interface Brick extends BaseEntity {
+    label?: string;
+    name?: string;
+    subtitle?: string;
+    imageUrl?: string;
+    description?: string;
+    inputType?: string;
+    options?: string[];
+    collections?: any;
+    type: string;
+    value?: any;
+    tags?: string[];
+}
