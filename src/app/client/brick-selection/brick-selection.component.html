@@ -1,9 +1,9 @@
 <mat-card>
-    <mat-card-header>
-        <mat-card-title>Select Face Bricks</mat-card-title>
-        <mat-card-subtitle>(External Bricks)</mat-card-subtitle>
-    </mat-card-header>
     <mat-card-content>
+        <mat-radio-group aria-labelledby="bricks-group-label" [(ngModel)]="course">
+            <mat-radio-button value="Single Course">Single Course</mat-radio-button>
+            <mat-radio-button value="Two Course">Two Course</mat-radio-button>
+        </mat-radio-group>
         <mat-form-field>
             <mat-label>Producer</mat-label>
             <mat-select (selectionChange)="filterChanged($event.value)">

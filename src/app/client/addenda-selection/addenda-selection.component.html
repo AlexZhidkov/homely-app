@@ -20,12 +20,9 @@
     <mat-step [stepControl]="brickworkFormGroup">
         <form [formGroup]="brickworkFormGroup">
             <ng-template matStepLabel>Brickwork</ng-template>
-            <label id="bricks-group-label">Face Bricks (External Bricks)</label>
-            <mat-radio-group aria-labelledby="bricks-group-label">
-                <mat-radio-button value="Single Course">Single Course</mat-radio-button>
-                <mat-radio-button value="Two Course">Two Course</mat-radio-button>
-            </mat-radio-group>
+
             <button mat-button routerLink="/client/bricks">Select Face Bricks</button>
+            <app-brick-selection></app-brick-selection>
             <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext>Next</button>

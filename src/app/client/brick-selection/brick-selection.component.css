@@ -1,3 +1,12 @@
 .selection-card {
     max-width: 400px;
 }
+
+.mat-radio-group {
+    display: flex;
+    margin: 15px 0;
+}
+  
+.mat-radio-button {
+    margin: 5px;
+}
