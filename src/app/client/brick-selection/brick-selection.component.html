@@ -1,32 +1,28 @@
-<mat-card>
-    <mat-card-content>
-        <mat-radio-group aria-labelledby="bricks-group-label" [(ngModel)]="course">
-            <mat-radio-button value="Single Course">Single Course</mat-radio-button>
-            <mat-radio-button value="Two Course">Two Course</mat-radio-button>
-        </mat-radio-group>
-        <mat-form-field>
-            <mat-label>Producer</mat-label>
-            <mat-select (selectionChange)="filterChanged($event.value)">
-                <mat-option *ngFor="let option of options" [value]="option">
-                    {{option}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions>
-    </mat-card-actions>
-</mat-card>
+<mat-radio-group aria-labelledby="bricks-group-label">
+    <mat-radio-button value="Single Course">Single Course</mat-radio-button>
+    <mat-radio-button value="Two Course">Two Course</mat-radio-button>
+</mat-radio-group>
+<mat-form-field>
+    <mat-label>Producer</mat-label>
+    <mat-select (selectionChange)="filterChanged($event.value)">
+        <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
 
-<mat-card class="selection-card" *ngFor="let brick of bricks | async">
-    <mat-card-header>
-        <mat-card-title>{{brick.label}}</mat-card-title>
-        <mat-card-subtitle>{{brick.subtitle}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]="brick.imageUrl">
-    <mat-card-content>
-        <p>{{brick.description}}</p>
-    </mat-card-content>
-    <mat-card-actions>
-        <mat-checkbox></mat-checkbox>
-    </mat-card-actions>
-</mat-card>
+<div class="cards">
+    <mat-card class="selection-card" *ngFor="let brick of bricks | async">
+        <mat-card-header>
+            <mat-card-title>{{brick.label}}</mat-card-title>
+            <mat-card-subtitle>{{brick.subtitle}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="brick.imageUrl">
+        <mat-card-content>
+            <p>{{brick.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <mat-checkbox></mat-checkbox>
+        </mat-card-actions>
+    </mat-card>
+</div>
