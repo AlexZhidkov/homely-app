@@ -38,9 +38,11 @@ export class BrickSelectionComponent implements OnInit {
       return item.docs.map(m => {
         const data = m.data();
         return this.afs.doc<Brick>(`bricks/${m.id}`).update({
-          // price: data.subtitle ? data.subtitle.replace(/\D/g, '') : 0
+          // tags: []
+          // price: data.subtitle ? Number(data.subtitle.replace(/\D/g, '')) : 0
           // supplier: data.tags[0] ? data.tags[0] : '',
           // course: (data.tags.includes('Two Course') ? 2 : 1)
+          // course: data.course.toString()
         });
       });
     });

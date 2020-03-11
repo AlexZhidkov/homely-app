@@ -5,7 +5,7 @@ export interface Brick extends BaseEntity {
     imageUrl?: string;
     description: string;
     supplier: string;
-    course: number;
+    course: '1' | '2';
     price: number;
     value: any;
     tags?: string[];

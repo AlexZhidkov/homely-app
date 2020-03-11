@@ -40,8 +40,6 @@ export class BrickComponent implements OnInit {
       this.afs.collection('bricks')
         .doc(this.brickId)
         .set({
-          inputType: 'text',
-          type: "card",
           tags: []
         });
     }
@@ -59,7 +57,7 @@ export class BrickComponent implements OnInit {
 
     if ((value || '').trim()) {
       this.tagList.push(value.trim());
-      this.brickDoc.update({ tags: this.tagList })
+      this.brickDoc.update({ tags: this.tagList });
     }
 
     if (input) {
@@ -72,7 +70,7 @@ export class BrickComponent implements OnInit {
 
     if (index >= 0) {
       this.tagList.splice(index, 1);
-      this.brickDoc.update({ tags: this.tagList })
+      this.brickDoc.update({ tags: this.tagList });
     }
   }
 }
