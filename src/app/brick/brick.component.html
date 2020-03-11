@@ -13,14 +13,26 @@
                 (ngModelChange)="brickDoc.update({imageUrl: $event})">
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="text" name="subtitle" placeholder="Price" [ngModel]="(brick | async)?.subtitle"
-                (ngModelChange)="brickDoc.update({subtitle: $event})">
+            <input matInput type="text" name="price" placeholder="Price in cents" [ngModel]="(brick | async)?.price"
+                (ngModelChange)="brickDoc.update({price: $event})">
         </mat-form-field>
         <mat-form-field>
             <input matInput type="text" name="value" placeholder="Identifier" [ngModel]="(brick | async)?.value"
                 (ngModelChange)="brickDoc.update({value: $event})">
         </mat-form-field>
-
+        <mat-radio-group [ngModel]="(brick | async)?.course" (ngModelChange)="brickDoc.update({course: $event})">
+            <mat-radio-button value="1">Single Course</mat-radio-button>
+            <mat-radio-button value="2">Two Course</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field>
+            <mat-label>Producer</mat-label>
+            <mat-select [ngModel]="(brick | async)?.supplier"
+                (selectionChange)="brickDoc.update({supplier: $event.value})">
+                <mat-option *ngFor="let supplier of suppliers" [value]="supplier">
+                    {{supplier}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
         <mat-form-field>
             <textarea matInput rows="5" name="description" placeholder="Description"
                 [ngModel]="(brick | async)?.description" (ngModelChange)="brickDoc.update({description: $event})">

@@ -22,6 +22,11 @@ export class BrickComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER];
+  suppliers: string[] = [
+    'Midland Brick',
+    'Brikmakers',
+    'Austral Bricks'
+  ];
 
   constructor(
     private afs: AngularFirestore,

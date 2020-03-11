@@ -12,7 +12,7 @@ export class BrickSelectionComponent implements OnInit {
   private bricksCollection: AngularFirestoreCollection<Brick>;
   bricks: Observable<Brick[]>;
 
-  options: string[] = [
+  suppliers: string[] = [
     'Midland Brick',
     'Brikmakers',
     'Austral Bricks'
@@ -23,6 +23,7 @@ export class BrickSelectionComponent implements OnInit {
   ngOnInit(): void {
     this.bricksCollection = this.afs.collection<Brick>('bricks');
     this.bricks = this.bricksCollection.valueChanges();
+    // this.update();
   }
 
   filterChanged(newFilter: string) {
@@ -30,6 +31,19 @@ export class BrickSelectionComponent implements OnInit {
     // https://github.com/angular/angularfire/blob/master/docs/firestore/querying-collections.md#dynamic-querying
     this.bricksCollection = this.afs.collection<Brick>('bricks', ref => ref.where('tags', 'array-contains', newFilter));
     this.bricks = this.bricksCollection.valueChanges();
+  }
+
+  update(): void {
+    this.bricksCollection.get().forEach(item => {
+      return item.docs.map(m => {
+        const data = m.data();
+        return this.afs.doc<Brick>(`bricks/${m.id}`).update({
+          // price: data.subtitle ? data.subtitle.replace(/\D/g, '') : 0
+          // supplier: data.tags[0] ? data.tags[0] : '',
+          // course: (data.tags.includes('Two Course') ? 2 : 1)
+        });
+      });
+    });
   }
 
 }
