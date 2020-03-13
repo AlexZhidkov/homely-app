@@ -1,10 +1,11 @@
-<mat-radio-group aria-labelledby="bricks-group-label">
+<mat-radio-group (change)="changeFilter()" [(ngModel)]="currentCourse">
     <mat-radio-button value="1">Single Course</mat-radio-button>
     <mat-radio-button value="2">Two Course</mat-radio-button>
 </mat-radio-group>
 <mat-form-field>
     <mat-label>Producer</mat-label>
-    <mat-select (selectionChange)="filterChanged($event.value)">
+    <mat-select (selectionChange)="changeFilter()" [(ngModel)]="currentSupplier">
+        <mat-option value="All" selected>All</mat-option>
         <mat-option *ngFor="let supplier of suppliers" [value]="supplier">
             {{supplier}}
         </mat-option>
@@ -15,7 +16,7 @@
     <mat-card class="selection-card" *ngFor="let brick of bricks | async">
         <mat-card-header>
             <mat-card-title>{{brick.label}}</mat-card-title>
-            <mat-card-subtitle>${{brick.price/100}}</mat-card-subtitle>
+            <mat-card-subtitle>${{brick.price/100}} from {{brick.supplier}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image [src]="brick.imageUrl">
         <mat-card-content>

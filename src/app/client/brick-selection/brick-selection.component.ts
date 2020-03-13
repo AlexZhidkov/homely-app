@@ -11,6 +11,8 @@ import { Brick } from 'src/app/model/brick';
 export class BrickSelectionComponent implements OnInit {
   private bricksCollection: AngularFirestoreCollection<Brick>;
   bricks: Observable<Brick[]>;
+  currentCourse = '1';
+  currentSupplier = 'All';
 
   suppliers: string[] = [
     'Midland Brick',
@@ -21,15 +23,21 @@ export class BrickSelectionComponent implements OnInit {
   constructor(private afs: AngularFirestore) { }
 
   ngOnInit(): void {
-    this.bricksCollection = this.afs.collection<Brick>('bricks');
+    this.bricksCollection = this.afs.collection<Brick>('bricks', ref => ref.where('course', '==', this.currentCourse));
     this.bricks = this.bricksCollection.valueChanges();
     // this.update();
   }
 
-  filterChanged(newFilter: string) {
+  changeFilter() {
     // ToDo refactor using switchMap
     // https://github.com/angular/angularfire/blob/master/docs/firestore/querying-collections.md#dynamic-querying
-    this.bricksCollection = this.afs.collection<Brick>('bricks', ref => ref.where('tags', 'array-contains', newFilter));
+    if (this.currentSupplier === 'All') {
+      this.bricksCollection = this.afs.collection<Brick>('bricks',
+        ref => ref.where('course', '==', this.currentCourse));
+    } else {
+      this.bricksCollection = this.afs.collection<Brick>('bricks',
+        ref => ref.where('course', '==', this.currentCourse).where('supplier', '==', this.currentSupplier));
+    }
     this.bricks = this.bricksCollection.valueChanges();
   }
 

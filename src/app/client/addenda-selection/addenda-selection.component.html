@@ -20,8 +20,6 @@
     <mat-step [stepControl]="brickworkFormGroup">
         <form [formGroup]="brickworkFormGroup">
             <ng-template matStepLabel>Brickwork</ng-template>
-
-            <button mat-button routerLink="/client/bricks">Select Face Bricks</button>
             <app-brick-selection></app-brick-selection>
             <div>
                 <button mat-button matStepperPrevious>Back</button>
