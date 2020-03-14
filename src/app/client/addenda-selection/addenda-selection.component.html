@@ -1,4 +1,4 @@
-<mat-vertical-stepper #stepper>
+<mat-vertical-stepper #stepper (selectionChange)="onStepChange($event)">
     <mat-step [stepControl]="concreteFormGroup">
         <form [formGroup]="concreteFormGroup">
             <ng-template matStepLabel>Concrete</ng-template>
@@ -20,7 +20,7 @@
     <mat-step [stepControl]="brickworkFormGroup">
         <form [formGroup]="brickworkFormGroup">
             <ng-template matStepLabel>Brickwork</ng-template>
-            <app-brick-selection></app-brick-selection>
+            <app-brick-selection [onOpenEvent]="onBrickworkOpenEvent.asObservable()"></app-brick-selection>
             <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext>Next</button>

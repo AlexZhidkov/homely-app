@@ -1,10 +1,10 @@
-<mat-radio-group (change)="changeFilter()" [(ngModel)]="currentCourse">
+<mat-radio-group (change)="changeFilter()" [(ngModel)]="selectedCourse" [disabled]="!showAllBricks">
     <mat-radio-button value="1">Single Course</mat-radio-button>
     <mat-radio-button value="2">Two Course</mat-radio-button>
 </mat-radio-group>
 <mat-form-field>
     <mat-label>Producer</mat-label>
-    <mat-select (selectionChange)="changeFilter()" [(ngModel)]="currentSupplier">
+    <mat-select (selectionChange)="changeFilter()" [(ngModel)]="selectedSupplier" [disabled]="!showAllBricks">
         <mat-option value="All" selected>All</mat-option>
         <mat-option *ngFor="let supplier of suppliers" [value]="supplier">
             {{supplier}}
@@ -12,7 +12,26 @@
     </mat-select>
 </mat-form-field>
 
-<div class="cards">
+<div *ngIf="showSelectedBrick">
+    <mat-card class="selection-card">
+        <mat-card-header>
+            <mat-card-title>{{(selectedBrick | async)?.label}}</mat-card-title>
+            <mat-card-subtitle>${{(selectedBrick | async)?.price/100}} from {{(selectedBrick | async)?.supplier}}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="(selectedBrick | async)?.imageUrl">
+        <mat-card-content>
+            <p>{{(selectedBrick | async)?.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <mat-checkbox [checked]="true" (click)="changeSelection()">Total:
+                ${{(selectedBrick | async)?.price*200/100}}</mat-checkbox>
+            <button mat-button (click)="changeSelection()">Change</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<div *ngIf="showAllBricks" class="cards">
     <mat-card class="selection-card" *ngFor="let brick of bricks | async">
         <mat-card-header>
             <mat-card-title>{{brick.label}}</mat-card-title>
@@ -23,7 +42,15 @@
             <p>{{brick.description}}</p>
         </mat-card-content>
         <mat-card-actions>
-            <mat-checkbox></mat-checkbox>
+            <mat-checkbox [name]="brick.value" (click)="selectBrick(brick.id, brick.value)"
+                [checked]="isSelected(brick.value)">
+                <span *ngIf="isSelected(brick.value)">
+                    Total: ${{brick.price*200/100}}
+                </span>
+            </mat-checkbox>
+            <span *ngIf="isSelected(brick.value)">
+                <button mat-button matStepperNext>Next</button>
+            </span>
         </mat-card-actions>
     </mat-card>
 </div>
