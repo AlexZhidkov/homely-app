@@ -10,8 +10,11 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class BrickSelectionComponent implements OnInit, OnDestroy {
   @Input() onOpenEvent: Observable<void>;
+  @Input() markup: number;
+  @Input() numberOfBricks: number;
   private openEventSubscription: Subscription;
-  selectedBrick: Observable<Brick>;
+  selectedBrickObservable: Observable<Brick>;
+  selectedBrick: Brick;
   bricks: Observable<Brick[]>;
   selectedCourse = '1';
   selectedSupplier = 'All';
@@ -45,8 +48,11 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
     if (this.addenda.brick) {
       this.selectedBrickValue = this.addenda.brick.value;
       this.showAllBricks = false;
-      this.selectedBrick = this.firestore.get(this.addenda.brick.id);
-      this.selectedBrick.subscribe(b => { this.showSelectedBrick = true; });
+      this.selectedBrickObservable = this.firestore.get(this.addenda.brick.id);
+      this.selectedBrickObservable.subscribe(brick => {
+        this.selectedBrick = brick;
+        this.showSelectedBrick = true;
+      });
     }
   }
 
@@ -75,6 +81,18 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
 
   isSelected(value: string): boolean {
     return this.selectedBrickValue === value;
+  }
+
+  getFormattedPrice(brickPrice: number): string {
+    return `$${((brickPrice + this.getMarkupAmount(brickPrice)) / 100).toFixed(2)}`;
+  }
+
+  getFormattedTotal(brickPrice: number): string {
+    return `$${((brickPrice + this.getMarkupAmount(brickPrice)) * this.numberOfBricks / 100).toFixed(2)}`;
+  }
+
+  getMarkupAmount(brickPrice: number): number {
+    return Math.round(brickPrice * this.markup / 100);
   }
 
   ngOnDestroy() {

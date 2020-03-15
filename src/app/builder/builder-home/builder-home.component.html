@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Builder Homepage</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field>
+            <input matInput placeholder="Markup" [(ngModel)]="markup" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Number Of Bricks" [(ngModel)]="numberOfBricks" required>
+        </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button [routerLink]="['/client']" [queryParams]="{m: markup, b: numberOfBricks}">
+            Open Addenda Selection
+        </button>
+        <button mat-button (click)="copyToClipboard()">Copy URL</button>
+    </mat-card-actions>
+</mat-card>

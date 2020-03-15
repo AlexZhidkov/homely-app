@@ -35,6 +35,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrickComponent } from './brick/brick.component';
 import { BricksComponent } from './bricks/bricks.component';
+import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
 import { AddendaSelectionComponent } from './client/addenda-selection/addenda-selection.component';
 import { BrickSelectionComponent } from './client/brick-selection/brick-selection.component';
 import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/dynamic-selection-form.component';
@@ -54,7 +55,8 @@ import { HomeComponent } from './home/home.component';
     BricksComponent,
     BrickComponent,
     DynamicSelectionFormComponent,
-    BrickSelectionComponent
+    BrickSelectionComponent,
+    BuilderHomeComponent
   ],
   imports: [
     BrowserModule,
