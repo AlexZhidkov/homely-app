@@ -15,7 +15,7 @@ export class BuilderHomeComponent implements OnInit {
   }
 
   copyToClipboard() {
-    const url = `${window.location.hostname}/client?m=${this.markup}&b=${this.numberOfBricks}/`;
+    const url = `${window.location.hostname}/client?m=${this.markup}&b=${this.numberOfBricks}`;
     document.addEventListener('copy', (e: ClipboardEvent) => {
       e.clipboardData.setData('text/plain', (url));
       e.preventDefault();
