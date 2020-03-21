@@ -18,16 +18,32 @@
         </form>
     </mat-step>
     <mat-step [stepControl]="brickworkFormGroup">
-        <form [formGroup]="brickworkFormGroup">
-            <ng-template matStepLabel>Brickwork</ng-template>
-            <app-brick-selection [onOpenEvent]="onBrickworkOpenEvent.asObservable()" [markup]="clientSettings.markup"
-                [numberOfBricks]="clientSettings.numberOfBricks">
-            </app-brick-selection>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-            </div>
-        </form>
+        <ng-template matStepLabel>Brickwork</ng-template>
+        <app-brick-selection [onOpenEvent]="onBrickworkOpenEvent.asObservable()" [markup]="clientSettings.markup"
+            [numberOfBricks]="clientSettings.numberOfBricks">
+        </app-brick-selection>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="roofFormGroup">
+        <ng-template matStepLabel>Roof</ng-template>
+        <label id="roof-type-group-label">Roof Type</label>
+        <mat-radio-group aria-labelledby="roof-type-group-label">
+            <mat-radio-button value="Colorbond">Colorbond</mat-radio-button>
+            <mat-radio-button value="Tiles">Tiles</mat-radio-button>
+        </mat-radio-group>
+
+        <label id="downpipes-type-group-label">Downpipes Type</label>
+        <mat-radio-group aria-labelledby="downpipes-type-group-label">
+            <mat-radio-button value="Rectangular">Rectangular</mat-radio-button>
+            <mat-radio-button value="Round">Round</mat-radio-button>
+        </mat-radio-group>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>

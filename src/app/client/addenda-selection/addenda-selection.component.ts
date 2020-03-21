@@ -15,6 +15,7 @@ export class AddendaSelectionComponent implements OnInit {
   onBrickworkOpenEvent: Subject<void> = new Subject<void>();
   concreteFormGroup: FormGroup;
   brickworkFormGroup: FormGroup;
+  roofFormGroup: FormGroup;
 
   constructor(private route: ActivatedRoute,
               private formBuilder: FormBuilder) { }
@@ -27,6 +28,8 @@ export class AddendaSelectionComponent implements OnInit {
     this.concreteFormGroup = this.formBuilder.group({
     });
     this.brickworkFormGroup = this.formBuilder.group({
+    });
+    this.roofFormGroup = this.formBuilder.group({
     });
   }
 
