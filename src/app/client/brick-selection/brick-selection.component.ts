@@ -84,7 +84,8 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
   }
 
   getFormattedPrice(brickPrice: number): string {
-    return `$${((brickPrice + this.getMarkupAmount(brickPrice)) / 100).toFixed(2)}`;
+    const price = `$${((brickPrice + this.getMarkupAmount(brickPrice)) / 100).toFixed(2)}`;
+    return price;
   }
 
   getFormattedTotal(brickPrice: number): string {
@@ -92,12 +93,14 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
   }
 
   getMarkupAmount(brickPrice: number): number {
-    return Math.round(brickPrice * this.markup / 100);
+    const markupAmount = Math.round((brickPrice * this.markup) / 100);
+    return markupAmount;
   }
 
   ngOnDestroy() {
     this.openEventSubscription.unsubscribe();
   }
+
   /*
     update(): void {
       this.bricksCollection.get().forEach(item => {
