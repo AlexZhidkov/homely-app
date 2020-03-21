@@ -20,9 +20,6 @@
             </mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image [src]="selectedBrick?.imageUrl">
-        <mat-card-content>
-            <p>{{selectedBrick.description}}</p>
-        </mat-card-content>
         <mat-card-actions>
             <mat-checkbox [checked]="true" (click)="changeSelection()">
                 Total: {{getFormattedTotal(selectedBrick.price)}}
@@ -39,9 +36,6 @@
             <mat-card-subtitle>{{getFormattedPrice(brick.price)}} from {{brick.supplier}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image [src]="brick.imageUrl">
-        <mat-card-content>
-            <p>{{brick.description}}</p>
-        </mat-card-content>
         <mat-card-actions>
             <mat-checkbox [name]="brick.value" (click)="selectBrick(brick.id, brick.value)"
                 [checked]="isSelected(brick.value)">

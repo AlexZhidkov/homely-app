@@ -13,8 +13,8 @@
                 (ngModelChange)="brickDoc.update({imageUrl: $event})">
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="text" name="price" placeholder="Price in cents" [ngModel]="(brick | async)?.price"
-                (ngModelChange)="brickDoc.update({price: $event})">
+            <input matInput type="number" name="price" placeholder="Price per brick in cents"
+                [ngModel]="(brick | async)?.price" (ngModelChange)="brickDoc.update({price: $event})">
         </mat-form-field>
         <mat-form-field>
             <input matInput type="text" name="value" placeholder="Identifier" [ngModel]="(brick | async)?.value"

@@ -21,8 +21,8 @@ export class AddendaSelectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params => {
-      this.clientSettings.markup = parseInt(params.get('m'), 10);
-      this.clientSettings.numberOfBricks = parseInt(params.get('b'), 10);
+      this.clientSettings.markup = parseInt(params.get('m') ?? '0', 10);
+      this.clientSettings.numberOfBricks = parseInt(params.get('b') ?? '1', 10);
     });
     this.concreteFormGroup = this.formBuilder.group({
     });
