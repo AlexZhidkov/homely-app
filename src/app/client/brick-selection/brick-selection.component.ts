@@ -66,6 +66,7 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
       this.firestore.setCollection('bricks',
         ref => ref.where('course', '==', this.selectedCourse).where('supplier', '==', this.selectedSupplier));
     }
+    this.bricks = this.firestore.list();
   }
 
   changeSelection() {

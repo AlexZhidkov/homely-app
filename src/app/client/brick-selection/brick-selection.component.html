@@ -2,7 +2,24 @@
     <mat-radio-button value="1">Single Course</mat-radio-button>
     <mat-radio-button value="2">Two Course</mat-radio-button>
 </mat-radio-group>
-<mat-form-field>
+
+<div *ngIf="showSelectedBrick">
+    <mat-card class="selection-card">
+        <mat-card-header>
+            <mat-card-title>{{selectedBrick.label}}</mat-card-title>
+            <mat-card-subtitle>{{selectedBrick.supplier}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="selectedBrick?.imageUrl">
+        <mat-card-actions>
+            <mat-checkbox [checked]="true" (click)="changeSelection()">
+                {{getFormattedTotal(selectedBrick.price)}}
+            </mat-checkbox>
+            <button mat-button (click)="changeSelection()">Change</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<mat-form-field *ngIf="showAllBricks">
     <mat-label>Producer</mat-label>
     <mat-select (selectionChange)="changeFilter()" [(ngModel)]="selectedSupplier" [disabled]="!showAllBricks">
         <mat-option value="All" selected>All</mat-option>
@@ -12,35 +29,18 @@
     </mat-select>
 </mat-form-field>
 
-<div *ngIf="showSelectedBrick">
-    <mat-card class="selection-card">
-        <mat-card-header>
-            <mat-card-title>{{selectedBrick.label}}</mat-card-title>
-            <mat-card-subtitle>{{getFormattedPrice(selectedBrick.price)}} from {{selectedBrick.supplier}}
-            </mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="selectedBrick?.imageUrl">
-        <mat-card-actions>
-            <mat-checkbox [checked]="true" (click)="changeSelection()">
-                Total: {{getFormattedTotal(selectedBrick.price)}}
-            </mat-checkbox>
-            <button mat-button (click)="changeSelection()">Change</button>
-        </mat-card-actions>
-    </mat-card>
-</div>
-
 <div *ngIf="showAllBricks" class="cards">
     <mat-card class="selection-card" *ngFor="let brick of bricks | async">
         <mat-card-header>
             <mat-card-title>{{brick.label}}</mat-card-title>
-            <mat-card-subtitle>{{getFormattedPrice(brick.price)}} from {{brick.supplier}}</mat-card-subtitle>
+            <mat-card-subtitle>{{brick.supplier}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image [src]="brick.imageUrl">
         <mat-card-actions>
             <mat-checkbox [name]="brick.value" (click)="selectBrick(brick.id, brick.value)"
                 [checked]="isSelected(brick.value)">
                 <span *ngIf="isSelected(brick.value)">
-                    Total: {{getFormattedTotal(brick.price)}}
+                    {{getFormattedTotal(brick.price)}}
                 </span>
             </mat-checkbox>
             <span *ngIf="isSelected(brick.value)">
