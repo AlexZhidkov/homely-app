@@ -13,6 +13,7 @@ import { ClientSettings } from 'src/app/model/clientSettings';
 export class AddendaSelectionComponent implements OnInit {
   clientSettings: ClientSettings = { markup: 0, numberOfBricks: 1 };
   onBrickworkOpenEvent: Subject<void> = new Subject<void>();
+  onRoofOpenEvent: Subject<void> = new Subject<void>();
   concreteFormGroup: FormGroup;
   brickworkFormGroup: FormGroup;
   roofFormGroup: FormGroup;
@@ -25,17 +26,21 @@ export class AddendaSelectionComponent implements OnInit {
       this.clientSettings.markup = parseInt(params.get('m') ?? '0', 10);
       this.clientSettings.numberOfBricks = parseInt(params.get('b') ?? '1', 10);
     });
-    this.concreteFormGroup = this.formBuilder.group({
-    });
-    this.brickworkFormGroup = this.formBuilder.group({
-    });
-    this.roofFormGroup = this.formBuilder.group({
-    });
+    this.concreteFormGroup = this.formBuilder.group({});
+    this.brickworkFormGroup = this.formBuilder.group({});
+    this.roofFormGroup = this.formBuilder.group({});
   }
 
   public onStepChange(event: any): void {
-    if (event.selectedIndex === 1) {
-      this.onBrickworkOpenEvent.next();
+    switch (event.selectedIndex) {
+      case 1:
+        this.onBrickworkOpenEvent.next();
+        break;
+      case 2:
+        this.onRoofOpenEvent.next();
+        break;
+      default:
+        break;
     }
   }
 

@@ -2,3 +2,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cards {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.mat-radio-group {
+    display: flex;
+    margin: 15px 0;
+}
+  
+.mat-radio-button {
+    margin: 5px;
+}

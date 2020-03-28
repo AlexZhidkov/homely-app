@@ -1,13 +1,5 @@
-import { BaseEntity } from './base-entity';
+import { Item } from './item';
 
-export interface Brick extends BaseEntity {
-    label: string;
-    imageUrl?: string;
-    description: string;
-    supplier: string;
+export interface Brick extends Item {
     course: '1' | '2';
-    price: number;
-    value: any;
-    tags?: string[];
-
 }
