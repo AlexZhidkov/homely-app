@@ -17,6 +17,7 @@ export class AddendaSelectionComponent implements OnInit {
   concreteFormGroup: FormGroup;
   brickworkFormGroup: FormGroup;
   roofFormGroup: FormGroup;
+  windowsDoorsFormGroup: FormGroup;
 
   constructor(private route: ActivatedRoute,
               private formBuilder: FormBuilder) { }
@@ -29,6 +30,7 @@ export class AddendaSelectionComponent implements OnInit {
     this.concreteFormGroup = this.formBuilder.group({});
     this.brickworkFormGroup = this.formBuilder.group({});
     this.roofFormGroup = this.formBuilder.group({});
+    this.windowsDoorsFormGroup = this.formBuilder.group({});
   }
 
   public onStepChange(event: any): void {

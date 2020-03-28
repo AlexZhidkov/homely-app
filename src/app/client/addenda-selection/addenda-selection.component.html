@@ -37,6 +37,13 @@
             <button mat-button matStepperNext>Next</button>
         </div>
     </mat-step>
+    <mat-step [stepControl]="windowsDoorsFormGroup">
+        <ng-template matStepLabel>Windows & Doors</ng-template>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <p>You are now done.</p>
