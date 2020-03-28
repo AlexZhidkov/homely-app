@@ -30,7 +30,7 @@
 </mat-form-field>
 
 <div *ngIf="showAllBricks" class="cards">
-    <mat-card class="selection-card" *ngFor="let brick of bricks | async">
+    <mat-card class="selection-card" *ngFor="let brick of bricks">
         <mat-card-header>
             <mat-card-title>{{brick.label}}</mat-card-title>
             <mat-card-subtitle>{{brick.supplier}}</mat-card-subtitle>

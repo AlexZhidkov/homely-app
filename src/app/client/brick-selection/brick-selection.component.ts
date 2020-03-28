@@ -15,7 +15,7 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
   private openEventSubscription: Subscription;
   selectedBrickObservable: Observable<Brick>;
   selectedBrick: Brick;
-  bricks: Observable<Brick[]>;
+  bricks: Brick[];
   selectedCourse = '1';
   selectedSupplier = 'All';
   selectedBrickValue: string;
@@ -39,7 +39,7 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
 
   setup() {
     this.firestore.setCollection('bricks', ref => ref.where('course', '==', this.selectedCourse));
-    this.bricks = this.firestore.list();
+    this.firestore.list().subscribe(b => this.bricks = b);
 
     this.addenda = JSON.parse(localStorage.getItem('addenda'));
     if (!this.addenda) {
@@ -66,7 +66,7 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
       this.firestore.setCollection('bricks',
         ref => ref.where('course', '==', this.selectedCourse).where('supplier', '==', this.selectedSupplier));
     }
-    this.bricks = this.firestore.list();
+    this.firestore.list().subscribe(b => this.bricks = b);
   }
 
   changeSelection() {
