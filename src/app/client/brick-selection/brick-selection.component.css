@@ -5,11 +5,6 @@
     flex-wrap: wrap;
 }
 
-.selection-card {
-    max-width: 200px;
-    margin: 0 10px 0 0;
-}
-
 .mat-radio-group {
     display: flex;
     margin: 15px 0;

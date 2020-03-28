@@ -69,33 +69,18 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
     this.firestore.list().subscribe(b => this.bricks = b);
   }
 
+  selectBrick(selectedBrick: Brick) {
+    this.selectedBrick = selectedBrick;
+    this.selectedBrickValue = selectedBrick.value;
+    this.addenda.brick = { id: selectedBrick.id, value: selectedBrick.value };
+    localStorage.setItem('addenda', JSON.stringify(this.addenda));
+    this.showSelectedBrick = true;
+    this.showAllBricks = false;
+  }
+
   changeSelection() {
     this.showSelectedBrick = false;
     this.showAllBricks = true;
-  }
-
-  selectBrick(id: string, value: string) {
-    this.selectedBrickValue = value;
-    this.addenda.brick = { id, value };
-    localStorage.setItem('addenda', JSON.stringify(this.addenda));
-  }
-
-  isSelected(value: string): boolean {
-    return this.selectedBrickValue === value;
-  }
-
-  getFormattedPrice(brickPrice: number): string {
-    const price = `$${((brickPrice + this.getMarkupAmount(brickPrice)) / 100).toFixed(2)}`;
-    return price;
-  }
-
-  getFormattedTotal(brickPrice: number): string {
-    return `$${((brickPrice + this.getMarkupAmount(brickPrice)) * this.numberOfBricks / 100).toFixed(2)}`;
-  }
-
-  getMarkupAmount(brickPrice: number): number {
-    const markupAmount = Math.round((brickPrice * this.markup) / 100);
-    return markupAmount;
   }
 
   ngOnDestroy() {

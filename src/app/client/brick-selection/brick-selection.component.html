@@ -3,21 +3,9 @@
     <mat-radio-button value="2">Two Course</mat-radio-button>
 </mat-radio-group>
 
-<div *ngIf="showSelectedBrick">
-    <mat-card class="selection-card">
-        <mat-card-header>
-            <mat-card-title>{{selectedBrick.label}}</mat-card-title>
-            <mat-card-subtitle>{{selectedBrick.supplier}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="selectedBrick?.imageUrl">
-        <mat-card-actions>
-            <mat-checkbox [checked]="true" (click)="changeSelection()">
-                {{getFormattedTotal(selectedBrick.price)}}
-            </mat-checkbox>
-            <button mat-button (click)="changeSelection()">Change</button>
-        </mat-card-actions>
-    </mat-card>
-</div>
+<app-selection-card *ngIf="showSelectedBrick" [item]="selectedBrick" [isItemSelected]="true"
+    [numberOfItems]="numberOfBricks" [markup]="markup" (selectionChangeRequested)="changeSelection()">
+</app-selection-card>
 
 <mat-form-field *ngIf="showAllBricks">
     <mat-label>Producer</mat-label>
@@ -30,22 +18,7 @@
 </mat-form-field>
 
 <div *ngIf="showAllBricks" class="cards">
-    <mat-card class="selection-card" *ngFor="let brick of bricks">
-        <mat-card-header>
-            <mat-card-title>{{brick.label}}</mat-card-title>
-            <mat-card-subtitle>{{brick.supplier}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="brick.imageUrl">
-        <mat-card-actions>
-            <mat-checkbox [name]="brick.value" (click)="selectBrick(brick.id, brick.value)"
-                [checked]="isSelected(brick.value)">
-                <span *ngIf="isSelected(brick.value)">
-                    {{getFormattedTotal(brick.price)}}
-                </span>
-            </mat-checkbox>
-            <span *ngIf="isSelected(brick.value)">
-                <button mat-button matStepperNext>Next</button>
-            </span>
-        </mat-card-actions>
-    </mat-card>
+    <app-selection-card *ngFor="let brick of bricks" [item]="brick" [isItemSelected]="false"
+        [numberOfItems]="numberOfBricks" [markup]="markup" (selectionChanged)="selectBrick($event)">
+    </app-selection-card>
 </div>
