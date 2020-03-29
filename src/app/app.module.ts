@@ -33,8 +33,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrickComponent } from './brick/brick.component';
-import { BricksComponent } from './bricks/bricks.component';
 import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
 import { AddendaSelectionComponent } from './client/addenda-selection/addenda-selection.component';
 import { BrickSelectionComponent } from './client/brick-selection/brick-selection.component';
@@ -45,6 +43,9 @@ import { CardComponent } from './dynamic-components/card/card.component';
 import { DynamicFieldDirective } from './dynamic-components/dynamic-field.directive';
 import { DynamicFormComponent } from './dynamic-components/dynamic-form/dynamic-form.component';
 import { HomeComponent } from './home/home.component';
+import { BrickComponent } from './supplier/brick/brick.component';
+import { ItemsComponent } from './supplier/items/items.component';
+import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
 
 @NgModule({
   declarations: [
@@ -54,13 +55,14 @@ import { HomeComponent } from './home/home.component';
     CardComponent,
     DynamicFieldDirective,
     DynamicFormComponent,
-    BricksComponent,
     BrickComponent,
     DynamicSelectionFormComponent,
     BrickSelectionComponent,
     BuilderHomeComponent,
     SelectionCardComponent,
-    RoofSelectionComponent
+    RoofSelectionComponent,
+    SupplierHomeComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,

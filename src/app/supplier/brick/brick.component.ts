@@ -4,7 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { MatChipInputEvent } from '@angular/material/chips';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Brick } from '../model/brick';
+import { Brick } from '../../model/brick';
 
 @Component({
   selector: 'app-brick',
