@@ -47,6 +47,7 @@ import { BrickComponent } from './supplier/brick/brick.component';
 import { ColorbondComponent } from './supplier/colorbond/colorbond.component';
 import { ItemsComponent } from './supplier/items/items.component';
 import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
+import { TileComponent } from './supplier/tile/tile.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     RoofSelectionComponent,
     SupplierHomeComponent,
     ItemsComponent,
-    ColorbondComponent
+    ColorbondComponent,
+    TileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 <label id="roof-type-group-label">Roof Type</label>
-<mat-radio-group aria-labelledby="roof-type-group-label">
+<mat-radio-group aria-labelledby="roof-type-group-label" [(ngModel)]="selectedRoof">
     <mat-radio-button value="Colorbond">Colorbond</mat-radio-button>
     <mat-radio-button value="Tiles">Tiles</mat-radio-button>
 </mat-radio-group>
@@ -8,8 +8,14 @@
     [markup]="markup" (selectionChangeRequested)="changeSelection()">
 </app-selection-card>
 
-<div *ngIf="showAllColours" class="cards">
+<div *ngIf="selectedRoof==='Colorbond' && showAllColours" class="cards">
     <app-selection-card *ngFor="let colour of colours" [item]="colour" [isItemSelected]="false" [numberOfItems]="1"
+        [markup]="markup" (selectionChanged)="selectColour($event)">
+    </app-selection-card>
+</div>
+
+<div *ngIf="selectedRoof==='Tiles' && showAllColours" class="cards">
+    <app-selection-card *ngFor="let tile of tiles" [item]="tile" [isItemSelected]="false" [numberOfItems]="1"
         [markup]="markup" (selectionChanged)="selectColour($event)">
     </app-selection-card>
 </div>

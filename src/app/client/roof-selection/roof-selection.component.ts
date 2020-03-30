@@ -15,10 +15,15 @@ export class RoofSelectionComponent implements OnInit {
   private openEventSubscription: Subscription;
   selectedColourValue: string;
   showAllColours: boolean;
+  selectedRoof: string;
   selectedColour: any;
   colours: Item[];
+  tiles: Item[];
 
-  constructor(private firestore: FirestoreService<Item>) { }
+  constructor(
+    private colorbondService: FirestoreService<Item>,
+    private tilesService: FirestoreService<Item>,
+  ) { }
 
   ngOnInit(): void {
     this.openEventSubscription = this.onOpenEvent.subscribe(() => this.setup());
@@ -26,8 +31,10 @@ export class RoofSelectionComponent implements OnInit {
   }
 
   setup() {
-    this.firestore.setCollection('colorbond');
-    this.firestore.list().subscribe(c => this.colours = c);
+    this.colorbondService.setCollection('colorbond');
+    this.colorbondService.list().subscribe(c => this.colours = c);
+    this.tilesService.setCollection('tiles');
+    this.tilesService.list().subscribe(c => this.tiles = c);
   }
 
   selectColour(colour: any) {

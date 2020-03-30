@@ -1,0 +1,38 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Roof Tiles</mat-card-title>
+    </mat-card-header>
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+    <mat-card-content *ngIf="!isLoading" class="form-container">
+        <mat-form-field>
+            <input matInput type="text" name="label" placeholder="Title" [ngModel]="(item | async)?.label"
+                (ngModelChange)="itemDoc.update({label: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" name="imageUrl" placeholder="Image URL" [ngModel]="(item | async)?.imageUrl"
+                (ngModelChange)="itemDoc.update({imageUrl: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" name="price" placeholder="Price per item in cents"
+                [ngModel]="(item | async)?.price" (ngModelChange)="itemDoc.update({price: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" name="value" placeholder="Identifier" [ngModel]="(item | async)?.value"
+                (ngModelChange)="itemDoc.update({value: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Producer</mat-label>
+            <input matInput type="text" name="value" placeholder="Identifier" [ngModel]="(item | async)?.supplier"
+                (ngModelChange)="itemDoc.update({supplier: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput rows="5" name="description" placeholder="Description"
+                [ngModel]="(item | async)?.description" (ngModelChange)="itemDoc.update({description: $event})">
+                </textarea>
+        </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button routerLink="/supplier/items/Tiles">Done</button>
+    </mat-card-actions>
+</mat-card>

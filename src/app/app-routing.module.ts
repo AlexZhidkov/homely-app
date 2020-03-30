@@ -8,6 +8,7 @@ import { BrickComponent } from './supplier/brick/brick.component';
 import { ColorbondComponent } from './supplier/colorbond/colorbond.component';
 import { ItemsComponent } from './supplier/items/items.component';
 import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
+import { TileComponent } from './supplier/tile/tile.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: 'supplier/bricks/:id', component: BrickComponent },
   { path: 'supplier/colorbond', component: ColorbondComponent },
   { path: 'supplier/colorbond/:id', component: ColorbondComponent },
+  { path: 'supplier/tiles', component: TileComponent },
+  { path: 'supplier/tiles/:id', component: TileComponent },
   { path: '**', component: HomeComponent }
 ];
 
