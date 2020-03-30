@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Item } from 'src/app/model/item';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-roof-selection',
@@ -15,21 +16,18 @@ export class RoofSelectionComponent implements OnInit {
   selectedColourValue: string;
   showAllColours: boolean;
   selectedColour: any;
+  colours: Item[];
 
-  colours: Item[] = [
-    { label: 'Cove', value: 'Cove', colour: '#A59F8A', description: null, supplier: 'Colorbond', price: 100 },
-    { label: 'Mangrove', value: 'Mangrove', colour: '#737562', description: null, supplier: 'Colorbond', price: 110 },
-  ];
-
-  constructor() { }
+  constructor(private firestore: FirestoreService<Item>) { }
 
   ngOnInit(): void {
     this.openEventSubscription = this.onOpenEvent.subscribe(() => this.setup());
-    this.selectedColour = this.colours[0];
     this.showAllColours = true;
   }
 
   setup() {
+    this.firestore.setCollection('colorbond');
+    this.firestore.list().subscribe(c => this.colours = c);
   }
 
   selectColour(colour: any) {

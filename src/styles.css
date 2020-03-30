@@ -18,3 +18,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-radio-button {
     margin: 5px;
 }
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+  
+.form-container > * {
+  width: 100%;
+}
