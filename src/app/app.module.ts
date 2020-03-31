@@ -45,9 +45,9 @@ import { DynamicFormComponent } from './dynamic-components/dynamic-form/dynamic-
 import { HomeComponent } from './home/home.component';
 import { BrickComponent } from './supplier/brick/brick.component';
 import { ColorbondComponent } from './supplier/colorbond/colorbond.component';
+import { ItemComponent } from './supplier/item/item.component';
 import { ItemsComponent } from './supplier/items/items.component';
 import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
-import { TileComponent } from './supplier/tile/tile.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +66,7 @@ import { TileComponent } from './supplier/tile/tile.component';
     SupplierHomeComponent,
     ItemsComponent,
     ColorbondComponent,
-    TileComponent
+    ItemComponent
   ],
   imports: [
     BrowserModule,
