@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Item } from 'src/app/model/item';
 
 @Component({
   selector: 'app-selection-card',
@@ -11,30 +12,19 @@ export class SelectionCardComponent implements OnInit {
   @Input() numberOfItems: number;
   @Input() markup: number;
   @Output() selectionChangeRequested = new EventEmitter();
-  @Output() selectionChanged = new EventEmitter<{ id: string, value: string }>();
+  @Output() selectionChanged = new EventEmitter<Item>();
 
-  selectedItemValue: string;
-
-  constructor(private ref: ChangeDetectorRef) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  selectItem(id: string, value: string) {
-    this.selectedItemValue = value;
-    // this.ref.detectChanges();
-  }
-
-  isSelected(value: string): boolean {
-    return this.selectedItemValue === value;
   }
 
   changeSelection() {
     this.selectionChangeRequested.emit();
   }
 
-  makeSelection(id: string, value: string) {
-    this.selectionChanged.emit({ id, value });
+  makeSelection(item: Item) {
+    this.selectionChanged.emit(item);
   }
 
   getFormattedPrice(price: number): string {
