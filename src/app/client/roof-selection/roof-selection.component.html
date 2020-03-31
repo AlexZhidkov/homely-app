@@ -27,8 +27,22 @@
     </app-selection-card>
 </div>
 
+<label id="Guttering-label">Guttering</label>
+<div *ngIf="true" class="cards">
+    <app-selection-card *ngFor="let gutter of guttering" [item]="gutter" [isItemSelected]="false" [numberOfItems]="1"
+        [markup]="markup" (selectionChanged)="selectColour($event)">
+    </app-selection-card>
+</div>
+
 <label id="downpipes-type-group-label">Downpipes Type</label>
 <mat-radio-group aria-labelledby="downpipes-type-group-label">
     <mat-radio-button value="Rectangular">Rectangular</mat-radio-button>
     <mat-radio-button value="Round">Round</mat-radio-button>
 </mat-radio-group>
+
+<label id="downpipes-colour-label">Downpipes Colour</label>
+<div *ngIf="true" class="cards">
+    <app-selection-card *ngFor="let downpipesColour of colours" [item]="downpipesColour" [isItemSelected]="false"
+        [numberOfItems]="1" [markup]="markup" (selectionChanged)="selectColour($event)">
+    </app-selection-card>
+</div>

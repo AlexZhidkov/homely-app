@@ -19,6 +19,7 @@ export class RoofSelectionComponent implements OnInit {
   selectedColour: any;
   colours: Item[];
   tiles: Item[];
+  guttering: Item[];
 
   constructor(
     private colorbondService: FirestoreService<Item>,
@@ -35,6 +36,8 @@ export class RoofSelectionComponent implements OnInit {
     this.colorbondService.list().subscribe(c => this.colours = c);
     this.tilesService.setCollection('tiles');
     this.tilesService.list().subscribe(t => this.tiles = t);
+    this.tilesService.setCollection('guttering');
+    this.tilesService.list().subscribe(g => this.guttering = g);
   }
 
   selectColour(colour: any) {
