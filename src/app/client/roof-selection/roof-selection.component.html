@@ -20,6 +20,13 @@
     </app-selection-card>
 </div>
 
+<label id="facia-colour-label">Facia Colour</label>
+<div *ngIf="true" class="cards">
+    <app-selection-card *ngFor="let facia of colours" [item]="facia" [isItemSelected]="false" [numberOfItems]="1"
+        [markup]="markup" (selectionChanged)="selectColour($event)">
+    </app-selection-card>
+</div>
+
 <label id="downpipes-type-group-label">Downpipes Type</label>
 <mat-radio-group aria-labelledby="downpipes-type-group-label">
     <mat-radio-button value="Rectangular">Rectangular</mat-radio-button>

@@ -34,7 +34,7 @@ export class RoofSelectionComponent implements OnInit {
     this.colorbondService.setCollection('colorbond');
     this.colorbondService.list().subscribe(c => this.colours = c);
     this.tilesService.setCollection('tiles');
-    this.tilesService.list().subscribe(c => this.tiles = c);
+    this.tilesService.list().subscribe(t => this.tiles = t);
   }
 
   selectColour(colour: any) {
