@@ -18,7 +18,6 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
   bricks: Brick[];
   selectedCourse = '1';
   selectedSupplier = 'All';
-  selectedBrickValue: string;
   showAllBricks = true;
   showSelectedBrick = false;
   addenda: any;
@@ -42,11 +41,7 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
     this.firestore.list().subscribe(b => this.bricks = b);
 
     this.addenda = JSON.parse(localStorage.getItem('addenda'));
-    if (!this.addenda) {
-      this.addenda = {};
-    }
     if (this.addenda.brick) {
-      this.selectedBrickValue = this.addenda.brick.value;
       this.showAllBricks = false;
       this.selectedBrickObservable = this.firestore.get(this.addenda.brick.id);
       this.selectedBrickObservable.subscribe(brick => {
@@ -71,7 +66,6 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
 
   selectBrick(selectedBrick: Brick) {
     this.selectedBrick = selectedBrick;
-    this.selectedBrickValue = selectedBrick.value;
     this.addenda.brick = { id: selectedBrick.id, value: selectedBrick.value };
     localStorage.setItem('addenda', JSON.stringify(this.addenda));
     this.showSelectedBrick = true;

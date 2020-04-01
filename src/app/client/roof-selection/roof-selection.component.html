@@ -4,33 +4,41 @@
     <mat-radio-button value="Tiles">Tiles</mat-radio-button>
 </mat-radio-group>
 
-<app-selection-card *ngIf="!showAllColours" [item]="selectedColour" [isItemSelected]="true" [numberOfItems]="1"
-    [markup]="markup" (selectionChangeRequested)="changeSelection()">
+<app-selection-card *ngIf="selectedRoof==='Colorbond' && !showAllColours" [item]="selectedColour"
+    [isItemSelected]="true" [numberOfItems]="1" [markup]="markup" (selectionChangeRequested)="showAllColours = true">
 </app-selection-card>
-
 <div *ngIf="selectedRoof==='Colorbond' && showAllColours" class="cards">
     <app-selection-card *ngFor="let colour of colours" [item]="colour" [isItemSelected]="false" [numberOfItems]="1"
         [markup]="markup" (selectionChanged)="selectColour($event)">
     </app-selection-card>
 </div>
 
-<div *ngIf="selectedRoof==='Tiles' && showAllColours" class="cards">
+<app-selection-card *ngIf="selectedRoof==='Tiles' && !showAllTiles" [item]="selectedTiles" [isItemSelected]="true"
+    [numberOfItems]="1" [markup]="markup" (selectionChangeRequested)="showAllTiles = true">
+</app-selection-card>
+<div *ngIf="selectedRoof==='Tiles' && showAllTiles" class="cards">
     <app-selection-card *ngFor="let tile of tiles" [item]="tile" [isItemSelected]="false" [numberOfItems]="1"
-        [markup]="markup" (selectionChanged)="selectColour($event)">
+        [markup]="markup" (selectionChanged)="selectTiles($event)">
     </app-selection-card>
 </div>
 
 <label id="facia-colour-label">Facia Colour</label>
-<div *ngIf="true" class="cards">
+<app-selection-card *ngIf="!showAllFacias" [item]="selectedFacia" [isItemSelected]="true" [numberOfItems]="1"
+    [markup]="markup" (selectionChangeRequested)="showAllFacias = true">
+</app-selection-card>
+<div *ngIf="showAllFacias" class="cards">
     <app-selection-card *ngFor="let facia of colours" [item]="facia" [isItemSelected]="false" [numberOfItems]="1"
-        [markup]="markup" (selectionChanged)="selectColour($event)">
+        [markup]="markup" (selectionChanged)="selectFacia($event)">
     </app-selection-card>
 </div>
 
 <label id="Guttering-label">Guttering</label>
-<div *ngIf="true" class="cards">
+<app-selection-card *ngIf="!showAllGuttering" [item]="selectedGuttering" [isItemSelected]="true" [numberOfItems]="1"
+    [markup]="markup" (selectionChangeRequested)="showAllGuttering = true">
+</app-selection-card>
+<div *ngIf="showAllGuttering" class="cards">
     <app-selection-card *ngFor="let gutter of guttering" [item]="gutter" [isItemSelected]="false" [numberOfItems]="1"
-        [markup]="markup" (selectionChanged)="selectColour($event)">
+        [markup]="markup" (selectionChanged)="selectGuttering($event)">
     </app-selection-card>
 </div>
 
@@ -41,8 +49,11 @@
 </mat-radio-group>
 
 <label id="downpipes-colour-label">Downpipes Colour</label>
-<div *ngIf="true" class="cards">
+<app-selection-card *ngIf="!showAllDownpipesColours" [item]="selectedDownpipesColour" [isItemSelected]="true"
+    [numberOfItems]="1" [markup]="markup" (selectionChangeRequested)="showAllDownpipesColours = true">
+</app-selection-card>
+<div *ngIf="showAllDownpipesColours" class="cards">
     <app-selection-card *ngFor="let downpipesColour of colours" [item]="downpipesColour" [isItemSelected]="false"
-        [numberOfItems]="1" [markup]="markup" (selectionChanged)="selectColour($event)">
+        [numberOfItems]="1" [markup]="markup" (selectionChanged)="selectDownpipesColour($event)">
     </app-selection-card>
 </div>

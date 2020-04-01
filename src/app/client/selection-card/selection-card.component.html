@@ -1,4 +1,4 @@
-<mat-card class="selection-card" [style.background-color]="item.colour">
+<mat-card class="selection-card" *ngIf="item" [style.background-color]="item.colour">
     <mat-card-header>
         <mat-card-title>{{item.label}}</mat-card-title>
         <mat-card-subtitle>{{item.supplier}}</mat-card-subtitle>
