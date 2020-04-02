@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Item } from 'src/app/model/item';
+import { AddendaStoreService } from 'src/app/services/addenda-store.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
@@ -39,6 +40,7 @@ export class RoofSelectionComponent implements OnInit {
   addenda: any;
 
   constructor(
+    private addendaStore: AddendaStoreService,
     private colorService: FirestoreService<Item>,
     private colorbondService: FirestoreService<Item>,
     private tilesService: FirestoreService<Item>,
@@ -52,7 +54,7 @@ export class RoofSelectionComponent implements OnInit {
   }
 
   setup() {
-    this.addenda = JSON.parse(localStorage.getItem('addenda'));
+    this.addenda = this.addendaStore.get();
 
     this.colorService.setCollection('colorbond');
     this.colorService.list().subscribe(c => this.colours = c);
@@ -123,36 +125,31 @@ export class RoofSelectionComponent implements OnInit {
 
   selectColour(selectedColour: Item) {
     this.selectedColour = selectedColour;
-    this.addenda.roofColour = { id: selectedColour.id, value: selectedColour.value };
-    localStorage.setItem('addenda', JSON.stringify(this.addenda));
+    this.addendaStore.set('roofColour', { id: selectedColour.id, value: selectedColour.value });
     this.showAllColours = false;
   }
 
   selectTiles(selectedTiles: Item) {
     this.selectedTiles = selectedTiles;
-    this.addenda.tiles = { id: selectedTiles.id, value: selectedTiles.value };
-    localStorage.setItem('addenda', JSON.stringify(this.addenda));
+    this.addendaStore.set('tiles', { id: selectedTiles.id, value: selectedTiles.value });
     this.showAllTiles = false;
   }
 
   selectFacia(selectedFacia: Item) {
     this.selectedFacia = selectedFacia;
-    this.addenda.facia = { id: selectedFacia.id, value: selectedFacia.value };
-    localStorage.setItem('addenda', JSON.stringify(this.addenda));
+    this.addendaStore.set('facia', { id: selectedFacia.id, value: selectedFacia.value });
     this.showAllFacias = false;
   }
 
   selectGuttering(selectedGuttering: Item) {
     this.selectedGuttering = selectedGuttering;
-    this.addenda.guttering = { id: selectedGuttering.id, value: selectedGuttering.value };
-    localStorage.setItem('addenda', JSON.stringify(this.addenda));
+    this.addendaStore.set('guttering', { id: selectedGuttering.id, value: selectedGuttering.value });
     this.showAllGuttering = false;
   }
 
   selectDownpipesColour(selectedDownpipesColour: Item) {
     this.selectedDownpipesColour = selectedDownpipesColour;
-    this.addenda.downpipesColour = { id: selectedDownpipesColour.id, value: selectedDownpipesColour.value };
-    localStorage.setItem('addenda', JSON.stringify(this.addenda));
+    this.addendaStore.set('downpipesColour', { id: selectedDownpipesColour.id, value: selectedDownpipesColour.value });
     this.showAllDownpipesColours = false;
   }
 

@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Brick } from 'src/app/model/brick';
+import { AddendaStoreService } from 'src/app/services/addenda-store.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
@@ -28,7 +29,10 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
     'Austral Bricks'
   ];
 
-  constructor(private firestore: FirestoreService<Brick>) { }
+  constructor(
+    private addendaStore: AddendaStoreService,
+    private firestore: FirestoreService<Brick>
+  ) { }
 
   ngOnInit(): void {
     this.openEventSubscription = this.onOpenEvent.subscribe(() => this.setup());
@@ -40,7 +44,7 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
     this.firestore.setCollection('bricks', ref => ref.where('course', '==', this.selectedCourse));
     this.firestore.list().subscribe(b => this.bricks = b);
 
-    this.addenda = JSON.parse(localStorage.getItem('addenda'));
+    this.addenda = this.addendaStore.get();
     if (this.addenda.brick) {
       this.showAllBricks = false;
       this.selectedBrickObservable = this.firestore.get(this.addenda.brick.id);
@@ -66,8 +70,7 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
 
   selectBrick(selectedBrick: Brick) {
     this.selectedBrick = selectedBrick;
-    this.addenda.brick = { id: selectedBrick.id, value: selectedBrick.value };
-    localStorage.setItem('addenda', JSON.stringify(this.addenda));
+    this.addendaStore.set('brick', { id: selectedBrick.id, value: selectedBrick.value });
     this.showSelectedBrick = true;
     this.showAllBricks = false;
   }
