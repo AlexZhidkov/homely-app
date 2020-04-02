@@ -1,9 +1,10 @@
-<mat-card class="selection-card" *ngIf="item" [style.background-color]="item.colour">
+<mat-card class="selection-card" *ngIf="item">
     <mat-card-header>
         <mat-card-title>{{item.label}}</mat-card-title>
         <mat-card-subtitle>{{item.supplier}}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image [src]="item.imageUrl">
+    <div *ngIf="item.colour" [style.background-color]="item.colour" [style.height]="'200px'"> </div>
     <mat-card-actions>
         {{getFormattedTotal(item.price)}}
         <span *ngIf="isItemSelected">
