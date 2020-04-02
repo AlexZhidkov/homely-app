@@ -150,7 +150,7 @@ export class RoofSelectionComponent implements OnInit {
   }
 
   selectDownpipesColour(selectedDownpipesColour: Item) {
-    this.selectedColour = selectedDownpipesColour;
+    this.selectedDownpipesColour = selectedDownpipesColour;
     this.addenda.downpipesColour = { id: selectedDownpipesColour.id, value: selectedDownpipesColour.value };
     localStorage.setItem('addenda', JSON.stringify(this.addenda));
     this.showAllDownpipesColours = false;
