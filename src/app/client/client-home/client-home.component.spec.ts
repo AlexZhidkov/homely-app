@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddendaSelectionComponent } from './addenda-selection.component';
+import { ClientHomeComponent } from './client-home.component';
 
-describe('AddendaSelectionComponent', () => {
-  let component: AddendaSelectionComponent;
-  let fixture: ComponentFixture<AddendaSelectionComponent>;
+describe('ClientHomeComponent', () => {
+  let component: ClientHomeComponent;
+  let fixture: ComponentFixture<ClientHomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddendaSelectionComponent ]
+      declarations: [ ClientHomeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddendaSelectionComponent);
+    fixture = TestBed.createComponent(ClientHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

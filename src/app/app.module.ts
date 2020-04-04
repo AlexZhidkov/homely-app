@@ -34,10 +34,11 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
-import { AddendaSelectionComponent } from './client/addenda-selection/addenda-selection.component';
-import { BrickSelectionComponent } from './client/brick-selection/brick-selection.component';
+import { ClientHomeComponent } from './client/client-home/client-home.component';
 import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/dynamic-selection-form.component';
-import { RoofSelectionComponent } from './client/roof-selection/roof-selection.component';
+import { BrickSelectionComponent } from './client/external/brick-selection/brick-selection.component';
+import { ExternalSectionComponent } from './client/external/external-section/external-section.component';
+import { RoofSelectionComponent } from './client/external/roof-selection/roof-selection.component';
 import { SelectionCardComponent } from './client/selection-card/selection-card.component';
 import { CardComponent } from './dynamic-components/card/card.component';
 import { DynamicFieldDirective } from './dynamic-components/dynamic-field.directive';
@@ -53,7 +54,6 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
   declarations: [
     AppComponent,
     HomeComponent,
-    AddendaSelectionComponent,
     CardComponent,
     DynamicFieldDirective,
     DynamicFormComponent,
@@ -66,7 +66,9 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     SupplierHomeComponent,
     ItemsComponent,
     ColorbondComponent,
-    ItemComponent
+    ItemComponent,
+    ExternalSectionComponent,
+    ClientHomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <mat-card class="selection-card" *ngIf="item">
     <img mat-card-image [src]="item.imageUrl">
-    <div *ngIf="item.colour" [style.background-color]="item.colour" [style.height]="'200px'"> </div>
+    <div *ngIf="item.colour" class="card-image" [style.background-color]="item.colour"> </div>
     <mat-card-header>
         <mat-card-title>{{item.label}}</mat-card-title>
         <mat-card-subtitle>{{item.supplier}}</mat-card-subtitle>

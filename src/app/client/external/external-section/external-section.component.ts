@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import 'firebase/firestore';
 import { Subject } from 'rxjs';
 import { ClientSettings } from 'src/app/model/clientSettings';
 
 @Component({
-  selector: 'app-addenda-selection',
-  templateUrl: './addenda-selection.component.html',
-  styleUrls: ['./addenda-selection.component.css']
+  selector: 'app-external-section',
+  templateUrl: './external-section.component.html',
+  styleUrls: ['./external-section.component.css']
 })
-export class AddendaSelectionComponent implements OnInit {
+export class ExternalSectionComponent implements OnInit {
   clientSettings: ClientSettings = { markup: 0, numberOfBricks: 1 };
   onBrickworkOpenEvent: Subject<void> = new Subject<void>();
   onRoofOpenEvent: Subject<void> = new Subject<void>();
