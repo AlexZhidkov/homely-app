@@ -1,4 +1,6 @@
-<form class="dynamic-form" [formGroup]="form" (submit)="onSubmit($event)">
-    <ng-container *ngFor="let field of fields;" dynamicField [field]="field" [group]="form">
-    </ng-container>
-</form>
+<div *ngIf="form && fields">
+    <form class="dynamic-form" [formGroup]="form" (submit)="onSubmit($event)">
+        <ng-container *ngFor="let field of fields;" dynamicField [field]="field" [group]="form">
+        </ng-container>
+    </form>
+</div>

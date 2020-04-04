@@ -2,16 +2,8 @@
     <mat-step [stepControl]="concreteFormGroup">
         <form [formGroup]="concreteFormGroup">
             <ng-template matStepLabel>Concrete</ng-template>
-            <label id="termite-control-group-label">Termite Control</label>
-            <mat-radio-group aria-labelledby="termite-control-group-label">
-                <mat-radio-button value="Termi Mesh">Termi Mesh</mat-radio-button>
-                <mat-radio-button value="Termite Treatment">Termite Treatment</mat-radio-button>
-            </mat-radio-group>
-            <label id="ground-slab-group-label">Ground Slab</label>
-            <mat-radio-group aria-labelledby="ground-slab-group-label">
-                <mat-radio-button value="85 mm">85 mm</mat-radio-button>
-                <mat-radio-button value="100 mm">100 mm</mat-radio-button>
-            </mat-radio-group>
+            <app-dynamic-form [fieldsUrl]="'dynamic-form/external/concrete'" (submit)="submit($event)">
+            </app-dynamic-form>
             <div>
                 <button mat-button matStepperNext>Next</button>
             </div>

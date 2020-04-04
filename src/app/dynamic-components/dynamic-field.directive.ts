@@ -2,6 +2,7 @@ import { ComponentFactoryResolver, Directive, Input, OnInit, ViewContainerRef } 
 import { FormGroup } from '@angular/forms';
 import { FieldConfig } from '../model/fieldConfig';
 import { CardComponent } from './card/card.component';
+import { RadioComponent } from './radio/radio.component';
 
 @Directive({
   // tslint:disable-next-line:directive-selector
@@ -20,7 +21,8 @@ export class DynamicFieldDirective implements OnInit {
 
   ngOnInit() {
     const componentMapper = {
-      card: CardComponent
+      card: CardComponent,
+      radio: RadioComponent
     };
 
     const factory = this.resolver.resolveComponentFactory(

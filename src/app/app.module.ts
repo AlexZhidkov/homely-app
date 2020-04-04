@@ -43,6 +43,7 @@ import { SelectionCardComponent } from './client/selection-card/selection-card.c
 import { CardComponent } from './dynamic-components/card/card.component';
 import { DynamicFieldDirective } from './dynamic-components/dynamic-field.directive';
 import { DynamicFormComponent } from './dynamic-components/dynamic-form/dynamic-form.component';
+import { RadioComponent } from './dynamic-components/radio/radio.component';
 import { HomeComponent } from './home/home.component';
 import { BrickComponent } from './supplier/brick/brick.component';
 import { ColorbondComponent } from './supplier/colorbond/colorbond.component';
@@ -68,7 +69,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     ColorbondComponent,
     ItemComponent,
     ExternalSectionComponent,
-    ClientHomeComponent
+    ClientHomeComponent,
+    RadioComponent
   ],
   imports: [
     BrowserModule,

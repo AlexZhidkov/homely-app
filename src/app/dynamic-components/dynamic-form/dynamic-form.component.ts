@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/model/fieldConfig';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -8,22 +9,28 @@ import { FieldConfig } from 'src/app/model/fieldConfig';
   styleUrls: ['./dynamic-form.component.css']
 })
 export class DynamicFormComponent implements OnInit {
-  @Input() fields: FieldConfig[] = [];
+  @Input() fieldsUrl: string;
 
   // tslint:disable-next-line:no-output-native
   @Output() submit: EventEmitter<any> = new EventEmitter<any>();
 
   form: FormGroup;
+  fields: FieldConfig[] = [];
 
   get value() {
     return this.form.value;
   }
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private firestore: FirestoreService<FieldConfig>,
+    private fb: FormBuilder) { }
 
   ngOnInit() {
-    if (this.fields) {
+    this.firestore.setCollection(this.fieldsUrl, ref => ref.orderBy('index'));
+    this.firestore.list().subscribe(f => {
+      this.fields = f;
       this.form = this.createControl();
-    }
+    });
+
   }
 
   onSubmit(event: Event) {
@@ -41,7 +48,7 @@ export class DynamicFormComponent implements OnInit {
     this.fields.forEach(field => {
       if (field.type === 'button') { return; }
       const control = this.fb.control(
-        field.value,
+        field.defaultValue,
         this.bindValidations(field.validations || [])
       );
       group.addControl(field.name, control);
