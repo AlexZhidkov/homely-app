@@ -2,16 +2,30 @@
     <mat-card-header>
         <mat-card-title>{{label}}</mat-card-title>
     </mat-card-header>
-    <mat-card-content *ngFor="let field of fields">
-        <mat-form-field>
-            <input matInput type="text" placeholder="Label" [(ngModel)]="field.label">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Index</mat-label>
-            <input matInput type="number" min="1" [(ngModel)]="field.index">
-        </mat-form-field>
-        <button mat-button (click)="save(field)">SAVE</button>
-    </mat-card-content>
+    <div *ngFor="let field of fields">
+        <mat-card-content>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Label" [(ngModel)]="field.label">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Index</mat-label>
+                <input matInput type="number" min="1" [(ngModel)]="field.index">
+            </mat-form-field>
+            <button mat-button (click)="save(field)">SAVE</button>
+            <mat-card-content>
+                <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let option of field.options" [removable]="true"
+                        (removed)="removeOption(field, option)">
+                        {{option}}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="New option..." [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
+                        (matChipInputTokenEnd)="addOption(field, $event)">
+                </mat-chip-list>
+            </mat-card-content>
+        </mat-card-content>
+    </div>
     <mat-card-actions>
         <button mat-button (click)="add()">ADD</button>
     </mat-card-actions>
