@@ -31,6 +31,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { DynamicFormDefinitionComponent } from './admin/dynamic-form-definition/dynamic-form-definition.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
@@ -70,7 +72,9 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     ItemComponent,
     ExternalSectionComponent,
     ClientHomeComponent,
-    RadioComponent
+    RadioComponent,
+    AdminHomeComponent,
+    DynamicFormDefinitionComponent
   ],
   imports: [
     BrowserModule,

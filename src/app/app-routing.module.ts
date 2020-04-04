@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DynamicFormDefinitionComponent } from './admin/dynamic-form-definition/dynamic-form-definition.component';
 import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
 import { ClientHomeComponent } from './client/client-home/client-home.component';
 import { ExternalSectionComponent } from './client/external/external-section/external-section.component';
@@ -12,6 +13,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
 
 
 const routes: Routes = [
+  { path: 'admin', component: ClientHomeComponent },
+  { path: 'admin/external', component: DynamicFormDefinitionComponent },
   { path: 'client', component: ClientHomeComponent },
   { path: 'client/external', component: ExternalSectionComponent },
   { path: 'builder', component: BuilderHomeComponent },
@@ -21,7 +24,6 @@ const routes: Routes = [
   { path: 'supplier/bricks/:id', component: BrickComponent },
   { path: 'supplier/colorbond', component: ColorbondComponent },
   { path: 'supplier/colorbond/:id', component: ColorbondComponent },
-
   { path: 'supplier/item/:collection', component: ItemComponent },
   { path: 'supplier/item/:collection/:id', component: ItemComponent },
   { path: '**', component: HomeComponent }
