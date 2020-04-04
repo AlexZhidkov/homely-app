@@ -1,1 +1,5 @@
-<p>dynamic-form-definition works!</p>
+<div *ngIf="dynamicForm">
+    <div *ngFor="let collection of dynamicForm.collections; index as i">
+        <app-dynamic-step-definition [step]="collection" [label]="dynamicForm.labels[i]"></app-dynamic-step-definition>
+    </div>
+</div>

@@ -33,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { DynamicFormDefinitionComponent } from './admin/dynamic-form-definition/dynamic-form-definition.component';
+import { DynamicStepDefinitionComponent } from './admin/dynamic-step-definition/dynamic-step-definition.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
@@ -74,7 +75,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     ClientHomeComponent,
     RadioComponent,
     AdminHomeComponent,
-    DynamicFormDefinitionComponent
+    DynamicFormDefinitionComponent,
+    DynamicStepDefinitionComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +112,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     MatTableModule,
     MatAutocompleteModule,
     MatChipsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule
   ],
   providers: [],
   entryComponents: [
