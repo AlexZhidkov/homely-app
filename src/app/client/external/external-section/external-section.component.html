@@ -19,6 +19,15 @@
             <button mat-button matStepperNext>Next</button>
         </div>
     </mat-step>
+    <mat-step [stepControl]="renderFormGroup">
+        <ng-template matStepLabel>Render</ng-template>
+        <app-dynamic-form [fieldsUrl]="'dynamic-form/external/render'" (submit)="submit($event)">
+        </app-dynamic-form>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
     <mat-step [stepControl]="roofFormGroup">
         <ng-template matStepLabel>Roof</ng-template>
         <app-roof-selection [onOpenEvent]="onRoofOpenEvent.asObservable()" [markup]="clientSettings.markup"

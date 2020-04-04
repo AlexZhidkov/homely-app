@@ -15,6 +15,7 @@ export class ExternalSectionComponent implements OnInit {
   onRoofOpenEvent: Subject<void> = new Subject<void>();
   concreteFormGroup: FormGroup;
   brickworkFormGroup: FormGroup;
+  renderFormGroup: FormGroup;
   roofFormGroup: FormGroup;
   windowsDoorsFormGroup: FormGroup;
 
@@ -28,6 +29,7 @@ export class ExternalSectionComponent implements OnInit {
     });
     this.concreteFormGroup = this.formBuilder.group({});
     this.brickworkFormGroup = this.formBuilder.group({});
+    this.renderFormGroup = this.formBuilder.group({});
     this.roofFormGroup = this.formBuilder.group({});
     this.windowsDoorsFormGroup = this.formBuilder.group({});
   }
