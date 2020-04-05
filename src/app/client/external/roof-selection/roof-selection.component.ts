@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
 import { Item } from 'src/app/model/item';
 import { AddendaStoreService } from 'src/app/services/addenda-store.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -10,10 +9,8 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./roof-selection.component.css']
 })
 export class RoofSelectionComponent implements OnInit {
-  @Input() onOpenEvent: Observable<void>;
   @Input() markup: number;
   @Input() amountRequired: number;
-  private openEventSubscription: Subscription;
 
   selectedRoof: string;
 
@@ -50,10 +47,6 @@ export class RoofSelectionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.openEventSubscription = this.onOpenEvent.subscribe(() => this.setup());
-  }
-
-  setup() {
     this.addenda = this.addendaStore.get();
 
     this.colorService.setCollection('colorbond');

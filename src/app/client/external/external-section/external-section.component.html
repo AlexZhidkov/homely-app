@@ -11,8 +11,7 @@
     </mat-step>
     <mat-step [stepControl]="brickworkFormGroup">
         <ng-template matStepLabel>Brickwork</ng-template>
-        <app-brick-selection [onOpenEvent]="onBrickworkOpenEvent.asObservable()" [markup]="clientSettings.markup"
-            [numberOfBricks]="clientSettings.numberOfBricks">
+        <app-brick-selection [markup]="clientSettings.markup" [numberOfBricks]="clientSettings.numberOfBricks">
         </app-brick-selection>
         <div>
             <button mat-button matStepperPrevious>Back</button>
@@ -30,8 +29,7 @@
     </mat-step>
     <mat-step [stepControl]="roofFormGroup">
         <ng-template matStepLabel>Roof</ng-template>
-        <app-roof-selection [onOpenEvent]="onRoofOpenEvent.asObservable()" [markup]="clientSettings.markup"
-            [amountRequired]=1>
+        <app-roof-selection [markup]="clientSettings.markup" [amountRequired]=1>
         </app-roof-selection>
         <div>
             <button mat-button matStepperPrevious>Back</button>

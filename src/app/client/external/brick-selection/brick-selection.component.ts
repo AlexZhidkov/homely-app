@@ -1,5 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Brick } from 'src/app/model/brick';
 import { AddendaStoreService } from 'src/app/services/addenda-store.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -9,11 +9,9 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   templateUrl: './brick-selection.component.html',
   styleUrls: ['./brick-selection.component.css']
 })
-export class BrickSelectionComponent implements OnInit, OnDestroy {
-  @Input() onOpenEvent: Observable<void>;
+export class BrickSelectionComponent implements OnInit {
   @Input() markup: number;
   @Input() numberOfBricks: number;
-  private openEventSubscription: Subscription;
   selectedBrickObservable: Observable<Brick>;
   selectedBrick: Brick;
   bricks: Brick[];
@@ -35,12 +33,6 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.openEventSubscription = this.onOpenEvent.subscribe(() => this.setup());
-
-    // this.update();
-  }
-
-  setup() {
     this.firestore.setCollection('bricks', ref => ref.where('course', '==', this.selectedCourse));
     this.firestore.list().subscribe(b => this.bricks = b);
 
@@ -78,10 +70,6 @@ export class BrickSelectionComponent implements OnInit, OnDestroy {
   changeSelection() {
     this.showSelectedBrick = false;
     this.showAllBricks = true;
-  }
-
-  ngOnDestroy() {
-    this.openEventSubscription.unsubscribe();
   }
 
   /*
