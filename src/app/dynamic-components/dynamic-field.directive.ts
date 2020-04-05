@@ -1,6 +1,7 @@
 import { ComponentFactoryResolver, Directive, Input, OnInit, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BrickSelectionComponent } from '../client/external/brick-selection/brick-selection.component';
+import { RoofSelectionComponent } from '../client/external/roof-selection/roof-selection.component';
 import { FieldConfig } from '../model/fieldConfig';
 import { CardComponent } from './card/card.component';
 import { RadioComponent } from './radio/radio.component';
@@ -24,7 +25,8 @@ export class DynamicFieldDirective implements OnInit {
     const componentMapper = {
       card: CardComponent,
       radio: RadioComponent,
-      brickwork: BrickSelectionComponent
+      brickwork: BrickSelectionComponent,
+      roof: RoofSelectionComponent
     };
 
     const factory = this.resolver.resolveComponentFactory(
