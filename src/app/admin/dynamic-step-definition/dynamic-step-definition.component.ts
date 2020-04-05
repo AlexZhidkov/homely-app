@@ -50,7 +50,10 @@ export class DynamicStepDefinitionComponent implements OnInit {
   }
 
   add() {
-    this.fields.push({});
+    this.fields.push({
+      defaultValue: null,
+      type: 'radio'
+    });
   }
 
   save(field: FieldConfig) {

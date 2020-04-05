@@ -14,10 +14,16 @@ export class DynamicSelectionFormComponent implements OnInit {
   constructor(private afs: AngularFirestore) { }
 
   ngOnInit(): void {
-    // this.dynamicFormDoc = this.afs.doc<any>('dynamic-form');
-    // this.dynamicFormDoc.valueChanges().subscribe(f => this.dynamicForm = f);
+    this.dynamicFormDoc = this.afs.doc<any>('dynamic-form/external');
+    this.dynamicFormDoc.valueChanges().subscribe(f => this.dynamicForm = f);
   }
 
+  public onStepChange(event: any): void {
+    switch (event.selectedIndex) {
+      default:
+        break;
+    }
+  }
 
   submit(event: any) {
     debugger;

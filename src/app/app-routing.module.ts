@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DynamicFormDefinitionComponent } from './admin/dynamic-form-definition/dynamic-form-definition.component';
 import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
 import { ClientHomeComponent } from './client/client-home/client-home.component';
+import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/dynamic-selection-form.component';
 import { ExternalSectionComponent } from './client/external/external-section/external-section.component';
 import { HomeComponent } from './home/home.component';
 import { BrickComponent } from './supplier/brick/brick.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'admin/external', component: DynamicFormDefinitionComponent },
   { path: 'client', component: ClientHomeComponent },
   { path: 'client/external', component: ExternalSectionComponent },
+  { path: 'client/internal', component: DynamicSelectionFormComponent }, // ToDo experimental use only. Remove
   { path: 'builder', component: BuilderHomeComponent },
   { path: 'supplier', component: SupplierHomeComponent },
   { path: 'supplier/items/:collection', component: ItemsComponent },
