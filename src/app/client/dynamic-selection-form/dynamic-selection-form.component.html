@@ -1,5 +1,5 @@
 <mat-vertical-stepper #stepper (selectionChange)="onStepChange($event)">
-    <mat-step *ngFor="let collection of dynamicForm.collections; index as i">
+    <mat-step *ngFor="let collection of dynamicForm?.collections; index as i">
         <ng-template matStepLabel>{{dynamicForm.labels[i]}}</ng-template>
         <app-dynamic-form [fieldsUrl]="'dynamic-form/external/'+collection" (submit)="submit($event)">
         </app-dynamic-form>

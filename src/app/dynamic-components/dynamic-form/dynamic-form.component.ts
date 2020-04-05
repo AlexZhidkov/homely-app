@@ -20,6 +20,7 @@ export class DynamicFormComponent implements OnInit {
   get value() {
     return this.form.value;
   }
+
   constructor(
     private firestore: FirestoreService<FieldConfig>,
     private fb: FormBuilder) { }
