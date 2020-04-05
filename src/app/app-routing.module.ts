@@ -4,7 +4,6 @@ import { DynamicFormDefinitionComponent } from './admin/dynamic-form-definition/
 import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
 import { ClientHomeComponent } from './client/client-home/client-home.component';
 import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/dynamic-selection-form.component';
-import { ExternalSectionComponent } from './client/external/external-section/external-section.component';
 import { HomeComponent } from './home/home.component';
 import { BrickComponent } from './supplier/brick/brick.component';
 import { ColorbondComponent } from './supplier/colorbond/colorbond.component';
@@ -17,8 +16,7 @@ const routes: Routes = [
   { path: 'admin', component: ClientHomeComponent },
   { path: 'admin/external', component: DynamicFormDefinitionComponent },
   { path: 'client', component: ClientHomeComponent },
-  { path: 'client/external', component: ExternalSectionComponent },
-  { path: 'client/internal', component: DynamicSelectionFormComponent }, // ToDo experimental use only. Remove
+  { path: 'client/external', component: DynamicSelectionFormComponent },
   { path: 'builder', component: BuilderHomeComponent },
   { path: 'supplier', component: SupplierHomeComponent },
   { path: 'supplier/items/:collection', component: ItemsComponent },
