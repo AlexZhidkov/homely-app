@@ -10,6 +10,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./dynamic-step-definition.component.css']
 })
 export class DynamicStepDefinitionComponent implements OnInit {
+  @Input() collection: string;
   @Input() step: string;
   @Input() label: string;
   fields: FieldConfig[];
@@ -20,7 +21,7 @@ export class DynamicStepDefinitionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.fieldService.setCollection(`dynamic-form/external/${this.step}`, ref => ref.orderBy('index'));
+    this.fieldService.setCollection(`dynamic-form/${this.collection}/${this.step}`, ref => ref.orderBy('index'));
     this.fieldService.list().subscribe(f => this.fields = f);
   }
 
@@ -57,7 +58,7 @@ export class DynamicStepDefinitionComponent implements OnInit {
   }
 
   save(field: FieldConfig) {
-    this.fieldService.setCollection(`dynamic-form/external/${this.step}`);
+    this.fieldService.setCollection(`dynamic-form/${this.collection}/${this.step}`);
     if (field.id) {
       const id = field.id;
       delete field.id;

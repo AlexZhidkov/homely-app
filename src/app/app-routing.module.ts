@@ -14,9 +14,9 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
 
 const routes: Routes = [
   { path: 'admin', component: ClientHomeComponent },
-  { path: 'admin/external', component: DynamicFormDefinitionComponent },
+  { path: 'admin/:collection', component: DynamicFormDefinitionComponent },
   { path: 'client', component: ClientHomeComponent },
-  { path: 'client/external', component: DynamicSelectionFormComponent },
+  { path: 'client/:collection', component: DynamicSelectionFormComponent },
   { path: 'builder', component: BuilderHomeComponent },
   { path: 'supplier', component: SupplierHomeComponent },
   { path: 'supplier/items/:collection', component: ItemsComponent },

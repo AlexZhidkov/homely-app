@@ -1,5 +1,13 @@
 <div *ngIf="dynamicForm">
-    <div *ngFor="let collection of dynamicForm.collections; index as i">
-        <app-dynamic-step-definition [step]="collection" [label]="dynamicForm.labels[i]"></app-dynamic-step-definition>
+    <div *ngFor="let step of dynamicForm.collections; index as i">
+        <app-dynamic-step-definition [collection]="collectionId" [step]="step" [label]="dynamicForm.labels[i]">
+        </app-dynamic-step-definition>
     </div>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="New Step Label" #newStep>
+    </mat-form-field>
+    <button mat-button [disabled]="!newStep.value" (click)="addStep(newStep.value); newStep.value=null">
+        ADD STEP
+    </button>
 </div>

@@ -1,7 +1,7 @@
-<mat-vertical-stepper #stepper (selectionChange)="onStepChange($event)">
+<mat-vertical-stepper #stepper>
     <mat-step *ngFor="let collection of dynamicForm?.collections; index as i">
         <ng-template matStepLabel>{{dynamicForm.labels[i]}}</ng-template>
-        <app-dynamic-form [fieldsUrl]="'dynamic-form/external/'+collection" (submit)="submit($event)">
+        <app-dynamic-form [fieldsUrl]="'dynamic-form/'+collectionId+'/'+collection" (submit)="submit($event)">
         </app-dynamic-form>
         <div>
             <button mat-button matStepperPrevious *ngIf="i>0">Back</button>
