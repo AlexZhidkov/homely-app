@@ -1,50 +1,7 @@
 <div fxLayout="row wrap">
-    <mat-card class="section-card" routerLink="external">
+    <mat-card class="section-card" *ngFor="let section of sections" [routerLink]="section.id">
         <mat-card-header>
-            <mat-card-title>External</mat-card-title>
+            <mat-card-title>{{section.label}}</mat-card-title>
         </mat-card-header>
     </mat-card>
-
-    <mat-card class="section-card" routerLink="internal">
-        <mat-card-header>
-            <mat-card-title>Internal</mat-card-title>
-        </mat-card-header>
-    </mat-card>
-
-    <mat-card class="section-card" routerLink="kitchen">
-        <mat-card-header>
-            <mat-card-title>Kitchen</mat-card-title>
-        </mat-card-header>
-    </mat-card>
-
-    <mat-card class="section-card" routerLink="scullery">
-        <mat-card-header>
-            <mat-card-title>Scullery</mat-card-title>
-        </mat-card-header>
-    </mat-card>
-
-    <mat-card class="section-card" routerLink="laundry">
-        <mat-card-header>
-            <mat-card-title>Laundry</mat-card-title>
-        </mat-card-header>
-    </mat-card>
-
-    <mat-card class="section-card" routerLink="ens">
-        <mat-card-header>
-            <mat-card-title>Ens And Bathrooms</mat-card-title>
-        </mat-card-header>
-    </mat-card>
-
-    <mat-card class="section-card" routerLink="wc">
-        <mat-card-header>
-            <mat-card-title>WC & PDR Rooms</mat-card-title>
-        </mat-card-header>
-    </mat-card>
-
-    <mat-card class="section-card" routerLink="electrical">
-        <mat-card-header>
-            <mat-card-title>Electrical</mat-card-title>
-        </mat-card-header>
-    </mat-card>
-
 </div>

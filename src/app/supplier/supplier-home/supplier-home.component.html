@@ -5,17 +5,17 @@
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <mat-nav-list>
-            <a mat-list-item href="supplier/items/Bricks"> Bricks </a>
-            <a mat-list-item href="supplier/items/Colorbond"> Colorbond </a>
-            <a mat-list-item href="supplier/items/Tiles"> Roof Tiles </a>
-            <a mat-list-item href="supplier/items/Guttering"> Guttering </a>
-            <a mat-list-item href="supplier/items/Entry_Doors"> Entry Doors </a>
-            <a mat-list-item href="supplier/items/Entry_Door_Furniture"> Entry Door Furniture </a>
-            <a mat-list-item href="supplier/items/Garage_Doors"> Garage Doors </a>
-            <a mat-list-item href="supplier/items/Paving"> Paving </a>
-            <a mat-list-item href="supplier/items/Hot_Water_Systems"> Hot Water Systems </a>
-            <a mat-list-item href="supplier/items/Solar_Systems"> Solar Systems </a>
-        </mat-nav-list>
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let section of sections">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{section.label}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item *ngFor="let step of section.steps" [href]="getUrl(step)"> {{step}} </a>
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-accordion>
     </mat-card-content>
 </mat-card>
