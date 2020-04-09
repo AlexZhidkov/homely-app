@@ -10,6 +10,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class DynamicFormComponent implements OnInit {
   @Input() fieldsUrl: string;
+  @Input() step: string;
 
   // tslint:disable-next-line:no-output-native
   @Output() submit: EventEmitter<any> = new EventEmitter<any>();
@@ -26,12 +27,11 @@ export class DynamicFormComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.firestore.setCollection(this.fieldsUrl, ref => ref.orderBy('index'));
+    this.firestore.setCollection(`${this.fieldsUrl}/${this.step}`, ref => ref.orderBy('index'));
     this.firestore.list().subscribe(f => {
       this.fields = f;
       this.form = this.createControl();
     });
-
   }
 
   onSubmit(event: Event) {

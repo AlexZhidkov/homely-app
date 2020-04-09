@@ -12,10 +12,26 @@ export class AddendaStoreService {
     return addenda ? addenda : {};
   }
 
-  set(key: string, value: any) {
-    const addenda = JSON.parse(localStorage.getItem('addenda'));
-    addenda[key] = value;
+  set(step: string, key: string, value: any) {
+    const addenda = JSON.parse(localStorage.getItem('addenda')) ?? {};
+    const addendaStep = addenda[step];
+    if (addendaStep) {
+      addendaStep[key] = value;
+    } else {
+      addenda[step] = {};
+      addenda[step][key] = value;
+    }
     localStorage.setItem('addenda', JSON.stringify(addenda));
+  }
+
+  getStep(step: string) {
+    const addenda = JSON.parse(localStorage.getItem('addenda'));
+    return addenda ? (addenda[step] ? addenda[step] : {}) : {};
+  }
+
+  getValue(step: string, key: string) {
+    const addenda = JSON.parse(localStorage.getItem('addenda'));
+    return addenda ? (addenda[step] ? addenda[step][key] : {}) : {};
   }
 
   clear() {
@@ -71,9 +87,6 @@ export class AddendaStoreService {
         steps: [
           'Sinks',
           'Tapware',
-          'Ovens',
-          'Cooktops',
-          'Range Hoods',
           'Dishwashers',
           'Countertops',
           'Overhead Cupboards',

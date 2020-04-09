@@ -19,7 +19,7 @@ export class BrickSelectionComponent implements OnInit {
   selectedSupplier = 'All';
   showAllBricks = true;
   showSelectedBrick = false;
-  addenda: any;
+  addendaValue: any;
 
   suppliers: string[] = [
     'Midland Brick',
@@ -36,10 +36,10 @@ export class BrickSelectionComponent implements OnInit {
     this.firestore.setCollection('bricks', ref => ref.where('course', '==', this.selectedCourse));
     this.firestore.list().subscribe(b => this.bricks = b);
 
-    this.addenda = this.addendaStore.get();
-    if (this.addenda.brick) {
+    this.addendaValue = this.addendaStore.getValue('brickwork', 'brick');
+    if (this.addendaValue) {
       this.showAllBricks = false;
-      this.selectedBrickObservable = this.firestore.get(this.addenda.brick.id);
+      this.selectedBrickObservable = this.firestore.get(this.addendaValue.id);
       this.selectedBrickObservable.subscribe(brick => {
         this.selectedBrick = brick;
         this.showSelectedBrick = true;
@@ -62,7 +62,7 @@ export class BrickSelectionComponent implements OnInit {
 
   selectBrick(selectedBrick: Brick) {
     this.selectedBrick = selectedBrick;
-    this.addendaStore.set('brick', { id: selectedBrick.id, value: selectedBrick.value });
+    this.addendaStore.set('brickwork', 'brick', { id: selectedBrick.id, value: selectedBrick.value });
     this.showSelectedBrick = true;
     this.showAllBricks = false;
   }

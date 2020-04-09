@@ -12,7 +12,8 @@ export class RoofSelectionComponent implements OnInit {
   @Input() markup: number;
   @Input() amountRequired: number;
 
-  selectedRoof: string;
+  selectedRoofType: string;
+  selectedDownpipesType: string;
 
   showAllColours: boolean;
   selectedColour: Item;
@@ -47,7 +48,9 @@ export class RoofSelectionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.addenda = this.addendaStore.get();
+    this.addenda = this.addendaStore.getStep('roof');
+    this.selectedRoofType = this.addenda.roofType ?? null;
+    this.selectedDownpipesType = this.addenda.downpipesType ?? null;
 
     this.colorService.setCollection('colorbond');
     this.colorService.list().subscribe(c => this.colours = c);
@@ -116,33 +119,43 @@ export class RoofSelectionComponent implements OnInit {
     }
   }
 
+  selectRoofType(type: string) {
+    this.selectedRoofType = type;
+    this.addendaStore.set('roof', 'roofType', type);
+  }
+
+  selectDownpipesType(type: string) {
+    this.selectedDownpipesType = type;
+    this.addendaStore.set('roof', 'downpipesType', type);
+  }
+
   selectColour(selectedColour: Item) {
     this.selectedColour = selectedColour;
-    this.addendaStore.set('roofColour', { id: selectedColour.id, value: selectedColour.value });
+    this.addendaStore.set('roof', 'roofColour', { id: selectedColour.id, value: selectedColour.value });
     this.showAllColours = false;
   }
 
   selectTiles(selectedTiles: Item) {
     this.selectedTiles = selectedTiles;
-    this.addendaStore.set('tiles', { id: selectedTiles.id, value: selectedTiles.value });
+    this.addendaStore.set('roof', 'tiles', { id: selectedTiles.id, value: selectedTiles.value });
     this.showAllTiles = false;
   }
 
   selectFacia(selectedFacia: Item) {
     this.selectedFacia = selectedFacia;
-    this.addendaStore.set('facia', { id: selectedFacia.id, value: selectedFacia.value });
+    this.addendaStore.set('roof', 'facia', { id: selectedFacia.id, value: selectedFacia.value });
     this.showAllFacias = false;
   }
 
   selectGuttering(selectedGuttering: Item) {
     this.selectedGuttering = selectedGuttering;
-    this.addendaStore.set('guttering', { id: selectedGuttering.id, value: selectedGuttering.value });
+    this.addendaStore.set('roof', 'guttering', { id: selectedGuttering.id, value: selectedGuttering.value });
     this.showAllGuttering = false;
   }
 
   selectDownpipesColour(selectedDownpipesColour: Item) {
     this.selectedDownpipesColour = selectedDownpipesColour;
-    this.addendaStore.set('downpipesColour', { id: selectedDownpipesColour.id, value: selectedDownpipesColour.value });
+    this.addendaStore.set('roof', 'downpipesColour', { id: selectedDownpipesColour.id, value: selectedDownpipesColour.value });
     this.showAllDownpipesColours = false;
   }
 

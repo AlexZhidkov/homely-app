@@ -11,12 +11,13 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
+  step: string;
   field: FieldConfig;
   group: FormGroup;
   showAllItems: boolean;
   selectedItem: Item;
   items: Item[];
-  addenda: any;
+  addendaValue: any;
 
   markup = 0;
   amountRequired = 1;
@@ -27,14 +28,13 @@ export class CardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.addenda = this.addendaStore.get();
-
+    this.addendaValue = this.addendaStore.getValue(this.step, this.field.source);
     this.itemService.setCollection(this.field.source);
     this.itemService.list().subscribe(c => this.items = c);
 
-    if (this.addenda[this.field.source]) {
+    if (this.addendaValue) {
       this.showAllItems = false;
-      this.itemService.get(this.addenda[this.field.source].id).subscribe(item => {
+      this.itemService.get(this.addendaValue.id).subscribe(item => {
         this.selectedItem = item;
       });
     } else {
@@ -45,7 +45,7 @@ export class CardComponent implements OnInit {
 
   selectItem(selectedItem: Item) {
     this.selectedItem = selectedItem;
-    this.addendaStore.set(this.field.source, { id: selectedItem.id, value: selectedItem.value });
+    this.addendaStore.set(this.step, this.field.source, { id: selectedItem.id, value: selectedItem.value });
     this.showAllItems = false;
   }
 

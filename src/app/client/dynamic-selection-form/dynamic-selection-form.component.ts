@@ -14,6 +14,7 @@ export class DynamicSelectionFormComponent implements OnInit {
   dynamicFormDoc: AngularFirestoreDocument<any>;
   dynamicForm: any;
   collectionId: string;
+  isLoading = true;
 
   constructor(
     private afs: AngularFirestore,
@@ -24,7 +25,10 @@ export class DynamicSelectionFormComponent implements OnInit {
   ngOnInit(): void {
     this.collectionId = this.route.snapshot.paramMap.get('collection');
     this.dynamicFormDoc = this.afs.collection('dynamic-form').doc<any>(this.collectionId);
-    this.dynamicFormDoc.valueChanges().subscribe(f => this.dynamicForm = f);
+    this.dynamicFormDoc.valueChanges().subscribe(f => {
+      this.dynamicForm = f;
+      this.isLoading = false;
+    });
   }
 
   submit(event: any) {

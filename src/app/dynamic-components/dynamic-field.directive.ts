@@ -13,6 +13,7 @@ import { RadioComponent } from './radio/radio.component';
 export class DynamicFieldDirective implements OnInit {
   @Input() field: FieldConfig;
   @Input() group: FormGroup;
+  @Input() step: string;
 
   componentRef: any;
 
@@ -35,5 +36,6 @@ export class DynamicFieldDirective implements OnInit {
     this.componentRef = this.container.createComponent(factory);
     this.componentRef.instance.field = this.field;
     this.componentRef.instance.group = this.group;
+    this.componentRef.instance.step = this.step;
   }
 }

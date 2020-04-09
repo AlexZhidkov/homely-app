@@ -1,22 +1,22 @@
 <label id="roof-type-group-label">Roof Type</label>
-<mat-radio-group aria-labelledby="roof-type-group-label" [(ngModel)]="selectedRoof">
-    <mat-radio-button value="Colorbond">Colorbond</mat-radio-button>
-    <mat-radio-button value="Tiles">Tiles</mat-radio-button>
+<mat-radio-group aria-labelledby="roof-type-group-label" (change)="selectRoofType($event.value)">
+    <mat-radio-button value="Colorbond" [checked]="selectedRoofType==='Colorbond'">Colorbond</mat-radio-button>
+    <mat-radio-button value="Tiles" [checked]="selectedRoofType==='Tiles'">Tiles</mat-radio-button>
 </mat-radio-group>
 
-<app-selection-card *ngIf="selectedRoof==='Colorbond' && !showAllColours" [item]="selectedColour"
+<app-selection-card *ngIf="selectedRoofType==='Colorbond' && !showAllColours" [item]="selectedColour"
     [isItemSelected]="true" [numberOfItems]="1" [markup]="markup" (selectionChangeRequested)="showAllColours = true">
 </app-selection-card>
-<div *ngIf="selectedRoof==='Colorbond' && showAllColours" class="cards">
+<div *ngIf="selectedRoofType==='Colorbond' && showAllColours" class="cards">
     <app-selection-card *ngFor="let colour of colours" [item]="colour" [isItemSelected]="false" [numberOfItems]="1"
         [markup]="markup" (selectionChanged)="selectColour($event)">
     </app-selection-card>
 </div>
 
-<app-selection-card *ngIf="selectedRoof==='Tiles' && !showAllTiles" [item]="selectedTiles" [isItemSelected]="true"
+<app-selection-card *ngIf="selectedRoofType==='Tiles' && !showAllTiles" [item]="selectedTiles" [isItemSelected]="true"
     [numberOfItems]="1" [markup]="markup" (selectionChangeRequested)="showAllTiles = true">
 </app-selection-card>
-<div *ngIf="selectedRoof==='Tiles' && showAllTiles" class="cards">
+<div *ngIf="selectedRoofType==='Tiles' && showAllTiles" class="cards">
     <app-selection-card *ngFor="let tile of tiles" [item]="tile" [isItemSelected]="false" [numberOfItems]="1"
         [markup]="markup" (selectionChanged)="selectTiles($event)">
     </app-selection-card>
@@ -43,9 +43,13 @@
 </div>
 
 <label id="downpipes-type-group-label">Downpipes Type</label>
-<mat-radio-group aria-labelledby="downpipes-type-group-label">
-    <mat-radio-button value="Rectangular">Rectangular</mat-radio-button>
-    <mat-radio-button value="Round">Round</mat-radio-button>
+<mat-radio-group aria-labelledby="downpipes-type-group-label" (change)="selectDownpipesType($event.value)">
+    <mat-radio-button value="Rectangular" [checked]="selectedDownpipesType==='Rectangular'">
+        Rectangular
+    </mat-radio-button>
+    <mat-radio-button value="Round" [checked]="selectedDownpipesType==='Round'">
+        Round
+    </mat-radio-button>
 </mat-radio-group>
 
 <label id="downpipes-colour-label">Downpipes Colour</label>
