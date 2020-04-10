@@ -31,8 +31,7 @@ export class CardComponent implements OnInit {
     this.addendaValue = this.addendaStore.getValue(this.step, this.field.source);
     this.itemService.setCollection(this.field.source);
     this.itemService.list().subscribe(c => this.items = c);
-
-    if (this.addendaValue) {
+    if (this.addendaValue.id) {
       this.showAllItems = false;
       this.itemService.get(this.addendaValue.id).subscribe(item => {
         this.selectedItem = item;
