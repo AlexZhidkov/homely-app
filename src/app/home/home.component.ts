@@ -14,19 +14,19 @@ export class HomeComponent implements OnInit {
   }
 
   buyer() {
-    this.router.navigate(['/client/']);
+    this.router.navigate(['/client/undefined']);
   }
 
   builder() {
-    this.router.navigate(['/builder/']);
+    this.router.navigate(['/builder']);
   }
 
   supplier() {
-    this.router.navigate(['/supplier/']);
+    this.router.navigate(['/supplier']);
   }
 
   admin() {
-    this.router.navigate(['/admin/']);
+    this.router.navigate(['/admin/sections']);
   }
 
 }

@@ -13,10 +13,10 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
 
 
 const routes: Routes = [
-  { path: 'admin', component: ClientHomeComponent },
-  { path: 'admin/:collection', component: DynamicFormDefinitionComponent },
-  { path: 'client', component: ClientHomeComponent },
-  { path: 'client/:collection', component: DynamicSelectionFormComponent },
+  { path: 'admin/sections', component: ClientHomeComponent },
+  { path: 'admin/section/:collection', component: DynamicFormDefinitionComponent },
+  { path: 'client/section/:collection', component: DynamicSelectionFormComponent },
+  { path: 'client/:houseConfig', component: ClientHomeComponent },
   { path: 'builder', component: BuilderHomeComponent },
   { path: 'supplier', component: SupplierHomeComponent },
   { path: 'supplier/items/:collection', component: ItemsComponent },

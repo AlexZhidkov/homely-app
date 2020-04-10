@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HouseConfig } from 'src/app/model/house-config';
 
 @Component({
   selector: 'app-builder-home',
@@ -6,16 +8,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./builder-home.component.css']
 })
 export class BuilderHomeComponent implements OnInit {
-  markup: number;
-  numberOfBricks: number;
+  houseConfig: HouseConfig;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.houseConfig = JSON.parse(localStorage.getItem('houseConfig'));
+    if (!this.houseConfig) {
+      this.houseConfig = new HouseConfig();
+    }
+  }
+
+  save() {
+    localStorage.setItem('houseConfig', JSON.stringify(this.houseConfig));
+  }
+
+  encodedConfig(): string {
+    return window.btoa(JSON.stringify(this.houseConfig));
+  }
+
+  navigateToClient() {
+    this.save();
+    this.router.navigate([`/client/${this.encodedConfig()}`]);
   }
 
   copyToClipboard() {
-    const url = `${window.location.hostname}/client?m=${this.markup}&b=${this.numberOfBricks}`;
+    this.save();
+    const url = `${window.location.hostname}/client/${this.encodedConfig()}`;
     document.addEventListener('copy', (e: ClipboardEvent) => {
       e.clipboardData.setData('text/plain', (url));
       e.preventDefault();

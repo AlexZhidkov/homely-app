@@ -1,5 +1,5 @@
 <div fxLayout="row wrap">
-    <mat-card class="section-card" *ngFor="let section of sections" [routerLink]="section.id">
+    <mat-card class="section-card" *ngFor="let section of sections" [routerLink]="['../section', section.id]">
         <mat-card-header>
             <mat-card-title>{{section.label}}</mat-card-title>
         </mat-card-header>
