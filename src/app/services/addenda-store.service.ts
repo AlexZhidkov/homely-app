@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Section } from '../model/section';
 
 @Injectable({
   providedIn: 'root'
@@ -38,15 +39,16 @@ export class AddendaStoreService {
     localStorage.setItem('addenda', JSON.stringify({}));
   }
 
-  getSections() {
+  getSections(): Section[] {
     return [
       {
         id: 'external', label: 'External',
-        steps: [
+        collections: [
           'Bricks',
           'Colorbond',
           'Roof Tiles',
           'Guttering',
+          'Windows',
           'Entry Doors',
           'Entry Door Furniture',
           'Garage Doors',
@@ -57,7 +59,7 @@ export class AddendaStoreService {
       },
       {
         id: 'internal', label: 'Internal',
-        steps: [
+        collections: [
           'Internal Doors',
           'Internal Door Furniture',
           'Robe Doors',
@@ -70,7 +72,7 @@ export class AddendaStoreService {
       },
       {
         id: 'kitchen', label: 'Kitchen',
-        steps: [
+        collections: [
           'Sinks',
           'Tapware',
           'Ovens',
@@ -84,7 +86,7 @@ export class AddendaStoreService {
       },
       {
         id: 'scullery', label: 'Scullery',
-        steps: [
+        collections: [
           'Sinks',
           'Tapware',
           'Dishwashers',
@@ -95,7 +97,7 @@ export class AddendaStoreService {
       },
       {
         id: 'laundry', label: 'Laundry',
-        steps: [
+        collections: [
           'Troughs',
           'Tapware',
           'Dishwashers',
@@ -106,7 +108,7 @@ export class AddendaStoreService {
       },
       {
         id: 'ens', label: 'Ens And Bathrooms',
-        steps: [
+        collections: [
           'Cupboard And Cupboard Doors',
           'Counter Tops',
           'Mirrors',
@@ -122,7 +124,7 @@ export class AddendaStoreService {
       },
       {
         id: 'wc', label: 'WC & PDR Rooms',
-        steps: [
+        collections: [
           'Toilet Suites',
           'Toilet Roll Holders',
           'Cupboard And Cupboard Doors',
@@ -135,7 +137,7 @@ export class AddendaStoreService {
       },
       {
         id: 'electrical', label: 'Electrical',
-        steps: [
+        collections: [
           'Power-Points And Switches',
           'Lighting',
           'Exhaust Fans',

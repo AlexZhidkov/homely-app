@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HouseConfig } from 'src/app/model/house-config';
+import { Section } from 'src/app/model/section';
 import { AddendaStoreService } from 'src/app/services/addenda-store.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AddendaStoreService } from 'src/app/services/addenda-store.service';
   styleUrls: ['./client-home.component.css']
 })
 export class ClientHomeComponent implements OnInit {
-  sections: any;
+  sections: Section[];
 
   constructor(
     private route: ActivatedRoute,

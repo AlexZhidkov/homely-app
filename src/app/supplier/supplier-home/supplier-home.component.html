@@ -13,7 +13,8 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <a mat-list-item *ngFor="let step of section.steps" [href]="getUrl(step)"> {{step}} </a>
+                    <a mat-list-item *ngFor="let collection of section.collections" [href]="getUrl(collection)">
+                        {{collection}} </a>
                 </mat-nav-list>
             </mat-expansion-panel>
         </mat-accordion>

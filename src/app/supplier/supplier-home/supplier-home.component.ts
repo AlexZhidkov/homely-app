@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Section } from 'src/app/model/section';
 import { AddendaStoreService } from 'src/app/services/addenda-store.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { AddendaStoreService } from 'src/app/services/addenda-store.service';
   styleUrls: ['./supplier-home.component.css']
 })
 export class SupplierHomeComponent implements OnInit {
-  sections: any;
+  sections: Section[];
 
   constructor(private store: AddendaStoreService) { }
 
@@ -15,7 +16,7 @@ export class SupplierHomeComponent implements OnInit {
     this.sections = this.store.getSections();
   }
 
-  getUrl(step: string): string {
-    return `supplier/items/${step.replace(/ /g, '_')}`;
+  getUrl(collection: string): string {
+    return `supplier/items/${collection.replace(/ /g, '_')}`;
   }
 }
