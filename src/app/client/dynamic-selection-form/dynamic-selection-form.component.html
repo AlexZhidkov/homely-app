@@ -13,7 +13,7 @@
 
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
+        <pre>{{addendaStore.get() | json}}</pre>
         <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="addendaStore.clear(); stepper.reset()">Reset</button>
