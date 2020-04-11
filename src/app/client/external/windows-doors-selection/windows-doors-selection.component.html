@@ -17,3 +17,18 @@
         [numberOfItems]="numberOfWindows" [markup]="markup" (selectionChanged)="selectWindow($event)">
     </app-selection-card>
 </div>
+
+<div *ngFor="let item of houseWindowsAndDoors">
+    <mat-form-field class="window-input">
+        <input matInput type="text" placeholder="Area/Room - window / Door #" [(ngModel)]="item.area">
+    </mat-form-field>
+    <mat-form-field class="window-input">
+        <mat-label>Select Window or Door type</mat-label>
+        <mat-select [(ngModel)]="item.type">
+            <mat-option *ngFor="let type of windowDoorTypes" [value]="type">
+                {{type}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<button mat-button type="button" (click)="houseWindowsAndDoors.push({area: null, type: null})">Add</button>

@@ -28,6 +28,21 @@ export class WindowsDoorsSelectionComponent implements OnInit {
     'Stegbar',
   ];
 
+  windowDoorTypes: string[] = [
+    'Sliding Window',
+    'Awning Window',
+    'Fixed Window',
+    'Double Hung Window',
+    'Awning Gas Strut Window',
+    'Bi-Fold Window',
+    'Louvre Window',
+    'Casement Window',
+    'Sliding Door',
+    'Stacker Door',
+    'Bi-Fold Door',
+  ];
+  houseWindowsAndDoors: any[];
+
   constructor(
     private addendaStore: AddendaStoreService,
     private firestore: FirestoreService<Item>
@@ -46,6 +61,8 @@ export class WindowsDoorsSelectionComponent implements OnInit {
         this.showSelectedWindow = true;
       });
     }
+
+    this.houseWindowsAndDoors = [{ area: null, type: null }];
   }
 
   changeFilter() {
