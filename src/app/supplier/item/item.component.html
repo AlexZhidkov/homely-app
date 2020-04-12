@@ -31,6 +31,18 @@
                 </textarea>
         </mat-form-field>
 
+        <mat-form-field>
+            <mat-chip-list #chipList>
+                <mat-chip *ngFor="let tag of tagList" removable=true (removed)="removeTag(tag)">
+                    {{tag}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="New tag..." [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" matChipInputAddOnBlur=true
+                    (matChipInputTokenEnd)="addTag($event)">
+            </mat-chip-list>
+        </mat-form-field>
+
     </mat-card-content>
     <mat-card-actions>
         <button mat-button routerLink="/supplier/items/{{collection}}">Done</button>

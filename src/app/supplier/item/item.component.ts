@@ -1,5 +1,7 @@
+import { ENTER } from '@angular/cdk/keycodes';
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Item } from 'src/app/model/item';
@@ -17,6 +19,7 @@ export class ItemComponent implements OnInit {
   itemDoc: AngularFirestoreDocument<Item>;
   item: Observable<Item>;
   tagList: string[];
+  readonly separatorKeysCodes: number[] = [ENTER];
 
   constructor(
     private afs: AngularFirestore,
@@ -44,4 +47,26 @@ export class ItemComponent implements OnInit {
     });
   }
 
+  addTag(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || '').trim()) {
+      this.tagList.push(value.trim());
+      this.itemDoc.update({ tags: this.tagList });
+    }
+
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  removeTag(tag: string): void {
+    const index = this.tagList.indexOf(tag);
+
+    if (index >= 0) {
+      this.tagList.splice(index, 1);
+      this.itemDoc.update({ tags: this.tagList });
+    }
+  }
 }
