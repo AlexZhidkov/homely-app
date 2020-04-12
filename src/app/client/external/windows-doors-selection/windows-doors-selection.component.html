@@ -1,34 +1,14 @@
-<app-selection-card *ngIf="showSelectedWindow" [item]="selectedWindow" [isItemSelected]="true"
-    [numberOfItems]="numberOfWindows" [markup]="markup" (selectionChangeRequested)="changeSelection()">
-</app-selection-card>
-
-<mat-form-field *ngIf="showAllWindows">
+<mat-form-field>
     <mat-label>Producer</mat-label>
-    <mat-select (selectionChange)="changeFilter()" [(ngModel)]="selectedSupplier" [disabled]="!showAllWindows">
-        <mat-option value="All" selected>All</mat-option>
+    <mat-select (selectionChange)="changeSupplier()" [(ngModel)]="selectedSupplier">
         <mat-option *ngFor="let supplier of suppliers" [value]="supplier">
             {{supplier}}
         </mat-option>
     </mat-select>
 </mat-form-field>
 
-<div *ngIf="showAllWindows" class="cards">
-    <app-selection-card *ngFor="let window of windows" [item]="window" [isItemSelected]="false"
-        [numberOfItems]="numberOfWindows" [markup]="markup" (selectionChanged)="selectWindow($event)">
-    </app-selection-card>
+<div *ngIf="selectedSupplier">
+    <app-room-window-selection *ngFor="let item of houseWindowsAndDoors" [supplier]="selectedSupplier">
+    </app-room-window-selection>
+    <button mat-button type="button" (click)="houseWindowsAndDoors.push({area: null, type: null})">Add</button>
 </div>
-
-<div *ngFor="let item of houseWindowsAndDoors">
-    <mat-form-field class="window-input">
-        <input matInput type="text" placeholder="Area/Room - window / Door #" [(ngModel)]="item.area">
-    </mat-form-field>
-    <mat-form-field class="window-input">
-        <mat-label>Select Window or Door type</mat-label>
-        <mat-select [(ngModel)]="item.type">
-            <mat-option *ngFor="let type of windowDoorTypes" [value]="type">
-                {{type}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-</div>
-<button mat-button type="button" (click)="houseWindowsAndDoors.push({area: null, type: null})">Add</button>

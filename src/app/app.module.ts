@@ -42,6 +42,7 @@ import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/d
 import { BrickSelectionComponent } from './client/external/brick-selection/brick-selection.component';
 import { ExternalSectionComponent } from './client/external/external-section/external-section.component';
 import { RoofSelectionComponent } from './client/external/roof-selection/roof-selection.component';
+import { RoomWindowSelectionComponent } from './client/external/room-window-selection/room-window-selection.component';
 import { WindowsDoorsSelectionComponent } from './client/external/windows-doors-selection/windows-doors-selection.component';
 import { SelectionCardComponent } from './client/selection-card/selection-card.component';
 import { CardComponent } from './dynamic-components/card/card.component';
@@ -78,7 +79,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     AdminHomeComponent,
     DynamicFormDefinitionComponent,
     DynamicStepDefinitionComponent,
-    WindowsDoorsSelectionComponent
+    WindowsDoorsSelectionComponent,
+    RoomWindowSelectionComponent
   ],
   imports: [
     BrowserModule,

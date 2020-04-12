@@ -1,0 +1,22 @@
+<mat-form-field class="window-input">
+    <input matInput type="text" placeholder="Area/Room - window / Door #" [(ngModel)]="area">
+</mat-form-field>
+<mat-form-field class="window-input">
+    <mat-label>Select Window or Door type</mat-label>
+    <mat-select (selectionChange)="changeType()" [(ngModel)]="selectedType">
+        <mat-option *ngFor="let type of windowDoorTypes" [value]="type">
+            {{type}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<app-selection-card *ngIf="showSelectedWindow" [item]="selectedWindow" [isItemSelected]="true"
+    [numberOfItems]="numberOfWindows" [markup]="markup" (selectionChangeRequested)="changeSelection()">
+</app-selection-card>
+
+
+<div *ngIf="showAllWindows" class="cards">
+    <app-selection-card *ngFor="let window of windows" [item]="window" [isItemSelected]="false"
+        [numberOfItems]="numberOfWindows" [markup]="markup" (selectionChanged)="selectWindow($event)">
+    </app-selection-card>
+</div>
