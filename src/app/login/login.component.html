@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-subtitle>Sign in with the account of your preference</mat-card-subtitle>
+    </mat-card-header>
+
+    <button mat-raised-button class="block-button" (click)="login(providerName.facebook)">
+        <img alt="Facebook Logo" src="assets/icons/auth_service_facebook.svg" />
+        <span> Facebook </span>
+    </button>
+    <button mat-raised-button class="block-button" (click)="login(providerName.google)">
+        <img alt="Google Logo" src="assets/icons/auth_service_google.svg" />
+        <span> Google </span>
+    </button>
+    <button mat-raised-button class="block-button" (click)="login(providerName.microsoft)">
+        <img alt="Microsoft Logo" src="assets/icons/auth_service_mslive.svg" />
+        <span> Microsoft </span>
+    </button>
+</mat-card>

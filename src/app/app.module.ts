@@ -118,7 +118,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     MatAutocompleteModule,
     MatChipsModule,
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
   ],
   providers: [],
   entryComponents: [
