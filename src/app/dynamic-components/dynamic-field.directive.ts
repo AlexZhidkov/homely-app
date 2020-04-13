@@ -6,6 +6,7 @@ import { WindowsDoorsSelectionComponent } from '../client/external/windows-doors
 import { FieldConfig } from '../model/fieldConfig';
 import { CardComponent } from './card/card.component';
 import { RadioComponent } from './radio/radio.component';
+import { SelectComponent } from './select/select.component';
 
 @Directive({
   // tslint:disable-next-line:directive-selector
@@ -27,6 +28,7 @@ export class DynamicFieldDirective implements OnInit {
     const componentMapper = {
       card: CardComponent,
       radio: RadioComponent,
+      select: SelectComponent,
       brickwork: BrickSelectionComponent,
       roof: RoofSelectionComponent,
       window: WindowsDoorsSelectionComponent

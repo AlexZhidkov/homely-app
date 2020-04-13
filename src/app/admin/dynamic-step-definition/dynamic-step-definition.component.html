@@ -17,12 +17,14 @@
             </mat-form-field>
             <button mat-button (click)="save(field)">SAVE</button>
             <mat-card-content>
-                <mat-radio-group [(ngModel)]="field.type" [disabled]="!(field.type === 'radio' || field.type==='card')">
+                <mat-radio-group [(ngModel)]="field.type"
+                    [disabled]="!(['radio', 'select', 'card'].includes(field.type))">
                     <mat-radio-button value="radio">Radio Button</mat-radio-button>
+                    <mat-radio-button value="select">Select from drop-down list</mat-radio-button>
                     <mat-radio-button value="card">Card Selection</mat-radio-button>
                 </mat-radio-group>
 
-                <mat-chip-list #chipList *ngIf="field.type === 'radio'">
+                <mat-chip-list #chipList *ngIf="['radio', 'select', 'card'].includes(field.type)">
                     <mat-chip *ngFor="let option of field.options" [removable]="true"
                         (removed)="removeOption(field, option)">
                         {{option}}

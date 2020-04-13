@@ -1,0 +1,10 @@
+<div class="form-container">
+    <mat-form-field>
+        <mat-label>{{field.label}}</mat-label>
+        <mat-select [(ngModel)]="field.value" (selectionChange)="change($event.value)">
+            <mat-option *ngFor="let option of field.options" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
