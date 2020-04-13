@@ -5,14 +5,15 @@ import { BuilderHomeComponent } from './builder/builder-home/builder-home.compon
 import { ClientHomeComponent } from './client/client-home/client-home.component';
 import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/dynamic-selection-form.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { BrickComponent } from './supplier/brick/brick.component';
 import { ColorbondComponent } from './supplier/colorbond/colorbond.component';
 import { ItemComponent } from './supplier/item/item.component';
 import { ItemsComponent } from './supplier/items/items.component';
 import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
 
-
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'admin/sections', component: ClientHomeComponent },
   { path: 'admin/section/:collection', component: DynamicFormDefinitionComponent },
   { path: 'client/section/:collection', component: DynamicSelectionFormComponent },

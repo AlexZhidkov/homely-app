@@ -51,6 +51,7 @@ import { DynamicFormComponent } from './dynamic-components/dynamic-form/dynamic-
 import { RadioComponent } from './dynamic-components/radio/radio.component';
 import { SelectComponent } from './dynamic-components/select/select.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { BrickComponent } from './supplier/brick/brick.component';
 import { ColorbondComponent } from './supplier/colorbond/colorbond.component';
 import { ItemComponent } from './supplier/item/item.component';
@@ -61,6 +62,7 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
     CardComponent,
     DynamicFieldDirective,
     DynamicFormComponent,

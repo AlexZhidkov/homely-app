@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Addenda Selection';
+  user: firebase.User;
+
+  constructor(public afAuth: AngularFireAuth) {
+    afAuth.user.subscribe(u => this.user = u);
+  }
+
+  logout() {
+    this.afAuth.signOut();
+  }
 }

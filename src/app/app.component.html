@@ -4,6 +4,14 @@
   </button>
   {{title}}
   <span class="fill-space"></span>
+  <a *ngIf="!user" style="float: left;" mat-button routerLink="/login">Sign In</a>
+  <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="user">
+    <img class="toolbar-photo" src={{user.photoURL}}>
+  </button>
 </mat-toolbar>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/profile">Profile</button>
+  <button mat-menu-item (click)='logout()'>Sign Out</button>
+</mat-menu>
 
 <router-outlet></router-outlet>
