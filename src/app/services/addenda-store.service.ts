@@ -44,6 +44,7 @@ export class AddendaStoreService {
       {
         id: 'external', label: 'External',
         collections: [
+          'Termite Control',
           'Bricks',
           'Colorbond',
           'Roof Tiles',
