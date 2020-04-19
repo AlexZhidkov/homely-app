@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserComponent } from 'ngx-auth-firebaseui';
 import { DynamicFormDefinitionComponent } from './admin/dynamic-form-definition/dynamic-form-definition.component';
 import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
 import { ClientHomeComponent } from './client/client-home/client-home.component';
@@ -13,6 +14,7 @@ import { ItemsComponent } from './supplier/items/items.component';
 import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
 
 const routes: Routes = [
+  { path: 'profile', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin/sections', component: ClientHomeComponent },
   { path: 'admin/section/:collection', component: DynamicFormDefinitionComponent },

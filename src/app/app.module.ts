@@ -30,6 +30,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { environment } from '../environments/environment';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { DynamicFormDefinitionComponent } from './admin/dynamic-form-definition/dynamic-form-definition.component';
@@ -57,6 +58,7 @@ import { ColorbondComponent } from './supplier/colorbond/colorbond.component';
 import { ItemComponent } from './supplier/item/item.component';
 import { ItemsComponent } from './supplier/items/items.component';
 import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
+import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 
 @NgModule({
   declarations: [
@@ -89,6 +91,7 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase),
     // AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AppRoutingModule,
@@ -121,7 +124,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     MatChipsModule,
     MatRadioModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatPasswordStrengthModule,
   ],
   providers: [],
   entryComponents: [
