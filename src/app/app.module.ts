@@ -1,3 +1,4 @@
+import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -58,7 +59,6 @@ import { ColorbondComponent } from './supplier/colorbond/colorbond.component';
 import { ItemComponent } from './supplier/item/item.component';
 import { ItemsComponent } from './supplier/items/items.component';
 import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
-import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 
 @NgModule({
   declarations: [
@@ -91,7 +91,11 @@ import { MatPasswordStrengthModule } from '@angular-material-extensions/password
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-    NgxAuthFirebaseUIModule.forRoot(environment.firebase),
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase, undefined, {
+      toastMessageOnAuthSuccess: false,
+      authGuardFallbackURL: '/login',
+      authGuardLoggedInURL: '/'
+    }),
     // AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AppRoutingModule,

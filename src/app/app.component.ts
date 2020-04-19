@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AppComponent {
   title = 'Addenda Selection';
-  user: firebase.User;
 
-  constructor(public afAuth: AngularFireAuth) {
-    afAuth.user.subscribe(u => this.user = u);
-  }
+  constructor(private router: Router,
+              public afAuth: AngularFireAuth) { }
 
-  logout() {
-    this.afAuth.signOut();
+  onSignOut() {
+    this.afAuth.signOut().then(() =>
+      this.router.navigate(['/']).then(() =>
+        location.reload())
+    );
   }
 }
