@@ -39,6 +39,7 @@ import { DynamicStepDefinitionComponent } from './admin/dynamic-step-definition/
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
+import { HouseConfigComponent } from './builder/house-config/house-config.component';
 import { ClientHomeComponent } from './client/client-home/client-home.component';
 import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/dynamic-selection-form.component';
 import { BrickSelectionComponent } from './client/external/brick-selection/brick-selection.component';
@@ -86,7 +87,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     DynamicStepDefinitionComponent,
     WindowsDoorsSelectionComponent,
     RoomWindowSelectionComponent,
-    SelectComponent
+    SelectComponent,
+    HouseConfigComponent
   ],
   imports: [
     BrowserModule,

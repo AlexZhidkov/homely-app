@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { HouseConfig } from 'src/app/model/house-config';
+import { Observable } from 'rxjs';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-builder-home',
@@ -8,38 +8,20 @@ import { HouseConfig } from 'src/app/model/house-config';
   styleUrls: ['./builder-home.component.css']
 })
 export class BuilderHomeComponent implements OnInit {
-  houseConfig: HouseConfig;
+  isLoading = true;
+  houses: Observable<any[]>;
 
-  constructor(private router: Router) { }
+  constructor(
+    private firestore: FirestoreService<any>
+  ) { }
 
   ngOnInit(): void {
-    this.houseConfig = JSON.parse(localStorage.getItem('houseConfig'));
-    if (!this.houseConfig) {
-      this.houseConfig = new HouseConfig();
-    }
-  }
-
-  save() {
-    localStorage.setItem('houseConfig', JSON.stringify(this.houseConfig));
-  }
-
-  encodedConfig(): string {
-    return window.btoa(JSON.stringify(this.houseConfig));
-  }
-
-  navigateToClient() {
-    this.save();
-    this.router.navigate([`/client/${this.encodedConfig()}`]);
-  }
-
-  copyToClipboard() {
-    this.save();
-    const url = `${window.location.hostname}/client/${this.encodedConfig()}`;
-    document.addEventListener('copy', (e: ClipboardEvent) => {
-      e.clipboardData.setData('text/plain', (url));
-      e.preventDefault();
-      document.removeEventListener('copy', null);
+    this.firestore.setCollection('houses');
+    this.houses = this.firestore.list();
+    this.houses.subscribe(e => {
+      this.isLoading = false;
     });
-    document.execCommand('copy');
   }
+
+
 }

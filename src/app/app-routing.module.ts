@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from 'ngx-auth-firebaseui';
 import { DynamicFormDefinitionComponent } from './admin/dynamic-form-definition/dynamic-form-definition.component';
 import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
+import { HouseConfigComponent } from './builder/house-config/house-config.component';
 import { ClientHomeComponent } from './client/client-home/client-home.component';
 import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/dynamic-selection-form.component';
 import { HomeComponent } from './home/home.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'client/section/:collection', component: DynamicSelectionFormComponent },
       { path: 'client/:houseConfig', component: ClientHomeComponent },
       { path: 'builder', component: BuilderHomeComponent },
+      { path: 'house/:houseId', component: HouseConfigComponent },
       { path: 'supplier', component: SupplierHomeComponent },
       { path: 'supplier/items/:collection', component: ItemsComponent },
       { path: 'supplier/bricks', component: BrickComponent },

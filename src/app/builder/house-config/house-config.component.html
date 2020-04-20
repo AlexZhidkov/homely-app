@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>House Configuration</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field>
+            <input matInput placeholder="Markup in %">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Number Of Bricks">
+        </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="navigateToClient()">
+            Open Addenda Selection
+        </button>
+        <button mat-button (click)="copyToClipboard()">Copy URL</button>
+    </mat-card-actions>
+</mat-card>
