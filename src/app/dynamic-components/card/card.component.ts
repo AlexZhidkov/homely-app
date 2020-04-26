@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FieldConfig } from 'src/app/model/fieldConfig';
 import { Item } from 'src/app/model/item';
 import { AddendaStoreService } from 'src/app/services/addenda-store.service';
+import { CostCalculatorService } from 'src/app/services/cost-calculator.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
@@ -24,17 +25,22 @@ export class CardComponent implements OnInit {
 
   constructor(
     private itemService: FirestoreService<Item>,
+    private costCalculatorService: CostCalculatorService,
     private addendaStore: AddendaStoreService,
   ) { }
 
   ngOnInit(): void {
     this.addendaValue = this.addendaStore.getValue(this.step, this.field.source);
     this.itemService.setCollection(this.field.source);
-    this.itemService.list().subscribe(c => this.items = c);
+    this.itemService.list().subscribe(c => {
+      c.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field.source, i.price));
+      this.items = c;
+    });
     if (this.addendaValue.id) {
       this.showAllItems = false;
       this.itemService.get(this.addendaValue.id).subscribe(item => {
         this.selectedItem = item;
+        this.selectedItem.totalCost = this.costCalculatorService.getTotalCost(this.field.source, item.price);
       });
     } else {
       this.showAllItems = true;
