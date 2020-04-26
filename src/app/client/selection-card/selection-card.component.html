@@ -6,7 +6,7 @@
         <mat-card-subtitle>{{item.supplier}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
-        {{getFormattedTotal(item.price)}}
+        {{getFormattedTotal(item.totalCost)}}
         <span *ngIf="isItemSelected">
             <button mat-button (click)="changeSelection()">Change</button>
         </span>

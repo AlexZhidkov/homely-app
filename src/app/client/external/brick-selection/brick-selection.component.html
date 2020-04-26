@@ -4,7 +4,7 @@
 </mat-radio-group>
 
 <app-selection-card *ngIf="showSelectedBrick" [item]="selectedBrick" [isItemSelected]="true"
-    [numberOfItems]="numberOfBricks" [markup]="markup" (selectionChangeRequested)="changeSelection()">
+    (selectionChangeRequested)="changeSelection()">
 </app-selection-card>
 
 <mat-form-field *ngIf="showAllBricks">
@@ -19,6 +19,6 @@
 
 <div *ngIf="showAllBricks" class="cards">
     <app-selection-card *ngFor="let brick of bricks" [item]="brick" [isItemSelected]="false"
-        [numberOfItems]="numberOfBricks" [markup]="markup" (selectionChanged)="selectBrick($event)">
+        (selectionChanged)="selectBrick($event)">
     </app-selection-card>
 </div>

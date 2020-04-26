@@ -1,9 +1,9 @@
 <label>{{field.label}}</label>
-<app-selection-card *ngIf="!showAllItems" [item]="selectedItem" [isItemSelected]="true" [numberOfItems]="1"
-    [markup]="markup" (selectionChangeRequested)="showAllItems = true">
+<app-selection-card *ngIf="!showAllItems" [item]="selectedItem" [isItemSelected]="true"
+    (selectionChangeRequested)="showAllItems = true">
 </app-selection-card>
 <div *ngIf="showAllItems" class="cards">
-    <app-selection-card *ngFor="let item of items" [item]="item" [isItemSelected]="false" [numberOfItems]="1"
-        [markup]="markup" (selectionChanged)="selectItem($event)">
+    <app-selection-card *ngFor="let item of items" [item]="item" [isItemSelected]="false"
+        (selectionChanged)="selectItem($event)">
     </app-selection-card>
 </div>
