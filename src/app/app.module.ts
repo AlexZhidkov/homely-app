@@ -43,7 +43,6 @@ import { HouseConfigComponent } from './builder/house-config/house-config.compon
 import { ClientHomeComponent } from './client/client-home/client-home.component';
 import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/dynamic-selection-form.component';
 import { BrickSelectionComponent } from './client/external/brick-selection/brick-selection.component';
-import { ExternalSectionComponent } from './client/external/external-section/external-section.component';
 import { RoofSelectionComponent } from './client/external/roof-selection/roof-selection.component';
 import { RoomWindowSelectionComponent } from './client/external/room-window-selection/room-window-selection.component';
 import { WindowsDoorsSelectionComponent } from './client/external/windows-doors-selection/windows-doors-selection.component';
@@ -79,7 +78,6 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     ItemsComponent,
     ColorbondComponent,
     ItemComponent,
-    ExternalSectionComponent,
     ClientHomeComponent,
     RadioComponent,
     AdminHomeComponent,
