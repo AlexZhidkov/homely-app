@@ -43,6 +43,39 @@ export class AddendaStoreService {
     return [
       {
         id: 'external', label: 'External',
+        steps: [
+          {
+            label: 'Concrete',
+            items: [
+              {
+                label: 'Termite Control',
+                source: 'termite_control',
+                type: 'card',
+                markup: null
+              },
+              {
+                label: 'Ground Slab',
+                options: [{ label: '85 mm', cost: null }, { label: '100 mm', cost: null }],
+                type: 'radio'
+              },
+            ]
+          },
+          {
+            label: 'Brickwork',
+            items: [
+              {
+                label: 'Bricks',
+                source: 'bricks',
+                type: 'brickwork',
+                markup: null,
+                quantity: null,
+                quantityLabel: 'Total square meters',
+                cost: { Single_Course_Total: null, Two_Course_Total: null }
+              }
+            ]
+          }
+        ],
+
         collections: [
           'Termite Control',
           'Bricks',
@@ -60,6 +93,8 @@ export class AddendaStoreService {
       },
       {
         id: 'internal', label: 'Internal',
+        steps: [
+        ],
         collections: [
           'Internal Doors',
           'Internal Door Furniture',
@@ -73,6 +108,8 @@ export class AddendaStoreService {
       },
       {
         id: 'kitchen', label: 'Kitchen',
+        steps: [
+        ],
         collections: [
           'Sinks',
           'Tapware',
@@ -87,6 +124,8 @@ export class AddendaStoreService {
       },
       {
         id: 'scullery', label: 'Scullery',
+        steps: [
+        ],
         collections: [
           'Sinks',
           'Tapware',
@@ -98,6 +137,8 @@ export class AddendaStoreService {
       },
       {
         id: 'laundry', label: 'Laundry',
+        steps: [
+        ],
         collections: [
           'Troughs',
           'Tapware',
@@ -109,6 +150,8 @@ export class AddendaStoreService {
       },
       {
         id: 'ens', label: 'Ens And Bathrooms',
+        steps: [
+        ],
         collections: [
           'Cupboard And Cupboard Doors',
           'Counter Tops',
@@ -125,6 +168,8 @@ export class AddendaStoreService {
       },
       {
         id: 'wc', label: 'WC & PDR Rooms',
+        steps: [
+        ],
         collections: [
           'Toilet Suites',
           'Toilet Roll Holders',
@@ -138,6 +183,8 @@ export class AddendaStoreService {
       },
       {
         id: 'electrical', label: 'Electrical',
+        steps: [
+        ],
         collections: [
           'Power-Points And Switches',
           'Lighting',
