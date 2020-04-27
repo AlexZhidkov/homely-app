@@ -48,11 +48,11 @@ export class HouseConfigComponent implements OnInit {
   }
 
   navigateToClient() {
-    this.router.navigate([`/client/`]);
+    this.router.navigate([`/client/${this.houseId}`]);
   }
 
   copyToClipboard() {
-    const url = `${window.location.hostname}/client/`;
+    const url = `${window.location.hostname}/client/${this.houseId}`;
     document.addEventListener('copy', (e: ClipboardEvent) => {
       e.clipboardData.setData('text/plain', (url));
       e.preventDefault();

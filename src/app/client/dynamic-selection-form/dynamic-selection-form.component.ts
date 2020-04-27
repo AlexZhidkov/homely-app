@@ -13,8 +13,11 @@ export class DynamicSelectionFormComponent implements OnInit {
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
   dynamicFormDoc: AngularFirestoreDocument<any>;
   dynamicForm: any;
+  houseId: string;
   collectionId: string;
-  isLoading = true;
+  jobNumber: string;
+  houseConfig: any;
+  stillToLoad = 2;
 
   constructor(
     private afs: AngularFirestore,
@@ -23,11 +26,19 @@ export class DynamicSelectionFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.houseId = this.route.snapshot.paramMap.get('houseId');
     this.collectionId = this.route.snapshot.paramMap.get('collection');
+
+    const houseConfigDoc = this.afs.collection('houses').doc<any>(this.houseId);
+    houseConfigDoc.valueChanges().subscribe(h => {
+      this.jobNumber = h.jobNumber;
+      this.houseConfig = JSON.parse(h.config);
+      this.stillToLoad -= 1;
+    });
     this.dynamicFormDoc = this.afs.collection('dynamic-form').doc<any>(this.collectionId);
     this.dynamicFormDoc.valueChanges().subscribe(f => {
       this.dynamicForm = f;
-      this.isLoading = false;
+      this.stillToLoad -= 1;
     });
   }
 
