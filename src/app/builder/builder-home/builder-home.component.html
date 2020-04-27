@@ -11,6 +11,7 @@
     <mat-nav-list>
         <mat-list-item *ngFor="let house of houses | async" routerLink="/house/{{house.id}}">
             <h3 matLine> {{house.label}} </h3>
+            <p matLine> {{house.jobNumber}} </p>
         </mat-list-item>
     </mat-nav-list>
 </mat-card>
