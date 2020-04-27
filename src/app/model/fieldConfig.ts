@@ -15,6 +15,7 @@ export interface FieldConfig extends BaseEntity {
     defaultValue?: any;
     value?: any;
     source?: string;
+    markup?: number;
     validations?: Validator[];
     tags?: string[];
 }

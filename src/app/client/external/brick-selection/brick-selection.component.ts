@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Brick } from 'src/app/model/brick';
+import { FieldConfig } from 'src/app/model/fieldConfig';
 import { AddendaStoreService } from 'src/app/services/addenda-store.service';
 import { CostCalculatorService } from 'src/app/services/cost-calculator.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -21,6 +22,7 @@ export class BrickSelectionComponent implements OnInit {
   showAllBricks = true;
   showSelectedBrick = false;
   addendaValue: any;
+  field: FieldConfig;
 
   suppliers: string[] = [
     'Midland Brick',
@@ -38,7 +40,7 @@ export class BrickSelectionComponent implements OnInit {
     this.firestore.setCollection('bricks', ref => ref.where('course', '==', this.selectedCourse));
     this.firestore.list().subscribe(b => {
       this.bricks = b;
-      this.bricks.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost('bricks', i.price));
+      this.bricks.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost('bricks', i.price, this.field.markup));
     });
 
     this.addendaValue = this.addendaStore.getValue('brickwork', 'brick');
@@ -47,7 +49,7 @@ export class BrickSelectionComponent implements OnInit {
       this.selectedBrickObservable = this.firestore.get(this.addendaValue.id);
       this.selectedBrickObservable.subscribe(brick => {
         this.selectedBrick = brick;
-        this.selectedBrick.totalCost = this.costCalculatorService.getTotalCost('bricks', brick.price);
+        this.selectedBrick.totalCost = this.costCalculatorService.getTotalCost('bricks', brick.price, this.field.markup);
         this.showSelectedBrick = true;
       });
     }

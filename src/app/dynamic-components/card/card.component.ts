@@ -33,14 +33,14 @@ export class CardComponent implements OnInit {
     this.addendaValue = this.addendaStore.getValue(this.step, this.field.source);
     this.itemService.setCollection(this.field.source);
     this.itemService.list().subscribe(c => {
-      c.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field.source, i.price));
+      c.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field.source, i.price, this.field.markup));
       this.items = c;
     });
     if (this.addendaValue.id) {
       this.showAllItems = false;
       this.itemService.get(this.addendaValue.id).subscribe(item => {
         this.selectedItem = item;
-        this.selectedItem.totalCost = this.costCalculatorService.getTotalCost(this.field.source, item.price);
+        this.selectedItem.totalCost = this.costCalculatorService.getTotalCost(this.field.source, item.price, this.field.markup);
       });
     } else {
       this.showAllItems = true;

@@ -1,9 +1,9 @@
-<mat-progress-bar *ngIf="stillToLoad" mode="indeterminate"></mat-progress-bar>
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
 <h2>Job Number: {{jobNumber}}</h2>
-<mat-vertical-stepper #stepper *ngIf="!stillToLoad">
-    <mat-step *ngFor="let collection of dynamicForm?.collections; index as i">
-        <ng-template matStepLabel>{{dynamicForm.labels[i]}}</ng-template>
-        <app-dynamic-form [fieldsUrl]="'dynamic-form/'+collectionId" [step]="collection" (submit)="submit($event)">
+<mat-vertical-stepper #stepper *ngIf="!isLoading">
+    <mat-step *ngFor="let step of section.steps; index as i">
+        <ng-template matStepLabel>{{step.label}}</ng-template>
+        <app-dynamic-form [step]="step" (submit)="submit($event)">
         </app-dynamic-form>
         <div>
             <button mat-button matStepperPrevious *ngIf="i>0">Back</button>

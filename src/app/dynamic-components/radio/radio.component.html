@@ -1,6 +1,6 @@
 <label id="radio-group-label">{{field.label}}</label>
 <mat-radio-group aria-labelledby="radio-group-label">
     <mat-radio-button *ngFor="let option of field.options" [value]="option" [checked]="field.value===option"
-        (change)="change($event.value)">{{option}}
+        (change)="change($event.value)">{{option.label}} - ${{option.cost}}
     </mat-radio-button>
 </mat-radio-group>

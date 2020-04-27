@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/model/fieldConfig';
-import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -9,8 +8,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./dynamic-form.component.css']
 })
 export class DynamicFormComponent implements OnInit {
-  @Input() fieldsUrl: string;
-  @Input() step: string;
+  @Input() step: any;
 
   // tslint:disable-next-line:no-output-native
   @Output() submit: EventEmitter<any> = new EventEmitter<any>();
@@ -23,15 +21,11 @@ export class DynamicFormComponent implements OnInit {
   }
 
   constructor(
-    private firestore: FirestoreService<FieldConfig>,
     private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.firestore.setCollection(`${this.fieldsUrl}/${this.step}`, ref => ref.orderBy('index'));
-    this.firestore.list().subscribe(f => {
-      this.fields = f;
-      this.form = this.createControl();
-    });
+    this.fields = this.step.items;
+    this.form = this.createControl();
   }
 
   onSubmit(event: Event) {

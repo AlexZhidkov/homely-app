@@ -7,8 +7,15 @@ export class CostCalculatorService {
 
   constructor() { }
 
-  getTotalCost(itemType: string, price: number): number {
-    return price;
+  getTotalCost(itemType: string, price: number, markup: number): number {
+    if (isNaN(price)) {
+      return null;
+    }
+    if (isNaN(markup)) {
+      markup = 0;
+    }
+    const total = price + Math.round((price * markup) / 100);
+    return total;
   }
 
   brickwork(): number {

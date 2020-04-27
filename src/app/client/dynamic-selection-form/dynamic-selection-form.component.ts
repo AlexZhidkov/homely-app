@@ -16,8 +16,8 @@ export class DynamicSelectionFormComponent implements OnInit {
   houseId: string;
   collectionId: string;
   jobNumber: string;
-  houseConfig: any;
-  stillToLoad = 2;
+  section: any;
+  isLoading = true;
 
   constructor(
     private afs: AngularFirestore,
@@ -32,14 +32,11 @@ export class DynamicSelectionFormComponent implements OnInit {
     const houseConfigDoc = this.afs.collection('houses').doc<any>(this.houseId);
     houseConfigDoc.valueChanges().subscribe(h => {
       this.jobNumber = h.jobNumber;
-      this.houseConfig = JSON.parse(h.config);
-      this.stillToLoad -= 1;
+      const houseConfig: any[] = JSON.parse(h.config);
+      this.section = houseConfig.find(c => c.id === this.collectionId);
+      this.isLoading = false;
     });
-    this.dynamicFormDoc = this.afs.collection('dynamic-form').doc<any>(this.collectionId);
-    this.dynamicFormDoc.valueChanges().subscribe(f => {
-      this.dynamicForm = f;
-      this.stillToLoad -= 1;
-    });
+
   }
 
   submit(event: any) {
