@@ -43,6 +43,10 @@ export class HouseConfigComponent implements OnInit {
     });
   }
 
+  save() {
+    this.houseDoc.update({ config: JSON.stringify(this.sections) });
+  }
+
   navigateToClient() {
     this.router.navigate([`/client/`]);
   }
