@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { FieldConfig } from 'src/app/model/fieldConfig';
 import { Item } from 'src/app/model/item';
+import { CostCalculatorService } from 'src/app/services/cost-calculator.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class RoomWindowSelectionComponent implements OnInit {
   @Input() supplier: string;
+  field: FieldConfig;
   area: string;
   selectedWindowObservable: Observable<Item>;
   selectedWindow: Item;
@@ -34,7 +37,8 @@ export class RoomWindowSelectionComponent implements OnInit {
     'Bi-Fold Door',
   ];
   constructor(
-    private firestore: FirestoreService<Item>
+    private firestore: FirestoreService<Item>,
+    private costCalculatorService: CostCalculatorService,
   ) { }
 
   ngOnInit(): void {
@@ -45,7 +49,10 @@ export class RoomWindowSelectionComponent implements OnInit {
     // https://github.com/angular/angularfire/blob/master/docs/firestore/querying-collections.md#dynamic-querying
     this.firestore.setCollection('windows',
       ref => ref.where('supplier', '==', this.supplier).where('tags', 'array-contains', this.selectedType));
-    this.firestore.list().subscribe(b => this.windows = b);
+    this.firestore.list().subscribe(b => {
+      this.windows = b;
+      this.windows.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost('windows', i.price, this.field.markup));
+    });
   }
 
   selectWindow(selectedWindow: Item) {

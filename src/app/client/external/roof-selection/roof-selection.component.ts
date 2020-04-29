@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FieldConfig } from 'src/app/model/fieldConfig';
 import { Item } from 'src/app/model/item';
 import { AddendaStoreService } from 'src/app/services/addenda-store.service';
+import { CostCalculatorService } from 'src/app/services/cost-calculator.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
@@ -11,6 +13,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class RoofSelectionComponent implements OnInit {
   @Input() markup: number;
   @Input() amountRequired: number;
+  field: FieldConfig;
 
   selectedRoofType: string;
   selectedDownpipesType: string;
@@ -45,6 +48,7 @@ export class RoofSelectionComponent implements OnInit {
     private faciaService: FirestoreService<Item>,
     private gutteringService: FirestoreService<Item>,
     private downpipesColourService: FirestoreService<Item>,
+    private costCalculatorService: CostCalculatorService,
   ) { }
 
   ngOnInit(): void {
@@ -53,13 +57,17 @@ export class RoofSelectionComponent implements OnInit {
     this.selectedDownpipesType = this.addenda.downpipesType ?? null;
 
     this.colorService.setCollection('colorbond');
-    this.colorService.list().subscribe(c => this.colours = c);
+    this.colorService.list().subscribe(c => {
+      this.colours = c;
+      this.colours.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost('colours', i.price, this.field.markup));
+    });
 
     this.colorbondService.setCollection('colorbond');
     if (this.addenda.roofColour) {
       this.showAllColours = false;
       this.colorbondService.get(this.addenda.roofColour.id).subscribe(roofColour => {
         this.selectedColour = roofColour;
+        this.selectedColour.totalCost = this.costCalculatorService.getTotalCost('colours', roofColour.price, this.field.markup);
       });
     } else {
       this.showAllColours = true;
@@ -70,21 +78,14 @@ export class RoofSelectionComponent implements OnInit {
       this.showAllTiles = false;
       this.tilesService.get(this.addenda.tiles.id).subscribe(tiles => {
         this.selectedTiles = tiles;
+        this.selectedTiles.totalCost = this.costCalculatorService.getTotalCost('tiles', tiles.price, this.field.markup);
       });
     } else {
       this.showAllTiles = true;
-      this.tilesService.list().subscribe(t => this.tiles = t);
-    }
-
-    this.tilesService.setCollection('tiles');
-    if (this.addenda.tiles) {
-      this.showAllTiles = false;
-      this.tilesService.get(this.addenda.tiles.id).subscribe(tiles => {
-        this.selectedTiles = tiles;
+      this.tilesService.list().subscribe(t => {
+        this.tiles = t;
+        this.tiles.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost('tiles', i.price, this.field.markup));
       });
-    } else {
-      this.showAllTiles = true;
-      this.tilesService.list().subscribe(t => this.tiles = t);
     }
 
     this.gutteringService.setCollection('guttering');
@@ -92,10 +93,14 @@ export class RoofSelectionComponent implements OnInit {
       this.showAllGuttering = false;
       this.gutteringService.get(this.addenda.guttering.id).subscribe(guttering => {
         this.selectedGuttering = guttering;
+        this.selectedGuttering.totalCost = this.costCalculatorService.getTotalCost('guttering', guttering.price, this.field.markup);
       });
     } else {
       this.showAllGuttering = true;
-      this.gutteringService.list().subscribe(g => this.guttering = g);
+      this.gutteringService.list().subscribe(g => {
+        this.guttering = g;
+        this.guttering.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost('guttering', i.price, this.field.markup));
+      });
     }
 
     this.faciaService.setCollection('colorbond');
@@ -103,6 +108,7 @@ export class RoofSelectionComponent implements OnInit {
       this.showAllFacias = false;
       this.faciaService.get(this.addenda.facia.id).subscribe(facia => {
         this.selectedFacia = facia;
+        this.selectedFacia.totalCost = this.costCalculatorService.getTotalCost('facia', facia.price, this.field.markup);
       });
     } else {
       this.showAllFacias = true;
@@ -113,6 +119,8 @@ export class RoofSelectionComponent implements OnInit {
       this.showAllDownpipesColours = false;
       this.downpipesColourService.get(this.addenda.downpipesColour.id).subscribe(downpipesColour => {
         this.selectedDownpipesColour = downpipesColour;
+        this.selectedDownpipesColour.totalCost =
+          this.costCalculatorService.getTotalCost('downpipesColour', downpipesColour.price, this.field.markup);
       });
     } else {
       this.showAllDownpipesColours = true;

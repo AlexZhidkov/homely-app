@@ -73,6 +73,150 @@ export class AddendaStoreService {
                 cost: { Single_Course_Total: null, Two_Course_Total: null }
               }
             ]
+          },
+          {
+            label: 'Render',
+            items: [
+              {
+                label: 'Front Elevation',
+                options: [
+                  { label: 'Brick Finish', cost: null },
+                  { label: 'Painted Sand Render', cost: null },
+                  { label: 'Acrylic Render', cost: null }
+                ],
+                type: 'radio',
+                markup: null,
+                quantity: null,
+                quantityLabel: '',
+              },
+              {
+                label: 'Alfresco Area',
+                options: [
+                  { label: 'Brick Finish', cost: null },
+                  { label: 'Painted Sand Render', cost: null },
+                  { label: 'Acrylic Render', cost: null }
+                ],
+                type: 'radio',
+                markup: null,
+                quantity: null,
+                quantityLabel: '',
+              },
+              {
+                label: 'Entire House',
+                options: [
+                  { label: 'Brick Finish', cost: null },
+                  { label: 'Painted Sand Render', cost: null },
+                  { label: 'Acrylic Render', cost: null }
+                ],
+                type: 'radio',
+                markup: null,
+                quantity: null,
+                quantityLabel: '',
+              }
+            ]
+          },
+          {
+            label: 'Roof',
+            items: [
+              {
+                label: 'Roof',
+                type: 'roof',
+                markup: null,
+                quantity: null,
+                quantityLabel: '',
+              }
+            ]
+          },
+          {
+            label: 'Windows & Doors',
+            items: [
+              {
+                label: 'Windows',
+                source: 'windows',
+                type: 'window',
+                markup: null,
+                quantity: null,
+                quantityLabel: '',
+              }
+            ]
+          },
+          {
+            label: 'Entry Doors',
+            items: [
+              {
+                label: 'Entry Door',
+                source: 'entry_doors',
+                type: 'card',
+                markup: null,
+                quantity: null,
+                quantityLabel: '',
+              }
+            ]
+          },
+          {
+            label: 'Entry Door Furniture',
+            items: [
+              {
+                label: 'Entry Door Furniture',
+                source: 'entry_door_furniture',
+                type: 'card',
+                markup: null,
+                quantity: null,
+                quantityLabel: '',
+              }
+            ]
+          },
+          {
+            label: 'Garage Doors',
+            items: [
+              {
+                label: 'Garage Doors',
+                source: 'garage_doors',
+                type: 'card',
+                markup: null,
+                quantity: null,
+                quantityLabel: '',
+              }
+            ]
+          },
+          {
+            label: 'Paving',
+            items: [
+              {
+                label: 'Paving',
+                source: 'paving',
+                type: 'card',
+                markup: null,
+                quantity: null,
+                quantityLabel: '',
+              }
+            ]
+          },
+          {
+            label: 'Hot Water System',
+            items: [
+              {
+                label: 'Hot Water System',
+                source: 'hot_water_systems',
+                type: 'card',
+                markup: null,
+                quantity: null,
+                quantityLabel: '',
+              }
+            ]
+          },
+          {
+            label: 'Solar System',
+            items: [
+              {
+                label: 'Solar System',
+                source: 'solar_systems',
+                type: 'card',
+                markup: null,
+                quantity: null,
+                quantityLabel: '',
+              }
+            ]
           }
         ],
 

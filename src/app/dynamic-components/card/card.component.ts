@@ -20,9 +20,6 @@ export class CardComponent implements OnInit {
   items: Item[];
   addendaValue: any;
 
-  markup = 0;
-  amountRequired = 1;
-
   constructor(
     private itemService: FirestoreService<Item>,
     private costCalculatorService: CostCalculatorService,
@@ -36,7 +33,7 @@ export class CardComponent implements OnInit {
       c.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field.source, i.price, this.field.markup));
       this.items = c;
     });
-    if (this.addendaValue.id) {
+    if (this.addendaValue && this.addendaValue.id) {
       this.showAllItems = false;
       this.itemService.get(this.addendaValue.id).subscribe(item => {
         this.selectedItem = item;
