@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   }
 
   buyer() {
-    this.router.navigate(['/client/0gPBrQeaWuHtAI3N8hGQ']);
+    this.router.navigate(['/client/demo']);
   }
 
   builder() {

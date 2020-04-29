@@ -29,13 +29,21 @@ export class DynamicSelectionFormComponent implements OnInit {
     this.houseId = this.route.snapshot.paramMap.get('houseId');
     this.collectionId = this.route.snapshot.paramMap.get('collection');
 
-    const houseConfigDoc = this.afs.collection('houses').doc<any>(this.houseId);
-    houseConfigDoc.valueChanges().subscribe(h => {
-      this.jobNumber = h.jobNumber;
-      const houseConfig: any[] = JSON.parse(h.config);
+    if (this.houseId === 'demo') {
+      this.jobNumber = 'DEMO';
+      const houseConfig: any[] = this.addendaStore.getSections();
       this.section = houseConfig.find(c => c.id === this.collectionId);
       this.isLoading = false;
-    });
+    } else {
+
+      const houseConfigDoc = this.afs.collection('houses').doc<any>(this.houseId);
+      houseConfigDoc.valueChanges().subscribe(h => {
+        this.jobNumber = h.jobNumber;
+        const houseConfig: any[] = JSON.parse(h.config);
+        this.section = houseConfig.find(c => c.id === this.collectionId);
+        this.isLoading = false;
+      });
+    }
 
   }
 
