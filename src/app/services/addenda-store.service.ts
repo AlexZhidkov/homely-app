@@ -123,7 +123,21 @@ export class AddendaStoreService {
                 type: 'roof',
                 markup: null,
                 quantity: null,
-                quantityLabel: '',
+                quantityLabel: 'Total square meters',
+              },
+              {
+                label: 'Guttering',
+                type: 'roof',
+                markup: null,
+                quantity: null,
+                quantityLabel: 'Total Linear Meter (Lm)',
+              },
+              {
+                label: 'Downpipes',
+                type: 'roof',
+                markup: null,
+                quantity: null,
+                quantityLabel: 'Total Linear Meter (Lm)',
               }
             ]
           },
@@ -149,7 +163,7 @@ export class AddendaStoreService {
                 type: 'card',
                 markup: null,
                 quantity: null,
-                quantityLabel: '',
+                quantityLabel: 'Number of entry doors',
               }
             ]
           },
@@ -188,7 +202,7 @@ export class AddendaStoreService {
                 type: 'card',
                 markup: null,
                 quantity: null,
-                quantityLabel: '',
+                quantityLabel: 'Total square meters',
               }
             ]
           },

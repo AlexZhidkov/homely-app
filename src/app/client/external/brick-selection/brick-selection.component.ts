@@ -40,7 +40,7 @@ export class BrickSelectionComponent implements OnInit {
     this.firestore.setCollection('bricks', ref => ref.where('course', '==', this.selectedCourse));
     this.firestore.list().subscribe(b => {
       this.bricks = b;
-      this.bricks.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost('bricks', i.price, this.field.markup));
+      this.bricks.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i.price));
     });
 
     this.addendaValue = this.addendaStore.getValue('brickwork', 'brick');
@@ -49,7 +49,7 @@ export class BrickSelectionComponent implements OnInit {
       this.selectedBrickObservable = this.firestore.get(this.addendaValue.id);
       this.selectedBrickObservable.subscribe(brick => {
         this.selectedBrick = brick;
-        this.selectedBrick.totalCost = this.costCalculatorService.getTotalCost('bricks', brick.price, this.field.markup);
+        this.selectedBrick.totalCost = this.costCalculatorService.getTotalCost(this.field, brick.price);
         this.showSelectedBrick = true;
       });
     }

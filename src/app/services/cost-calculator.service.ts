@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FieldConfig } from '../model/fieldConfig';
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +8,13 @@ export class CostCalculatorService {
 
   constructor() { }
 
-  getTotalCost(itemType: string, price: number, markup: number): number {
+  getTotalCost(field: FieldConfig, price: number): number {
     if (isNaN(price)) {
       return null;
     }
-    if (isNaN(markup)) {
-      markup = 0;
-    }
-    const total = price + Math.round((price * markup) / 100);
+    const markup = isNaN(field.markup) ? 0 : field.markup;
+    const quantity = isNaN(field.quantity) ? 1 : field.quantity;
+    const total = quantity * (price + Math.round((price * markup) / 100));
     return total;
   }
 
