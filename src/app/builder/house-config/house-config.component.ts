@@ -36,11 +36,11 @@ export class HouseConfigComponent implements OnInit {
         });
     }
     this.houseDoc = this.afs.collection('houses').doc(this.houseId);
-    this.house = this.houseDoc.valueChanges();
-    this.house.subscribe(b => {
-      this.sections = JSON.parse(b.config);
+    this.houseDoc.get().subscribe(b => {
+      this.sections = JSON.parse(b.data().config);
       this.isLoading = false;
     });
+    this.house = this.houseDoc.valueChanges();
   }
 
   save() {
