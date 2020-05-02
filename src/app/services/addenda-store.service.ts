@@ -70,7 +70,6 @@ export class AddendaStoreService {
                 markup: null,
                 quantity: null,
                 quantityLabel: 'Total square meters',
-                cost: { Single_Course_Total: null, Two_Course_Total: null }
               }
             ]
           },
