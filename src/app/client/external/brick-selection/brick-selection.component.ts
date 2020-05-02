@@ -40,7 +40,7 @@ export class BrickSelectionComponent implements OnInit {
     this.firestore.setCollection('bricks', ref => ref.where('course', '==', this.selectedCourse));
     this.firestore.list().subscribe(b => {
       this.bricks = b;
-      this.bricks.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i.price));
+      this.bricks.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i));
     });
 
     this.addendaValue = this.addendaStore.getValue('brickwork', 'brick');
@@ -49,7 +49,7 @@ export class BrickSelectionComponent implements OnInit {
       this.selectedBrickObservable = this.firestore.get(this.addendaValue.id);
       this.selectedBrickObservable.subscribe(brick => {
         this.selectedBrick = brick;
-        this.selectedBrick.totalCost = this.costCalculatorService.getTotalCost(this.field, brick.price);
+        this.selectedBrick.totalCost = this.costCalculatorService.getTotalCost(this.field, brick);
         this.showSelectedBrick = true;
       });
     }
@@ -65,7 +65,10 @@ export class BrickSelectionComponent implements OnInit {
       this.firestore.setCollection('bricks',
         ref => ref.where('course', '==', this.selectedCourse).where('supplier', '==', this.selectedSupplier));
     }
-    this.firestore.list().subscribe(b => this.bricks = b);
+    this.firestore.list().subscribe(b => {
+      this.bricks = b;
+      this.bricks.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i));
+    });
   }
 
   selectBrick(selectedBrick: Brick) {

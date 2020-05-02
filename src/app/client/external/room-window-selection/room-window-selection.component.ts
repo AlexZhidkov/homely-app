@@ -51,7 +51,7 @@ export class RoomWindowSelectionComponent implements OnInit {
       ref => ref.where('supplier', '==', this.supplier).where('tags', 'array-contains', this.selectedType));
     this.firestore.list().subscribe(b => {
       this.windows = b;
-      this.windows.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i.price));
+      this.windows.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i));
     });
   }
 
