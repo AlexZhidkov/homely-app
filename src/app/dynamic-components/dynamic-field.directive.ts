@@ -1,6 +1,7 @@
 import { ComponentFactoryResolver, Directive, Input, OnInit, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BrickSelectionComponent } from '../client/external/brick-selection/brick-selection.component';
+import { GroundSlabSelectionComponent } from '../client/external/ground-slab-selection/ground-slab-selection.component';
 import { RoofSelectionComponent } from '../client/external/roof-selection/roof-selection.component';
 import { WindowsDoorsSelectionComponent } from '../client/external/windows-doors-selection/windows-doors-selection.component';
 import { FieldConfig } from '../model/fieldConfig';
@@ -30,6 +31,7 @@ export class DynamicFieldDirective implements OnInit {
       radio: RadioComponent,
       select: SelectComponent,
       brickwork: BrickSelectionComponent,
+      slab: GroundSlabSelectionComponent,
       roof: RoofSelectionComponent,
       window: WindowsDoorsSelectionComponent
     };

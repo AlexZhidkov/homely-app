@@ -1,0 +1,14 @@
+<mat-radio-group [(ngModel)]="selectedSlabThickness">
+    <mat-radio-button [value]=85>85 mm</mat-radio-button>
+    <mat-radio-button [value]=100>100 mm</mat-radio-button>
+</mat-radio-group>
+
+<app-selection-card *ngIf="showSelectedSlab" [item]="selectedSlab" [isItemSelected]="true"
+    (selectionChangeRequested)="changeSelection()">
+</app-selection-card>
+
+<div *ngIf="!showSelectedSlab" class="cards">
+    <app-selection-card *ngFor="let slab of slabs" [item]="slab" [isItemSelected]="false"
+        (selectionChanged)="selectSlab($event)">
+    </app-selection-card>
+</div>

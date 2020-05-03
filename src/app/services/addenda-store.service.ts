@@ -55,8 +55,11 @@ export class AddendaStoreService {
               },
               {
                 label: 'Ground Slab',
-                options: [{ label: '85 mm', cost: null }, { label: '100 mm', cost: null }],
-                type: 'radio'
+                source: 'ground_slab',
+                type: 'slab',
+                markup: null,
+                quantity: null,
+                quantityLabel: 'Total concrete cubic meters',
               },
             ]
           },
@@ -235,6 +238,7 @@ export class AddendaStoreService {
 
         collections: [
           'Termite Control',
+          'Ground Slab',
           'Bricks',
           'Colorbond',
           'Roof Tiles',
