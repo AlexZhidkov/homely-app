@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Brick } from 'src/app/model/brick';
 import { FieldConfig } from 'src/app/model/fieldConfig';
@@ -12,8 +12,6 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./brick-selection.component.css']
 })
 export class BrickSelectionComponent implements OnInit {
-  @Input() markup: number;
-  @Input() numberOfBricks: number;
   selectedBrickObservable: Observable<Brick>;
   selectedBrick: Brick;
   bricks: Brick[];
