@@ -45,14 +45,8 @@ export class AddendaStoreService {
         id: 'external', label: 'External',
         steps: [
           {
-            label: 'Concrete',
+            label: 'Slab',
             items: [
-              {
-                label: 'Termite Control',
-                source: 'termite_control',
-                type: 'card',
-                markup: null
-              },
               {
                 label: 'Ground Slab',
                 source: 'ground_slab',
@@ -60,11 +54,22 @@ export class AddendaStoreService {
                 markup: null,
                 quantity: null,
                 quantityLabel: 'Total concrete cubic meters',
+              }
+            ]
+          },
+          {
+            label: 'Termite Control',
+            items: [
+              {
+                label: 'Termite Control',
+                source: 'termite_control',
+                type: 'card',
+                markup: null
               },
             ]
           },
           {
-            label: 'Brickwork',
+            label: 'Bricks',
             items: [
               {
                 label: 'Bricks',
