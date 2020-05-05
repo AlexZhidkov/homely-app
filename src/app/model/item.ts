@@ -6,6 +6,7 @@ export interface Item extends BaseEntity {
     colour?: string;
     description: string;
     supplier: string;
+    extras?: any;
     price: number;
     totalCost?: number;
     value: any;

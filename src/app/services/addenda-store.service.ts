@@ -52,8 +52,28 @@ export class AddendaStoreService {
                 source: 'ground_slab',
                 type: 'slab',
                 markup: null,
-                quantity: null,
-                quantityLabel: 'Total concrete cubic meters',
+                extras: {
+                  houseSize: {
+                    label: 'House Size',
+                    quantity: null,
+                    quantityLabel: 'square meters',
+                  },
+                  housePerimeter: {
+                    label: 'House Perimeter',
+                    quantity: null,
+                    quantityLabel: 'total meters',
+                  },
+                  freestandingWalls: {
+                    label: 'Freestanding Walls',
+                    quantity: null,
+                    quantityLabel: 'total meters',
+                  },
+                  pillarsPerimeter: {
+                    label: 'All Pillars Perimeter',
+                    quantity: null,
+                    quantityLabel: 'total meters',
+                  },
+                }
               }
             ]
           },

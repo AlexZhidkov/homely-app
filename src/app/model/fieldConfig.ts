@@ -12,6 +12,7 @@ export interface FieldConfig extends BaseEntity {
     options?: string[];
     collections?: any;
     type?: string;
+    extras?: any;
     defaultValue?: any;
     value?: any;
     source?: string;

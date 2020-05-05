@@ -23,6 +23,9 @@ export class CostCalculatorService {
       case 'brickwork':
         quantity = this.brickworkQuantity(field, item as Brick);
         break;
+      case 'slab':
+        quantity = this.slabQuantity(field, item);
+        break;
       default:
         quantity = field.quantity;
         break;
@@ -37,5 +40,17 @@ export class CostCalculatorService {
     const numberOfBricks = field.quantity * (brick.course === '1' ? 48.5 : 19.4);
     const packs = Math.ceil(numberOfBricks / (brick.course === '1' ? 264 : 132));
     return packs;
+  }
+
+  slabQuantity(field: FieldConfig, slab: Item): number {
+    const groundSlab = field.extras.houseSize.quantity * slab.extras.selectedSlabThickness / 1000;
+    const perimeter = field.extras.housePerimeter.quantity * 0.3 * (slab.extras.selectedSlabThickness === 100 ? 0.072 : 0.087);
+    const waste = (groundSlab + perimeter) * 0.03;
+    const perimeter2 = field.extras.housePerimeter.quantity * 0.3 * 0.28;
+    const walls = field.extras.freestandingWalls.quantity * 0.3 * 0.28;
+    const pillars = field.extras.pillarsPerimeter.quantity * 0.28;
+    const wastage = (perimeter2 + walls + pillars) * 0.06;
+    const total = groundSlab + perimeter + waste + perimeter2 + walls + pillars + wastage;
+    return total;
   }
 }

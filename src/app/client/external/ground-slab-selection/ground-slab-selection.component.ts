@@ -28,19 +28,32 @@ export class GroundSlabSelectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.firestore.setCollection('ground_slab');
-    this.firestore.list().subscribe(b => {
-      this.slabs = b;
-      this.slabs.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i));
-    });
-
     this.addendaValue = this.addendaStore.getValue('concrete', 'slab');
     if (this.addendaValue.id) {
+      this.selectedSlabThickness = parseInt(this.addendaValue.thickness, 10);
       this.selectedSlabObservable = this.firestore.get(this.addendaValue.id);
       this.selectedSlabObservable.subscribe(slab => {
         this.selectedSlab = slab;
-        this.selectedSlab.totalCost = this.costCalculatorService.getTotalCost(this.field, slab);
-        this.selectedSlabThickness = parseInt(this.addendaValue.thickness, 10);
         this.showSelectedSlab = true;
+        this.recalculateCost(this.selectedSlabThickness);
+      });
+    }
+
+    // ToDo this is executed even if one slab selected.
+    this.firestore.list().subscribe(b => {
+      this.slabs = b;
+      this.recalculateCost(this.selectedSlabThickness);
+    });
+  }
+
+  recalculateCost(thickness: number) {
+    if (this.showSelectedSlab) {
+      this.selectedSlab.extras = { selectedSlabThickness: thickness };
+      this.selectedSlab.totalCost = this.costCalculatorService.getTotalCost(this.field, this.selectedSlab);
+    } else {
+      this.slabs.forEach(i => {
+        i.extras = { selectedSlabThickness: thickness };
+        i.totalCost = this.costCalculatorService.getTotalCost(this.field, i);
       });
     }
   }

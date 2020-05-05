@@ -1,4 +1,4 @@
-<mat-radio-group [(ngModel)]="selectedSlabThickness">
+<mat-radio-group [(ngModel)]="selectedSlabThickness" (change)="recalculateCost($event.value)">
     <mat-radio-button [value]=85>85 mm</mat-radio-button>
     <mat-radio-button [value]=100>100 mm</mat-radio-button>
 </mat-radio-group>

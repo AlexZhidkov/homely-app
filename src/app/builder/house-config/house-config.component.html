@@ -26,18 +26,24 @@
                     <h3>{{item.label}}</h3>
                     <mat-form-field *ngIf="item.hasOwnProperty('markup')">
                         <mat-label>Markup</mat-label>
-                        <textarea matInput placeholder="in %" [(ngModel)]="item.markup"></textarea>
+                        <input type="number" matInput placeholder="in %" [(ngModel)]="item.markup">
                     </mat-form-field>
                     <mat-form-field *ngIf="item.hasOwnProperty('quantity')">
                         <mat-label>Quantity</mat-label>
-                        <textarea matInput [placeholder]="item.quantityLabel" [(ngModel)]="item.quantity"></textarea>
+                        <input type="number" matInput [placeholder]="item.quantityLabel" [(ngModel)]="item.quantity">
                     </mat-form-field>
                     <div *ngFor="let option of item.options">
                         <mat-form-field>
                             <mat-label>{{option.label}}</mat-label>
-                            <textarea matInput placeholder="Total Cost" [(ngModel)]="option.cost"></textarea>
+                            <input type="number" matInput placeholder="Total Cost" [(ngModel)]="option.cost">
                         </mat-form-field>
                     </div>
+
+                    <mat-form-field *ngFor="let extra of item.extras | keyvalue">
+                        <mat-label>{{extra.value.label}}</mat-label>
+                        <input type="number" matInput [placeholder]="extra.value.quantityLabel"
+                            [(ngModel)]="extra.value.quantity">
+                    </mat-form-field>
                 </div>
             </div>
             <mat-action-row>
