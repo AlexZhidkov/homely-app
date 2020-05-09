@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
-import { UserComponent } from 'ngx-auth-firebaseui';
+import { LoggedInGuard, UserComponent } from 'ngx-auth-firebaseui';
 import { DynamicFormDefinitionComponent } from './admin/dynamic-form-definition/dynamic-form-definition.component';
 import { BuilderHomeComponent } from './builder/builder-home/builder-home.component';
 import { HouseConfigComponent } from './builder/house-config/house-config.component';
@@ -21,7 +21,7 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
-    path: '', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin },
+    path: '', canActivate: [LoggedInGuard], data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
       { path: 'profile', component: UserComponent },
       { path: 'admin/sections', component: ClientHomeComponent },
