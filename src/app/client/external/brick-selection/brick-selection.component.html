@@ -1,4 +1,4 @@
-<mat-radio-group (change)="changeFilter()" [(ngModel)]="selectedCourse" [disabled]="!showAllBricks">
+<mat-radio-group (change)="changeCourseFilter($event.value)" [(ngModel)]="selectedCourse" [disabled]="!showAllBricks">
     <mat-radio-button value="1">Single Course</mat-radio-button>
     <mat-radio-button value="2">Two Course</mat-radio-button>
 </mat-radio-group>
@@ -9,7 +9,8 @@
 
 <mat-form-field *ngIf="showAllBricks">
     <mat-label>Producer</mat-label>
-    <mat-select (selectionChange)="changeFilter()" [(ngModel)]="selectedSupplier" [disabled]="!showAllBricks">
+    <mat-select (selectionChange)="changeSupplierFilter($event.value)" [(ngModel)]="selectedSupplier"
+        [disabled]="!showAllBricks">
         <mat-option value="All" selected>All</mat-option>
         <mat-option *ngFor="let supplier of suppliers" [value]="supplier">
             {{supplier}}

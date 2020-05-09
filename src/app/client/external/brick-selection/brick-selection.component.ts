@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { Brick } from 'src/app/model/brick';
 import { FieldConfig } from 'src/app/model/fieldConfig';
 import { AddendaStoreService } from 'src/app/services/addenda-store.service';
@@ -21,6 +22,8 @@ export class BrickSelectionComponent implements OnInit {
   showSelectedBrick = false;
   addendaValue: any;
   field: FieldConfig;
+  courseFilter: BehaviorSubject<string>;
+  supplierFilter: BehaviorSubject<string>;
 
   suppliers: string[] = [
     'Midland Brick',
@@ -35,8 +38,26 @@ export class BrickSelectionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.firestore.setCollection('bricks', ref => ref.where('course', '==', this.selectedCourse));
-    this.firestore.list().subscribe(b => {
+    this.courseFilter = new BehaviorSubject(this.selectedCourse);
+    this.supplierFilter = new BehaviorSubject(this.selectedSupplier);
+
+    const bricksObservable = combineLatest(
+      this.courseFilter,
+      this.supplierFilter
+    ).pipe(
+      switchMap(([course, supplier]) => {
+        this.firestore.setCollection('bricks', ref => {
+          let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          query = query.where('course', '==', course);
+          if (supplier !== 'All') { query = query.where('supplier', '==', supplier) };
+          return query;
+        });
+        return this.firestore.list();
+      }
+      )
+    );
+
+    bricksObservable.subscribe(b => {
       this.bricks = b;
       this.bricks.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i));
     });
@@ -53,20 +74,12 @@ export class BrickSelectionComponent implements OnInit {
     }
   }
 
-  changeFilter() {
-    // ToDo refactor using switchMap
-    // https://github.com/angular/angularfire/blob/master/docs/firestore/querying-collections.md#dynamic-querying
-    if (this.selectedSupplier === 'All') {
-      this.firestore.setCollection('bricks',
-        ref => ref.where('course', '==', this.selectedCourse));
-    } else {
-      this.firestore.setCollection('bricks',
-        ref => ref.where('course', '==', this.selectedCourse).where('supplier', '==', this.selectedSupplier));
-    }
-    this.firestore.list().subscribe(b => {
-      this.bricks = b;
-      this.bricks.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i));
-    });
+  changeCourseFilter(course: string) {
+    this.courseFilter.next(course);
+  }
+
+  changeSupplierFilter(supplier: string) {
+    this.supplierFilter.next(supplier);
   }
 
   selectBrick(selectedBrick: Brick) {
