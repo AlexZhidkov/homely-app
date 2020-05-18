@@ -182,24 +182,24 @@ export class AddendaStoreService {
             ]
           },
           {
-            label: 'Entry Doors',
+            label: 'Entrance Doors',
             items: [
               {
-                label: 'Entry Door',
-                source: 'entry_doors',
+                label: 'Entrance Door',
+                source: 'entrance_doors',
                 type: 'card',
                 markup: null,
                 quantity: null,
-                quantityLabel: 'Number of entry doors',
+                quantityLabel: 'Number of entrance doors',
               }
             ]
           },
           {
-            label: 'Entry Door Furniture',
+            label: 'Entrance Door Furniture',
             items: [
               {
-                label: 'Entry Door Furniture',
-                source: 'entry_door_furniture',
+                label: 'Entrance Door Furniture',
+                source: 'entrance_door_furniture',
                 type: 'card',
                 markup: null,
                 quantity: null,
@@ -269,8 +269,8 @@ export class AddendaStoreService {
           'Roof Tiles',
           'Guttering',
           'Windows',
-          'Entry Doors',
-          'Entry Door Furniture',
+          'Entrance Doors',
+          'Entrance Door Furniture',
           'Garage Doors',
           'Paving',
           'Hot Water Systems',
