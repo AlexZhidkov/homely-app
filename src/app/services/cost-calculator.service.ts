@@ -14,7 +14,7 @@ export class CostCalculatorService {
     if (isNaN(item.price)) {
       return null;
     };
-    if (isNaN(field.quantity)) {
+    if (!field.quantity || isNaN(field.quantity)) {
       field.quantity = 1;
     };
 
