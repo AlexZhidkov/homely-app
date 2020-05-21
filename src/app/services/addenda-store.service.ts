@@ -105,37 +105,9 @@ export class AddendaStoreService {
             label: 'Render',
             items: [
               {
-                label: 'Front Elevation',
-                options: [
-                  { label: 'Brick Finish', cost: null },
-                  { label: 'Painted Sand Render', cost: null },
-                  { label: 'Acrylic Render', cost: null }
-                ],
-                type: 'radio',
-                markup: null,
-                quantity: null,
-                quantityLabel: '',
-              },
-              {
-                label: 'Alfresco Area',
-                options: [
-                  { label: 'Brick Finish', cost: null },
-                  { label: 'Painted Sand Render', cost: null },
-                  { label: 'Acrylic Render', cost: null }
-                ],
-                type: 'radio',
-                markup: null,
-                quantity: null,
-                quantityLabel: '',
-              },
-              {
-                label: 'Entire House',
-                options: [
-                  { label: 'Brick Finish', cost: null },
-                  { label: 'Painted Sand Render', cost: null },
-                  { label: 'Acrylic Render', cost: null }
-                ],
-                type: 'radio',
+                label: 'Termite Control',
+                source: 'termite_control',
+                type: 'render',
                 markup: null,
                 quantity: null,
                 quantityLabel: '',
