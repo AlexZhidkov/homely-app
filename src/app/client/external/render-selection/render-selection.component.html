@@ -1,19 +1,22 @@
-<mat-checkbox>Entire House Rendered</mat-checkbox>
-<mat-radio-group>
-    <mat-radio-button value='1'>Painted Sand Render</mat-radio-button>
-    <mat-radio-button value='2'>Acrylic Texture Coat Render</mat-radio-button>
+<mat-checkbox [(ngModel)]="render.entireHouse" (change)="selectionChanged('entireHouse')">Entire House Rendered
+</mat-checkbox>
+<mat-radio-group [(ngModel)]="render.entireHouse" [disabled]='!render.entireHouse' (change)="save()">
+    <mat-radio-button value='Painted Sand Render'>Painted Sand Render</mat-radio-button>
+    <mat-radio-button value='Acrylic Texture Coat Render'>Acrylic Texture Coat Render</mat-radio-button>
 </mat-radio-group>
 
-<mat-checkbox>Front Elevation Rendered</mat-checkbox>
-<mat-radio-group>
-    <mat-radio-button value='1'>Painted Sand Render</mat-radio-button>
-    <mat-radio-button value='2'>Acrylic Texture Coat Render</mat-radio-button>
+<mat-checkbox [(ngModel)]="render.frontElevation" (change)="selectionChanged('frontElevation')">Front Elevation Rendered
+</mat-checkbox>
+<mat-radio-group [(ngModel)]="render.frontElevation" [disabled]='!render.frontElevation' (change)="save()">
+    <mat-radio-button value='Painted Sand Render'>Painted Sand Render</mat-radio-button>
+    <mat-radio-button value='Acrylic Texture Coat Render'>Acrylic Texture Coat Render</mat-radio-button>
 </mat-radio-group>
 
-<mat-checkbox>Alfresco Rendered</mat-checkbox>
-<mat-radio-group>
-    <mat-radio-button value='1'>Painted Sand Render</mat-radio-button>
-    <mat-radio-button value='2'>Acrylic Texture Coat Render</mat-radio-button>
+<mat-checkbox [(ngModel)]="render.alfresco" (change)="selectionChanged('alfresco')">Alfresco Rendered</mat-checkbox>
+<mat-radio-group [(ngModel)]="render.alfresco" [disabled]='!render.alfresco' (change)="save()">
+    <mat-radio-button value='Painted Sand Render'>Painted Sand Render</mat-radio-button>
+    <mat-radio-button value='Acrylic Texture Coat Render'>Acrylic Texture Coat Render</mat-radio-button>
 </mat-radio-group>
 
-<mat-checkbox>No Render required</mat-checkbox>
+<mat-checkbox [(ngModel)]="render.notRequired" (change)="selectionChanged('notRequired')">No Render required
+</mat-checkbox>
