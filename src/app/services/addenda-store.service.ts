@@ -32,7 +32,7 @@ export class AddendaStoreService {
 
   getValue(step: string, key: string) {
     const addenda = JSON.parse(localStorage.getItem('addenda'));
-    return addenda ? (addenda[step] ? addenda[step][key] : {}) : {};
+    return addenda ? (addenda[step] ? addenda[step][key] : undefined) : undefined;
   }
 
   clear() {
