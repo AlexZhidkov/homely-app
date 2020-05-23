@@ -37,8 +37,8 @@ export class CostCalculatorService {
   }
 
   brickworkQuantity(field: FieldConfig, brick: Brick): number {
-    const numberOfBricks = field.quantity * (brick.course === '1' ? 48.5 : 19.4);
-    const packs = Math.ceil(numberOfBricks / (brick.course === '1' ? 264 : 132));
+    const numberOfBricks = field.quantity * brick.bricksPerSqm;
+    const packs = Math.ceil(numberOfBricks / brick.bricksPerPack);
     return packs;
   }
 

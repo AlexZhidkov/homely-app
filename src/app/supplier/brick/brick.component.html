@@ -13,7 +13,7 @@
                 (ngModelChange)="brickDoc.update({imageUrl: $event})">
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="number" name="price" placeholder="Price per brick in cents"
+            <input matInput type="number" name="price" placeholder="Price per pack in cents"
                 [ngModel]="(brick | async)?.price" (ngModelChange)="brickDoc.update({price: $event})">
         </mat-form-field>
         <mat-form-field>
@@ -24,6 +24,14 @@
             <mat-radio-button value="1">Single Course</mat-radio-button>
             <mat-radio-button value="2">Two Course</mat-radio-button>
         </mat-radio-group>
+        <mat-form-field>
+            <input matInput type="number" name="bricksPerSqm" placeholder="Number of bricks per sqm"
+                [ngModel]="(brick | async)?.bricksPerSqm" (ngModelChange)="brickDoc.update({bricksPerSqm: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" name="bricksPerPack" placeholder="Number of bricks per pack"
+                [ngModel]="(brick | async)?.bricksPerPack" (ngModelChange)="brickDoc.update({bricksPerPack: $event})">
+        </mat-form-field>
         <mat-form-field>
             <mat-label>Producer</mat-label>
             <mat-select [ngModel]="(brick | async)?.supplier"
