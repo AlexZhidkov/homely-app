@@ -1,22 +1,46 @@
-<mat-checkbox [(ngModel)]="render.entireHouse" (change)="selectionChanged('entireHouse')">Entire House Rendered
+<mat-checkbox [(ngModel)]="render.entireHouse.selection" (change)="selectionChanged('entireHouse')">
+    Entire House Rendered
 </mat-checkbox>
-<mat-radio-group [(ngModel)]="render.entireHouse" [disabled]='!render.entireHouse' (change)="save()">
-    <mat-radio-button value='Painted Sand Render'>Painted Sand Render</mat-radio-button>
-    <mat-radio-button value='Acrylic Texture Coat Render'>Acrylic Texture Coat Render</mat-radio-button>
+<mat-radio-group [(ngModel)]="render.entireHouse.selection" [disabled]='!render.entireHouse.selection'
+    (change)="save()">
+    <mat-radio-button value='Painted Sand Render'>
+        Painted Sand Render {{addendaStore.formattedPrice(render.entireHouse.paintedSandCost)}}
+    </mat-radio-button>
+    <mat-radio-button value='Acrylic Texture Coat Render'>
+        Acrylic Texture Coat Render {{addendaStore.formattedPrice(render.entireHouse.acrylicTextureCoatCost)}}
+    </mat-radio-button>
 </mat-radio-group>
 
-<mat-checkbox [(ngModel)]="render.frontElevation" (change)="selectionChanged('frontElevation')">Front Elevation Rendered
+<mat-checkbox [(ngModel)]="render.frontElevation.selection" (change)="selectionChanged('frontElevation')">
+    Front Elevation Rendered
 </mat-checkbox>
-<mat-radio-group [(ngModel)]="render.frontElevation" [disabled]='!render.frontElevation' (change)="save()">
-    <mat-radio-button value='Painted Sand Render'>Painted Sand Render</mat-radio-button>
-    <mat-radio-button value='Acrylic Texture Coat Render'>Acrylic Texture Coat Render</mat-radio-button>
+<mat-radio-group [(ngModel)]="render.frontElevation.selection" [disabled]='!render.frontElevation.selection'
+    (change)="save()">
+    <mat-radio-button value='Painted Sand Render'>
+        Painted Sand Render {{addendaStore.formattedPrice(render.frontElevation.paintedSandCost)}}
+    </mat-radio-button>
+    <mat-radio-button value='Acrylic Texture Coat Render'>
+        Acrylic Texture Coat Render {{addendaStore.formattedPrice(render.frontElevation.acrylicTextureCoatCost)}}
+    </mat-radio-button>
 </mat-radio-group>
 
-<mat-checkbox [(ngModel)]="render.alfresco" (change)="selectionChanged('alfresco')">Alfresco Rendered</mat-checkbox>
-<mat-radio-group [(ngModel)]="render.alfresco" [disabled]='!render.alfresco' (change)="save()">
-    <mat-radio-button value='Painted Sand Render'>Painted Sand Render</mat-radio-button>
-    <mat-radio-button value='Acrylic Texture Coat Render'>Acrylic Texture Coat Render</mat-radio-button>
+<mat-checkbox [(ngModel)]="render.alfrescoArea.selection" (change)="selectionChanged('alfrescoArea')">
+    Alfresco Area Rendered
+</mat-checkbox>
+<mat-radio-group [(ngModel)]="render.alfrescoArea.selection" [disabled]='!render.alfrescoArea.selection'
+    (change)="save()">
+    <mat-radio-button value='Painted Sand Render'>
+        Painted Sand Render {{addendaStore.formattedPrice(render.alfrescoArea.paintedSandCost)}}
+    </mat-radio-button>
+    <mat-radio-button value='Acrylic Texture Coat Render'>
+        Acrylic Texture Coat Render {{addendaStore.formattedPrice(render.alfrescoArea.acrylicTextureCoatCost)}}
+    </mat-radio-button>
 </mat-radio-group>
 
-<mat-checkbox [(ngModel)]="render.notRequired" (change)="selectionChanged('notRequired')">No Render required
+<mat-checkbox [(ngModel)]="render.notRequired" (change)="selectionChanged('notRequired')">
+    No Render required
 </mat-checkbox>
+
+<p>
+    Cost: {{addendaStore.formattedPrice(totalCost)}}
+</p>

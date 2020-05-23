@@ -39,6 +39,11 @@ export class AddendaStoreService {
     localStorage.setItem('addenda', JSON.stringify({}));
   }
 
+  formattedPrice(price: number): string {
+    const formattedPrice = `$${(price / 100).toFixed(2)}`;
+    return formattedPrice;
+  }
+
   getSections(): Section[] {
     return [
       {
@@ -105,12 +110,51 @@ export class AddendaStoreService {
             label: 'Render',
             items: [
               {
-                label: 'Termite Control',
-                source: 'termite_control',
+                label: 'Render',
                 type: 'render',
                 markup: null,
-                quantity: null,
-                quantityLabel: '',
+                extras: {
+                  frontElevation: {
+                    label: 'Front Elevation',
+                    quantity: null,
+                    quantityLabel: 'square meters',
+                  },
+                  alfrescoArea: {
+                    label: 'Alfresco Area',
+                    quantity: null,
+                    quantityLabel: 'square meters',
+                  },
+                  entireHouse: {
+                    label: 'Entire House',
+                    quantity: null,
+                    quantityLabel: 'square meters',
+                  },
+                  costPaintedSand: {
+                    label: 'Painted Sand Render Plaster cost',
+                    quantity: null,
+                    quantityLabel: 'cents per sqm',
+                  },
+                  costAcrylicTextureCoat: {
+                    label: 'Acrylic Texture Coat Plaster cost',
+                    quantity: null,
+                    quantityLabel: 'cents per sqm',
+                  },
+                  supplierPricePaintedSand: {
+                    label: 'Painted Sand Render Supplier price',
+                    quantity: null,
+                    quantityLabel: 'cents per sqm',
+                  },
+                  supplierPriceAcrylicTextureCoat: {
+                    label: 'Acrylic Texture Coat Supplier price',
+                    quantity: null,
+                    quantityLabel: 'cents per sqm',
+                  },
+                  supplierPriceOneOffFee: {
+                    label: 'Supplier one-off fee',
+                    quantity: null,
+                    quantityLabel: 'in cents',
+                  },
+                }
               }
             ]
           },
