@@ -60,6 +60,7 @@ import { BrickComponent } from './supplier/brick/brick.component';
 import { ColorbondComponent } from './supplier/colorbond/colorbond.component';
 import { ItemComponent } from './supplier/item/item.component';
 import { ItemsComponent } from './supplier/items/items.component';
+import { PavingComponent } from './supplier/paving/paving.component';
 import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
 
 @NgModule({
@@ -90,7 +91,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     SelectComponent,
     HouseConfigComponent,
     GroundSlabSelectionComponent,
-    RenderSelectionComponent
+    RenderSelectionComponent,
+    PavingComponent
   ],
   imports: [
     BrowserModule,

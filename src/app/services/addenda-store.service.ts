@@ -240,7 +240,15 @@ export class AddendaStoreService {
             label: 'Paving',
             items: [
               {
-                label: 'Paving',
+                label: 'Driveway + Porch',
+                source: 'paving',
+                type: 'card',
+                markup: null,
+                quantity: null,
+                quantityLabel: 'Total square meters',
+              },
+              {
+                label: 'Alfresco',
                 source: 'paving',
                 type: 'card',
                 markup: null,

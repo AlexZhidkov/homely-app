@@ -13,6 +13,7 @@ import { BrickComponent } from './supplier/brick/brick.component';
 import { ColorbondComponent } from './supplier/colorbond/colorbond.component';
 import { ItemComponent } from './supplier/item/item.component';
 import { ItemsComponent } from './supplier/items/items.component';
+import { PavingComponent } from './supplier/paving/paving.component';
 import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
@@ -34,6 +35,8 @@ const routes: Routes = [
       { path: 'supplier/items/:collection', component: ItemsComponent },
       { path: 'supplier/item/Bricks', component: BrickComponent },
       { path: 'supplier/item/Bricks/:id', component: BrickComponent },
+      { path: 'supplier/item/Paving', component: PavingComponent },
+      { path: 'supplier/item/Paving/:id', component: PavingComponent },
       { path: 'supplier/item/Colorbond', component: ColorbondComponent },
       { path: 'supplier/item/Colorbond/:id', component: ColorbondComponent },
       { path: 'supplier/item/:collection', component: ItemComponent },

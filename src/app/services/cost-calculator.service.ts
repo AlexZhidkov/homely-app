@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Brick } from '../model/brick';
 import { FieldConfig } from '../model/fieldConfig';
 import { Item } from '../model/item';
+import { PackedItem } from '../model/packed-item';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,14 @@ export class CostCalculatorService {
     };
 
     let quantity = 1;
-    switch (field.type) {
-      case 'brickwork':
+    switch (field.source) {
+      case 'bricks':
         quantity = this.brickworkQuantity(field, item as Brick);
         break;
-      case 'slab':
+      case 'paving':
+        quantity = this.packedItemQuantity(field, item as PackedItem);
+        break;
+      case 'ground_slab':
         quantity = this.slabQuantity(field, item);
         break;
       default:
@@ -39,6 +43,12 @@ export class CostCalculatorService {
   brickworkQuantity(field: FieldConfig, brick: Brick): number {
     const numberOfBricks = field.quantity * brick.bricksPerSqm;
     const packs = Math.ceil(numberOfBricks / brick.bricksPerPack);
+    return packs;
+  }
+
+  packedItemQuantity(field: FieldConfig, item: PackedItem): number {
+    const numberOfItems = field.quantity * item.itemsPerSqm;
+    const packs = Math.ceil(numberOfItems / item.itemsPerPack);
     return packs;
   }
 

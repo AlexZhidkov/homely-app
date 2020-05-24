@@ -1,0 +1,57 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Paving</mat-card-title>
+    </mat-card-header>
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+    <mat-card-content *ngIf="!isLoading" class="form-container">
+        <mat-form-field>
+            <input matInput type="text" name="label" placeholder="Title" [ngModel]="(paving | async)?.label"
+                (ngModelChange)="pavingDoc.update({label: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" name="imageUrl" placeholder="Image URL" [ngModel]="(paving | async)?.imageUrl"
+                (ngModelChange)="pavingDoc.update({imageUrl: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" name="price" placeholder="Price per pack in cents"
+                [ngModel]="(paving | async)?.price" (ngModelChange)="pavingDoc.update({price: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" name="value" placeholder="Identifier" [ngModel]="(paving | async)?.value"
+                (ngModelChange)="pavingDoc.update({value: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" name="itemsPerSqm" placeholder="Number of pavings per sqm"
+                [ngModel]="(paving | async)?.itemsPerSqm" (ngModelChange)="pavingDoc.update({itemsPerSqm: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" name="itemsPerPack" placeholder="Number of pavings per pack"
+                [ngModel]="(paving | async)?.itemsPerPack" (ngModelChange)="pavingDoc.update({itemsPerPack: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Producer</mat-label>
+            <input matInput type="text" name="value" placeholder="Identifier" [ngModel]="(paving | async)?.supplier"
+                (ngModelChange)="pavingDoc.update({supplier: $event})">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput rows="5" name="description" placeholder="Description"
+                [ngModel]="(paving | async)?.description" (ngModelChange)="pavingDoc.update({description: $event})">
+                </textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-chip-list #chipList>
+                <mat-chip *ngFor="let tag of tagList" [removable]="removable" (removed)="removeTag(tag)">
+                    {{tag}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="New tag..." [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addTag($event)">
+            </mat-chip-list>
+        </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button routerLink="/supplier/items/Paving">Done</button>
+    </mat-card-actions>
+</mat-card>

@@ -12,7 +12,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  step: string;
+  step: any;
   field: FieldConfig;
   group: FormGroup;
   showAllItems: boolean;
@@ -27,7 +27,7 @@ export class CardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.addendaValue = this.addendaStore.getValue(this.step, this.field.source);
+    this.addendaValue = this.addendaStore.getValue(this.step.label, this.field.label);
     this.itemService.setCollection(this.field.source);
     this.itemService.list().subscribe(c => {
       c.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i));
@@ -47,7 +47,7 @@ export class CardComponent implements OnInit {
 
   selectItem(selectedItem: Item) {
     this.selectedItem = selectedItem;
-    this.addendaStore.set(this.step, this.field.source, { id: selectedItem.id, value: selectedItem.value });
+    this.addendaStore.set(this.step.label, this.field.label, { id: selectedItem.id, value: selectedItem.value });
     this.showAllItems = false;
   }
 
