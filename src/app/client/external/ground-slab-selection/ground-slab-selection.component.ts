@@ -29,7 +29,7 @@ export class GroundSlabSelectionComponent implements OnInit {
   ngOnInit(): void {
     this.firestore.setCollection('ground_slab');
     this.addendaValue = this.addendaStore.getValue('concrete', 'slab');
-    if (this.addendaValue.id) {
+    if (this.addendaValue) {
       this.selectedSlabThickness = parseInt(this.addendaValue.thickness, 10);
       this.selectedSlabObservable = this.firestore.get(this.addendaValue.id);
       this.selectedSlabObservable.subscribe(slab => {

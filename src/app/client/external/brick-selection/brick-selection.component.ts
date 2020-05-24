@@ -63,7 +63,7 @@ export class BrickSelectionComponent implements OnInit {
     });
 
     this.addendaValue = this.addendaStore.getValue('brickwork', 'brick');
-    if (this.addendaValue.id) {
+    if (this.addendaValue) {
       this.showAllBricks = false;
       this.selectedBrickObservable = this.firestore.get(this.addendaValue.id);
       this.selectedBrickObservable.subscribe(brick => {
