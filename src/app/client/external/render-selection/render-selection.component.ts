@@ -38,6 +38,7 @@ export class RenderSelectionComponent implements OnInit {
         notRequired: true
       };
     }
+    this.field.markup = isNaN(this.field.markup) ? 0 : this.field.markup;
     this.calculateCosts();
     this.updateTotalCost();
   }
@@ -46,26 +47,36 @@ export class RenderSelectionComponent implements OnInit {
     this.render.entireHouse.paintedSandCost = this.field.extras.entireHouse.quantity *
       (this.field.extras.costPaintedSand.quantity + this.field.extras.supplierPricePaintedSand.quantity) +
       this.field.extras.supplierPriceOneOffFee.quantity;
+    this.render.entireHouse.paintedSandCost = this.CostWithMarkup(this.render.entireHouse.paintedSandCost);
 
     this.render.entireHouse.acrylicTextureCoatCost = this.field.extras.entireHouse.quantity *
       (this.field.extras.costAcrylicTextureCoat.quantity + this.field.extras.supplierPriceAcrylicTextureCoat.quantity) +
       this.field.extras.supplierPriceOneOffFee.quantity;
+    this.render.entireHouse.acrylicTextureCoatCost = this.CostWithMarkup(this.render.entireHouse.acrylicTextureCoatCost);
 
     this.render.frontElevation.paintedSandCost = this.field.extras.frontElevation.quantity *
       (this.field.extras.costPaintedSand.quantity + this.field.extras.supplierPricePaintedSand.quantity) +
       this.field.extras.supplierPriceOneOffFee.quantity;
+    this.render.frontElevation.paintedSandCost = this.CostWithMarkup(this.render.frontElevation.paintedSandCost);
 
     this.render.frontElevation.acrylicTextureCoatCost = this.field.extras.frontElevation.quantity *
       (this.field.extras.costAcrylicTextureCoat.quantity + this.field.extras.supplierPriceAcrylicTextureCoat.quantity) +
       this.field.extras.supplierPriceOneOffFee.quantity;
+    this.render.frontElevation.acrylicTextureCoatCost = this.CostWithMarkup(this.render.frontElevation.acrylicTextureCoatCost);
 
     this.render.alfrescoArea.paintedSandCost = this.field.extras.alfrescoArea.quantity *
       (this.field.extras.costPaintedSand.quantity + this.field.extras.supplierPricePaintedSand.quantity) +
       this.field.extras.supplierPriceOneOffFee.quantity;
+    this.render.alfrescoArea.paintedSandCost = this.CostWithMarkup(this.render.alfrescoArea.paintedSandCost);
 
     this.render.alfrescoArea.acrylicTextureCoatCost = this.field.extras.alfrescoArea.quantity *
       (this.field.extras.costAcrylicTextureCoat.quantity + this.field.extras.supplierPriceAcrylicTextureCoat.quantity) +
       this.field.extras.supplierPriceOneOffFee.quantity;
+    this.render.alfrescoArea.acrylicTextureCoatCost = this.CostWithMarkup(this.render.alfrescoArea.acrylicTextureCoatCost);
+  }
+
+  CostWithMarkup(cost: number): number {
+    return cost + Math.round((cost * this.field.markup) / 100);
   }
 
   selectionChanged(selection: string) {
