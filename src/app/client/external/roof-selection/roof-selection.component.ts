@@ -73,7 +73,7 @@ export class RoofSelectionComponent implements OnInit {
       this.showAllColours = true;
     }
 
-    this.tilesService.setCollection('tiles');
+    this.tilesService.setCollection('roof_tiles');
     if (this.addenda.tiles) {
       this.showAllTiles = false;
       this.tilesService.get(this.addenda.tiles.id).subscribe(tiles => {
