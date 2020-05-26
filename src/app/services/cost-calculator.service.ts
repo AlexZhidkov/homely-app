@@ -20,21 +20,28 @@ export class CostCalculatorService {
     };
 
     let quantity = 1;
+    let cost = 0;
     switch (field.source) {
-      case 'bricks':
-        quantity = this.brickworkQuantity(field, item as Brick);
-        break;
-      case 'paving':
-        quantity = this.packedItemQuantity(field, item as PackedItem);
-        break;
-      case 'ground_slab':
-        quantity = this.slabQuantity(field, item);
+      case 'guttering':
+        cost = field.quantity * item.price + field.quantity * field.extras.addOnPrice.quantity;
         break;
       default:
-        quantity = field.quantity;
-        break;
+        switch (field.source) {
+          case 'bricks':
+            quantity = this.brickworkQuantity(field, item as Brick);
+            break;
+          case 'paving':
+            quantity = this.packedItemQuantity(field, item as PackedItem);
+            break;
+          case 'ground_slab':
+            quantity = this.slabQuantity(field, item);
+            break;
+          default:
+            quantity = field.quantity;
+            break;
+        }
+        cost = quantity * item.price;
     }
-    const cost = quantity * item.price;
     const markup = isNaN(field.markup) ? 0 : field.markup;
     const total = cost + Math.round((cost * markup) / 100);
     return total;

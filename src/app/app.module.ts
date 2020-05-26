@@ -43,6 +43,7 @@ import { HouseConfigComponent } from './builder/house-config/house-config.compon
 import { ClientHomeComponent } from './client/client-home/client-home.component';
 import { DynamicSelectionFormComponent } from './client/dynamic-selection-form/dynamic-selection-form.component';
 import { BrickSelectionComponent } from './client/external/brick-selection/brick-selection.component';
+import { DownpipesSelectionComponent } from './client/external/downpipes-selection/downpipes-selection.component';
 import { GroundSlabSelectionComponent } from './client/external/ground-slab-selection/ground-slab-selection.component';
 import { RenderSelectionComponent } from './client/external/render-selection/render-selection.component';
 import { RoofSelectionComponent } from './client/external/roof-selection/roof-selection.component';
@@ -92,7 +93,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     HouseConfigComponent,
     GroundSlabSelectionComponent,
     RenderSelectionComponent,
-    PavingComponent
+    PavingComponent,
+    DownpipesSelectionComponent
   ],
   imports: [
     BrowserModule,

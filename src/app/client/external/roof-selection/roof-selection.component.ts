@@ -16,7 +16,6 @@ export class RoofSelectionComponent implements OnInit {
   field: FieldConfig;
 
   selectedRoofType: string;
-  selectedDownpipesType: string;
 
   showAllColours: boolean;
   selectedColour: Item;
@@ -30,14 +29,6 @@ export class RoofSelectionComponent implements OnInit {
   selectedFacia: Item;
   facias: Item[];
 
-  showAllGuttering: boolean;
-  selectedGuttering: Item;
-  guttering: Item[];
-
-  showAllDownpipesColours: boolean;
-  selectedDownpipesColour: Item;
-  downpipesColours: Item[];
-
   addenda: any;
 
   constructor(
@@ -46,15 +37,12 @@ export class RoofSelectionComponent implements OnInit {
     private colorbondService: FirestoreService<Item>,
     private tilesService: FirestoreService<Item>,
     private faciaService: FirestoreService<Item>,
-    private gutteringService: FirestoreService<Item>,
-    private downpipesColourService: FirestoreService<Item>,
     private costCalculatorService: CostCalculatorService,
   ) { }
 
   ngOnInit(): void {
     this.addenda = this.addendaStore.getStep('roof');
     this.selectedRoofType = this.addenda.roofType ?? null;
-    this.selectedDownpipesType = this.addenda.downpipesType ?? null;
 
     this.colorService.setCollection('colorbond');
     this.colorService.list().subscribe(c => {
@@ -88,21 +76,6 @@ export class RoofSelectionComponent implements OnInit {
       });
     }
 
-    this.gutteringService.setCollection('guttering');
-    if (this.addenda.guttering) {
-      this.showAllGuttering = false;
-      this.gutteringService.get(this.addenda.guttering.id).subscribe(guttering => {
-        this.selectedGuttering = guttering;
-        this.selectedGuttering.totalCost = this.costCalculatorService.getTotalCost(this.field, guttering);
-      });
-    } else {
-      this.showAllGuttering = true;
-      this.gutteringService.list().subscribe(g => {
-        this.guttering = g;
-        this.guttering.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i));
-      });
-    }
-
     this.faciaService.setCollection('colorbond');
     if (this.addenda.facia) {
       this.showAllFacias = false;
@@ -113,28 +86,11 @@ export class RoofSelectionComponent implements OnInit {
     } else {
       this.showAllFacias = true;
     }
-
-    this.downpipesColourService.setCollection('colorbond');
-    if (this.addenda.downpipesColour) {
-      this.showAllDownpipesColours = false;
-      this.downpipesColourService.get(this.addenda.downpipesColour.id).subscribe(downpipesColour => {
-        this.selectedDownpipesColour = downpipesColour;
-        this.selectedDownpipesColour.totalCost =
-          this.costCalculatorService.getTotalCost(this.field, downpipesColour);
-      });
-    } else {
-      this.showAllDownpipesColours = true;
-    }
   }
 
   selectRoofType(type: string) {
     this.selectedRoofType = type;
     this.addendaStore.set('roof', 'roofType', type);
-  }
-
-  selectDownpipesType(type: string) {
-    this.selectedDownpipesType = type;
-    this.addendaStore.set('roof', 'downpipesType', type);
   }
 
   selectColour(selectedColour: Item) {
@@ -153,18 +109,6 @@ export class RoofSelectionComponent implements OnInit {
     this.selectedFacia = selectedFacia;
     this.addendaStore.set('roof', 'facia', { id: selectedFacia.id, value: selectedFacia.value });
     this.showAllFacias = false;
-  }
-
-  selectGuttering(selectedGuttering: Item) {
-    this.selectedGuttering = selectedGuttering;
-    this.addendaStore.set('roof', 'guttering', { id: selectedGuttering.id, value: selectedGuttering.value });
-    this.showAllGuttering = false;
-  }
-
-  selectDownpipesColour(selectedDownpipesColour: Item) {
-    this.selectedDownpipesColour = selectedDownpipesColour;
-    this.addendaStore.set('roof', 'downpipesColour', { id: selectedDownpipesColour.id, value: selectedDownpipesColour.value });
-    this.showAllDownpipesColours = false;
   }
 
 }

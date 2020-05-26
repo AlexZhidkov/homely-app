@@ -170,14 +170,22 @@ export class AddendaStoreService {
               },
               {
                 label: 'Guttering',
-                type: 'roof',
+                type: 'card',
+                source: 'guttering',
                 markup: null,
                 quantity: null,
                 quantityLabel: 'Total Linear Meter (Lm)',
+                extras: {
+                  addOnPrice: {
+                    label: 'Gutter Profile Per linear meter add on price',
+                    quantity: null,
+                    quantityLabel: 'in cents',
+                  },
+                },
               },
               {
                 label: 'Downpipes',
-                type: 'roof',
+                type: 'downpipes',
                 markup: null,
                 quantity: null,
                 quantityLabel: 'Total Linear Meter (Lm)',
