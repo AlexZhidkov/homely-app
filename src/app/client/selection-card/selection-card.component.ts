@@ -26,6 +26,9 @@ export class SelectionCardComponent implements OnInit {
   }
 
   getFormattedTotal(totalCost: number): string {
+    if (isNaN(totalCost) || totalCost <= 0) {
+      return '';
+    }
     const formattedPrice = `$${(totalCost / 100).toFixed(2)}`;
     return formattedPrice;
   }
