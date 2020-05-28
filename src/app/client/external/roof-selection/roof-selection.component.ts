@@ -25,10 +25,6 @@ export class RoofSelectionComponent implements OnInit {
   selectedTiles: Item;
   tiles: Item[];
 
-  showAllFacias: boolean;
-  selectedFacia: Item;
-  facias: Item[];
-
   addenda: any;
 
   constructor(
@@ -36,7 +32,6 @@ export class RoofSelectionComponent implements OnInit {
     private colorService: FirestoreService<Item>,
     private colorbondService: FirestoreService<Item>,
     private tilesService: FirestoreService<Item>,
-    private faciaService: FirestoreService<Item>,
     private costCalculatorService: CostCalculatorService,
   ) { }
 
@@ -75,17 +70,6 @@ export class RoofSelectionComponent implements OnInit {
         this.tiles.forEach(i => i.totalCost = this.costCalculatorService.getTotalCost(this.field, i));
       });
     }
-
-    this.faciaService.setCollection('colorbond');
-    if (this.addenda.facia) {
-      this.showAllFacias = false;
-      this.faciaService.get(this.addenda.facia.id).subscribe(facia => {
-        this.selectedFacia = facia;
-        this.selectedFacia.totalCost = this.costCalculatorService.getTotalCost(this.field, facia);
-      });
-    } else {
-      this.showAllFacias = true;
-    }
   }
 
   selectRoofType(type: string) {
@@ -104,11 +88,4 @@ export class RoofSelectionComponent implements OnInit {
     this.addendaStore.set('roof', 'tiles', { id: selectedTiles.id, value: selectedTiles.value });
     this.showAllTiles = false;
   }
-
-  selectFacia(selectedFacia: Item) {
-    this.selectedFacia = selectedFacia;
-    this.addendaStore.set('roof', 'facia', { id: selectedFacia.id, value: selectedFacia.value });
-    this.showAllFacias = false;
-  }
-
 }

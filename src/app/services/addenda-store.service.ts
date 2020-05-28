@@ -169,6 +169,11 @@ export class AddendaStoreService {
                 quantityLabel: 'Total square meters',
               },
               {
+                label: 'Facia Colour',
+                source: 'colorbond',
+                type: 'card',
+              },
+              {
                 label: 'Guttering',
                 type: 'card',
                 source: 'guttering',

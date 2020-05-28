@@ -21,13 +21,3 @@
         (selectionChanged)="selectTiles($event)">
     </app-selection-card>
 </div>
-
-<label id="facia-colour-label">Facia Colour</label>
-<app-selection-card *ngIf="!showAllFacias" [item]="selectedFacia" [isItemSelected]="true"
-    (selectionChangeRequested)="showAllFacias = true">
-</app-selection-card>
-<div *ngIf="showAllFacias" class="cards">
-    <app-selection-card *ngFor="let facia of colours" [item]="facia" [isItemSelected]="false"
-        (selectionChanged)="selectFacia($event)">
-    </app-selection-card>
-</div>

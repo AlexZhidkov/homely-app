@@ -25,6 +25,9 @@ export class CostCalculatorService {
       case 'guttering':
         cost = field.quantity * item.price + field.quantity * field.extras.addOnPrice.quantity;
         break;
+      case 'colorbond':
+        cost = 0;
+        break;
       default:
         switch (field.source) {
           case 'bricks':
