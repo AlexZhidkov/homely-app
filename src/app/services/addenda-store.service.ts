@@ -88,7 +88,7 @@ export class AddendaStoreService {
               {
                 label: 'Termite Control',
                 source: 'termite_control',
-                type: 'card',
+                type: 'termiteControl',
                 markup: null
               },
             ]

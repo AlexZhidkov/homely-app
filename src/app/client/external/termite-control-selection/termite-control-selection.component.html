@@ -1,0 +1,20 @@
+<label id="level-one-group-label">Termite Control</label>
+<mat-radio-group class="level-one-radio-group" aria-labelledby="level-one-group-label" [(ngModel)]="controlLevelOne"
+    (change)="select($event.value)">
+    <mat-radio-button value="Chemical Pre-Treatment">Chemical Pre-Treatment</mat-radio-button>
+    <mat-radio-button value="Reticulation Termite Barrier System">Reticulation Termite Barrier System</mat-radio-button>
+    <mat-radio-button value="Physical Barrier System">Physical Barrier System</mat-radio-button>
+</mat-radio-group>
+
+<mat-radio-group *ngIf="controlLevelOne==='Physical Barrier System'" class="level-one-radio-group"
+    [(ngModel)]="controlLevelTwo" (change)="select($event.value)">
+    <mat-radio-button value="Stainless Steel Mesh Termite Barrier">Stainless Steel Mesh Termite Barrier
+    </mat-radio-button>
+    <mat-radio-button value="Homeguard Blue">Homeguard Blue</mat-radio-button>
+    <mat-radio-button value="Homeguard Damp Proof Course (DPC)">Homeguard Damp Proof Course (DPC)</mat-radio-button>
+    <mat-radio-button value="Homeguard Termite & Moisture Barrier (TMB)">Homeguard Termite & Moisture Barrier (TMB)
+    </mat-radio-button>
+    <mat-radio-button value="Kordon Termite Barrier (TB)">Kordon Termite Barrier (TB)</mat-radio-button>
+    <mat-radio-button value="Kordon Termite Moisture Barrier (TMB)">Kordon Termite Moisture Barrier (TMB)
+    </mat-radio-button>
+</mat-radio-group>

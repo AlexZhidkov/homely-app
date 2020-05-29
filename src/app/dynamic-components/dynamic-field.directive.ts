@@ -5,6 +5,7 @@ import { DownpipesSelectionComponent } from '../client/external/downpipes-select
 import { GroundSlabSelectionComponent } from '../client/external/ground-slab-selection/ground-slab-selection.component';
 import { RenderSelectionComponent } from '../client/external/render-selection/render-selection.component';
 import { RoofSelectionComponent } from '../client/external/roof-selection/roof-selection.component';
+import { TermiteControlSelectionComponent } from '../client/external/termite-control-selection/termite-control-selection.component';
 import { WindowsDoorsSelectionComponent } from '../client/external/windows-doors-selection/windows-doors-selection.component';
 import { FieldConfig } from '../model/fieldConfig';
 import { CardComponent } from './card/card.component';
@@ -34,6 +35,7 @@ export class DynamicFieldDirective implements OnInit {
       select: SelectComponent,
       brickwork: BrickSelectionComponent,
       slab: GroundSlabSelectionComponent,
+      termiteControl: TermiteControlSelectionComponent,
       roof: RoofSelectionComponent,
       downpipes: DownpipesSelectionComponent,
       render: RenderSelectionComponent,

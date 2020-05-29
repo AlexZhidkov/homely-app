@@ -48,6 +48,7 @@ import { GroundSlabSelectionComponent } from './client/external/ground-slab-sele
 import { RenderSelectionComponent } from './client/external/render-selection/render-selection.component';
 import { RoofSelectionComponent } from './client/external/roof-selection/roof-selection.component';
 import { RoomWindowSelectionComponent } from './client/external/room-window-selection/room-window-selection.component';
+import { TermiteControlSelectionComponent } from './client/external/termite-control-selection/termite-control-selection.component';
 import { WindowsDoorsSelectionComponent } from './client/external/windows-doors-selection/windows-doors-selection.component';
 import { SelectionCardComponent } from './client/selection-card/selection-card.component';
 import { CardComponent } from './dynamic-components/card/card.component';
@@ -94,7 +95,8 @@ import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.co
     GroundSlabSelectionComponent,
     RenderSelectionComponent,
     PavingComponent,
-    DownpipesSelectionComponent
+    DownpipesSelectionComponent,
+    TermiteControlSelectionComponent
   ],
   imports: [
     BrowserModule,
