@@ -89,8 +89,45 @@ export class AddendaStoreService {
                 label: 'Termite Control',
                 source: 'termite_control',
                 type: 'termiteControl',
-                markup: null
-              },
+                markup: null,
+                extras: {
+                  termiteCollars: {
+                    label: 'Number of Termite Collars for penetrations',
+                    quantity: null,
+                    quantityLabel: 'Number of Collars required',
+                  },
+                  housePerimeter: {
+                    label: 'The perimeter of the house',
+                    quantity: null,
+                    quantityLabel: 'meters',
+                  },
+                  garageZeroLotWall: {
+                    label: 'Garage zero lot wall',
+                    quantity: null,
+                    quantityLabel: 'meters',
+                  },
+                  houseArea: {
+                    label: 'House area',
+                    quantity: null,
+                    quantityLabel: 'sqm',
+                  },
+                  collarPrice: {
+                    label: 'Collar price',
+                    quantity: null,
+                    quantityLabel: 'cents per unit',
+                  },
+                  chemicalPreTreatment: {
+                    label: 'Chemical Pre-Treatment',
+                    quantity: null,
+                    quantityLabel: 'cents per lm',
+                  },
+                  reticulationBarrierSystem: {
+                    label: 'Reticulation Termite Barrier System',
+                    quantity: null,
+                    quantityLabel: 'cents per lm',
+                  },
+                },
+              }
             ]
           },
           {
