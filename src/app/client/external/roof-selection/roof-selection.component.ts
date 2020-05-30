@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FieldConfig } from 'src/app/model/fieldConfig';
 import { Item } from 'src/app/model/item';
 import { AddendaStoreService } from 'src/app/services/addenda-store.service';
@@ -11,8 +11,6 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./roof-selection.component.css']
 })
 export class RoofSelectionComponent implements OnInit {
-  @Input() markup: number;
-  @Input() amountRequired: number;
   field: FieldConfig;
 
   selectedRoofType: string;
