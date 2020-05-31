@@ -1,8 +1,10 @@
 <label id="level-one-group-label">Termite Control</label>
 <mat-radio-group class="level-one-radio-group" aria-labelledby="level-one-group-label" [(ngModel)]="controlLevelOne"
     (change)="select($event.value)">
-    <mat-radio-button value="Chemical Pre-Treatment">Chemical Pre-Treatment</mat-radio-button>
-    <mat-radio-button value="Reticulation Termite Barrier System">Reticulation Termite Barrier System</mat-radio-button>
+    <mat-radio-button value="Chemical Pre-Treatment">Chemical Pre-Treatment
+        {{addendaStore.formattedPrice(termiteControlCost)}}</mat-radio-button>
+    <mat-radio-button value="Reticulation Termite Barrier System">Reticulation Termite Barrier System
+        {{addendaStore.formattedPrice(termiteControlCost)}}</mat-radio-button>
     <mat-radio-button value="Physical Barrier System">Physical Barrier System</mat-radio-button>
 </mat-radio-group>
 

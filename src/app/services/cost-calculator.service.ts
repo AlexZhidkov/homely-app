@@ -25,6 +25,9 @@ export class CostCalculatorService {
       case 'guttering':
         cost = field.quantity * item.price + field.quantity * field.extras.addOnPrice.quantity;
         break;
+      case 'termite_control':
+        cost = this.calculateTermiteControlItemCost(field, item);
+        break;
       case 'colorbond':
         cost = 0;
         break;
@@ -45,9 +48,32 @@ export class CostCalculatorService {
         }
         cost = quantity * item.price;
     }
-    const markup = isNaN(field.markup) ? 0 : field.markup;
+    return this.getCostPlusMarkup(cost, field.markup);
+  }
+
+  getCostPlusMarkup(cost: number, fieldMarkup: any): number {
+    const markup = isNaN(fieldMarkup) ? 0 : fieldMarkup;
     const total = cost + Math.round((cost * markup) / 100);
     return total;
+  }
+
+  calculateTermiteControlItemCost(field: FieldConfig, item: Item): number {
+    switch (item.value) {
+      case 'Homeguard Blue':
+        return field.extras.termiteCollars.quantity * field.extras.collarPrice.quantity +
+          (field.extras.housePerimeter.quantity + field.extras.garageZeroLotWall.quantity) * item.price
+        break;
+      default:
+        return (field.extras.houseArea.quantity + (field.extras.garageZeroLotWall.quantity * 0.20)) * item.price
+        break;
+    }
+    return 0;
+  }
+
+  getTermiteControlCost(field: FieldConfig): number {
+    const cost = field.extras.termiteCollars.quantity * field.extras.collarPrice.quantity +
+      (field.extras.housePerimeter.quantity + field.extras.garageZeroLotWall.quantity) * field.extras.chemicalPreTreatment.quantity;
+    return this.getCostPlusMarkup(cost, field.markup);
   }
 
   brickworkQuantity(field: FieldConfig, brick: Brick): number {

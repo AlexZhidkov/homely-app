@@ -19,8 +19,10 @@ export class TermiteControlSelectionComponent implements OnInit {
   selectedTermiteControl: Item;
   termiteControls: Item[];
 
+  termiteControlCost: number;
+
   constructor(
-    private addendaStore: AddendaStoreService,
+    public addendaStore: AddendaStoreService,
     private termiteControlService: FirestoreService<Item>,
     private costCalculatorService: CostCalculatorService,
   ) { }
@@ -45,6 +47,8 @@ export class TermiteControlSelectionComponent implements OnInit {
     } else {
       this.showAllTermiteControls = true;
     }
+
+    this.termiteControlCost = this.costCalculatorService.getTermiteControlCost(this.field);
   }
 
   select(value: any) {
