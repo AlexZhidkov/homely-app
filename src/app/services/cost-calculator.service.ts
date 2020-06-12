@@ -25,6 +25,9 @@ export class CostCalculatorService {
       case 'guttering':
         cost = this.calculateGutteringCost(field, item);
         break;
+      case 'downpipes':
+        cost = this.calculateDownpipesCost(field, item);
+        break;
       case 'termite_control':
         cost = this.calculateTermiteControlItemCost(field, item);
         break;
@@ -55,6 +58,19 @@ export class CostCalculatorService {
     const markup = isNaN(fieldMarkup) ? 0 : fieldMarkup;
     const total = cost + Math.round((cost * markup) / 100);
     return total;
+  }
+
+  calculateDownpipesCost(field: FieldConfig, item: Item): number {
+    let cost = field.quantity * item.price;
+    switch (item.value) {
+      case 'Round':
+        cost += field.extras.round.quantity * field.quantity;
+        break;
+      case 'Rectangular':
+        cost += field.extras.rectangular.quantity * field.quantity;
+        break;
+    }
+    return cost;
   }
 
   calculateGutteringCost(field: FieldConfig, item: Item): number {

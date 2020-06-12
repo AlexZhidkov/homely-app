@@ -241,11 +241,29 @@ export class AddendaStoreService {
                 },
               },
               {
-                label: 'Downpipes',
-                type: 'downpipes',
+                label: 'Downpipes Type',
+                source: 'downpipes',
+                type: 'card',
                 markup: null,
                 quantity: null,
-                quantityLabel: 'Total Linear Meter (Lm)',
+                quantityLabel: 'Number of pipes',
+                extras: {
+                  round: {
+                    label: 'Round Pipe Installation Cost',
+                    quantity: null,
+                    quantityLabel: 'cents per pipe',
+                  },
+                  rectangular: {
+                    label: 'Rectangular Pipe Installation Cost',
+                    quantity: null,
+                    quantityLabel: 'cents per pipe',
+                  },
+                }
+              },
+              {
+                label: 'Downpipes Colour',
+                source: 'colorbond',
+                type: 'card',
               }
             ]
           },
@@ -357,6 +375,7 @@ export class AddendaStoreService {
           'Colorbond',
           'Roof Tiles',
           'Guttering',
+          'Downpipes',
           'Windows',
           'Entrance Doors',
           'Entrance Door Furniture',
