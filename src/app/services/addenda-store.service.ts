@@ -218,10 +218,25 @@ export class AddendaStoreService {
                 quantity: null,
                 quantityLabel: 'Total Linear Meter (Lm)',
                 extras: {
-                  addOnPrice: {
-                    label: 'Gutter Profile Per linear meter add on price',
+                  quarterRound: {
+                    label: '125 Quarter Round installation',
                     quantity: null,
-                    quantityLabel: 'in cents',
+                    quantityLabel: 'cents per lm',
+                  },
+                  halfRound: {
+                    label: '150 Half Round installation',
+                    quantity: null,
+                    quantityLabel: 'cents per lm',
+                  },
+                  wideBasedOvolo: {
+                    label: 'Wide Based Ovolo installation',
+                    quantity: null,
+                    quantityLabel: 'cents per lm',
+                  },
+                  longline: {
+                    label: 'Longline installation',
+                    quantity: null,
+                    quantityLabel: 'cents per lm',
                   },
                 },
               },

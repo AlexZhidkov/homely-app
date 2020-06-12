@@ -23,7 +23,7 @@ export class CostCalculatorService {
     let cost = 0;
     switch (field.source) {
       case 'guttering':
-        cost = field.quantity * item.price + field.quantity * field.extras.addOnPrice.quantity;
+        cost = this.calculateGutteringCost(field, item);
         break;
       case 'termite_control':
         cost = this.calculateTermiteControlItemCost(field, item);
@@ -55,6 +55,25 @@ export class CostCalculatorService {
     const markup = isNaN(fieldMarkup) ? 0 : fieldMarkup;
     const total = cost + Math.round((cost * markup) / 100);
     return total;
+  }
+
+  calculateGutteringCost(field: FieldConfig, item: Item): number {
+    let cost = field.quantity * item.price;
+    switch (item.value) {
+      case '125 Quarter Round':
+        cost += field.extras.quarterRound.quantity * field.quantity;
+        break;
+      case '150 Half Round':
+        cost += field.extras.halfRound.quantity * field.quantity;
+        break;
+      case 'Wide Based Ovolo':
+        cost += field.extras.wideBasedOvolo.quantity * field.quantity;
+        break;
+      case 'Longline':
+        cost += field.extras.longline.quantity * field.quantity;
+        break;
+    }
+    return cost;
   }
 
   calculateTermiteControlItemCost(field: FieldConfig, item: Item): number {
